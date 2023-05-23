@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+// import { Navigate, Route, Routes } from 'react-router-dom';
 import LoginRegister from 'pages/LoginRegister/LoginRegistrer';
 import Layout from './Layout/Layout';
 import Report from 'pages/Report/Report';
@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <h2>Loading...test push to main </h2>
+        <h2>Loading...tist push to main </h2>
         <Route index element={<LoginRegister />} />
         <Route path="home" element={<Home />} />
         <Route path="reports" element={<Report />} />
