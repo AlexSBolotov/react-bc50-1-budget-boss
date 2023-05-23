@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <h2>Loading...tist push to MaiM </h2>
+        <h2>Loading...test push to main </h2>
         <Route index element={<LoginRegister />} />
         <Route path="home" element={<Home />} />
         <Route path="reports" element={<Report />} />
