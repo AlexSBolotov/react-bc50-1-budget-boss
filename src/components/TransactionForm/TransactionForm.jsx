@@ -1,4 +1,4 @@
-const AddTransaction = () => {
+const TransactionForm = () => {
   return (
     <div>
       <form>
@@ -25,4 +25,4 @@ const AddTransaction = () => {
   );
 };
 
-export default AddTransaction;
+export default TransactionForm;

@@ -1,15 +1,15 @@
 import ReportBar from 'components/ReportBar/ReportBar';
 import ReportCategories from 'components/ReportCategories/ReportCategories';
-import ReportCharts from 'components/ReportGraph/ReportCharts';
-import TransactionPeriodDataTotal from 'components/TransactionPeriodDataTotal/TransactionPeriodDataTotal';
+import ReportGraph from 'components/ReportGraph/ReportGraph';
+import ReportTotal from 'components/ReportTotal/ReportTotal';
 
 const Report = () => {
   return (
     <section>
       <ReportBar />
-      <TransactionPeriodDataTotal />
+      <ReportTotal />
       <ReportCategories />
-      <ReportCharts />
+      <ReportGraph />
     </section>
   );
 };
