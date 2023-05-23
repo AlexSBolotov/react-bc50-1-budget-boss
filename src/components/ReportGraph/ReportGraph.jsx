@@ -6,7 +6,7 @@ import {
   XAxis,
   ResponsiveContainer,
   LabelList,
-  //   YAxis,
+  // YAxis
   CartesianGrid,
   //   Tooltip,
   //   Legend,
