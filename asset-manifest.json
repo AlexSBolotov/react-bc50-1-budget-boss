@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-bc50-1-budget-boss/static/css/main.9b282f54.css",
-    "main.js": "/react-bc50-1-budget-boss/static/js/main.20a04946.js",
+    "main.js": "/react-bc50-1-budget-boss/static/js/main.f1496969.js",
     "static/media/wallet.png": "/react-bc50-1-budget-boss/static/media/wallet.69a5117ccf911700a1f4.png",
     "index.html": "/react-bc50-1-budget-boss/index.html",
     "main.9b282f54.css.map": "/react-bc50-1-budget-boss/static/css/main.9b282f54.css.map",
-    "main.20a04946.js.map": "/react-bc50-1-budget-boss/static/js/main.20a04946.js.map"
+    "main.f1496969.js.map": "/react-bc50-1-budget-boss/static/js/main.f1496969.js.map"
   },
   "entrypoints": [
     "static/css/main.9b282f54.css",
-    "static/js/main.20a04946.js"
+    "static/js/main.f1496969.js"
   ]
 }
