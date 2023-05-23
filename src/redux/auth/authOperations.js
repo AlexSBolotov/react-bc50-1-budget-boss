@@ -4,10 +4,10 @@ import {
   registerUserApi,
   loginUserApi,
   logoutUserApi,
-  refreshTokenApi,
+  // refreshTokenApi,
   token,
   getUserInfoApi,
-  googleAuthApi,
+  // googleAuthApi,
 } from 'services/kapustaApi';
 
 export const registerUser = createAsyncThunk(
@@ -69,42 +69,42 @@ export const getAuthUser = createAsyncThunk(
   }
 );
 
-export const refreshToken = createAsyncThunk(
-  'auth/refreshToken',
-  async (cb, { getState, rejectWithValue, dispatch }) => {
-    const { refreshToken, sid } = getState().auth;
-    try {
-      token.set(refreshToken);
-      const { data } = await refreshTokenApi({ sid });
-      token.set(data.newAccessToken);
-      setTimeout(() => {
-        dispatch(cb());
-      }, 0);
-      return data;
-    } catch (error) {
-      setTimeout(() => {
-        dispatch(logoutUser);
-      }, 0);
-      return rejectWithValue(error.message);
-    }
-  }
-);
+// export const refreshToken = createAsyncThunk(
+//   'auth/refreshToken',
+//   async (cb, { getState, rejectWithValue, dispatch }) => {
+//     const { refreshToken, sid } = getState().auth;
+//     try {
+//       token.set(refreshToken);
+//       const { data } = await refreshTokenApi({ sid });
+//       token.set(data.newAccessToken);
+//       setTimeout(() => {
+//         dispatch(cb());
+//       }, 0);
+//       return data;
+//     } catch (error) {
+//       setTimeout(() => {
+//         dispatch(logoutUser);
+//       }, 0);
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
 
-export const googleAuth = createAsyncThunk(
-  'auth/google',
-  async (_, { rejectWithValue, dispatch, getState }) => {
-    try {
-      const authGoogle = await googleAuthApi();
-      console.log(authGoogle);
-      token.set(authGoogle.data.accessToken);
-      const { data } = await getUserInfoApi();
-      console.log('data: ', data);
-      return data;
-    } catch (error) {
-      setTimeout(() => {
-        dispatch(googleAuth);
-      }, 0);
-      return rejectWithValue(error.message);
-    }
-  }
-);
+// export const googleAuth = createAsyncThunk(
+//   'auth/google',
+//   async (_, { rejectWithValue, dispatch, getState }) => {
+//     try {
+//       const authGoogle = await googleAuthApi();
+//       console.log(authGoogle);
+//       token.set(authGoogle.data.accessToken);
+//       const { data } = await getUserInfoApi();
+//       console.log('data: ', data);
+//       return data;
+//     } catch (error) {
+//       setTimeout(() => {
+//         dispatch(googleAuth);
+//       }, 0);
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );

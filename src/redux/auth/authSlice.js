@@ -3,7 +3,7 @@ import {
   getAuthUser,
   loginUser,
   logoutUser,
-  refreshToken,
+  // refreshToken,
   registerUser,
   // googleAuth,
 } from './authOperations';
@@ -22,11 +22,11 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    googleAuth(state, { payload }) {
-      return { ...state, ...payload };
-    },
-  },
+  // reducers: {
+  //   googleAuth(state, { payload }) {
+  //     return { ...state, ...payload };
+  //   },
+  // },
   extraReducers: builder => {
     builder
       // ============== REGISTRATION ====================
@@ -90,23 +90,23 @@ const authSlice = createSlice({
       .addCase(getAuthUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-      })
-      // ================ REFRESH TOKEN =====================
-      .addCase(refreshToken.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(refreshToken.fulfilled, (state, { payload }) => {
-        return {
-          ...state,
-          isLoading: false,
-          error: null,
-          ...payload,
-        };
-      })
-      .addCase(refreshToken.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
       });
+    // ================ REFRESH TOKEN =====================
+    // .addCase(refreshToken.pending, state => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(refreshToken.fulfilled, (state, { payload }) => {
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     error: null,
+    //     ...payload,
+    //   };
+    // })
+    // .addCase(refreshToken.rejected, (state, { payload }) => {
+    //   state.isLoading = false;
+    //   state.error = payload;
+    // });
     // ================ GOOGLE AUTHORIZATION ================
     // .addCase(googleAuth.pending, state => {
     //   state.isLoading = true;
@@ -126,5 +126,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { googleAuth } = authSlice.actions;
+// export const { googleAuth } = authSlice.actions;
 export default authSlice.reducer;
