@@ -1,4 +1,4 @@
-import Header from 'components/Header/Header';
+import Header from 'modules/moduleLayout/components/Header/Header';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 

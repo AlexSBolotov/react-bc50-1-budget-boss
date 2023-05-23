@@ -1,7 +1,7 @@
-import Balance from 'components/Balance/Balance';
-import ReportsLink from 'components/ReportsLink/ReportsLink';
+import Balance from 'modules/shared/components/Balance/Balance';
+import ReportsLink from 'modules/moduleHome/components/ReportsLink/ReportsLink';
 import { NavLink } from 'react-router-dom';
-import TransactionsNav from 'components/TransactionsNav/TransactionsNav';
+import TransactionsNav from 'modules/moduleHome/components/TransactionsNav/TransactionsNav';
 
 const HomeBar = () => {
   return (

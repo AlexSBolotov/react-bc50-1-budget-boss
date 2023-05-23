@@ -1,6 +1,6 @@
-import HomeBar from 'components/HomeBar/HomeBar';
-import TransactionContainer from 'components/TransactionContainer/TransactionContainer';
-import TransactionForm from 'components/TransactionForm/TransactionForm';
+import HomeBar from 'modules/moduleHome/components/HomeBar/HomeBar';
+import TransactionContainer from 'modules/moduleHome/components/TransactionContainer/TransactionContainer';
+import TransactionForm from 'modules/moduleHome/components/TransactionForm/TransactionForm';
 
 const Home = () => {
   return (
