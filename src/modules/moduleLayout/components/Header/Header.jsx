@@ -1,5 +1,5 @@
-import logo from 'images/logo.png';
-import UserLogout from 'components/UserLogout/UserLogout';
+import logo from 'modules/shared/images/logo.png';
+import UserLogout from 'modules/moduleLayout/components/UserLogout/UserLogout';
 const Header = () => {
   return (
     <header>

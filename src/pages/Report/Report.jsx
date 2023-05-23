@@ -1,7 +1,7 @@
-import ReportBar from 'components/ReportBar/ReportBar';
-import ReportCategories from 'components/ReportCategories/ReportCategories';
-import ReportGraph from 'components/ReportGraph/ReportGraph';
-import ReportTotal from 'components/ReportTotal/ReportTotal';
+import ReportBar from 'modules/moduleReports/components/ReportBar/ReportBar';
+import ReportCategories from 'modules/moduleReports/components/ReportCategories/ReportCategories';
+import ReportGraph from 'modules/moduleReports/components/ReportGraph/ReportGraph';
+import ReportTotal from 'modules/moduleReports/components/ReportTotal/ReportTotal';
 
 const Report = () => {
   return (

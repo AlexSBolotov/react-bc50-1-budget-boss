@@ -1,6 +1,6 @@
-import Balance from 'components/Balance/Balance';
-import PeriodSelector from 'components/PeriodSelector/PeriodSelector';
-import GoHomeLink from 'components/GoHomeLink/GoHomeLink';
+import Balance from 'modules/shared/components/Balance/Balance';
+import PeriodSelector from 'modules/moduleReports/components/PeriodSelector/PeriodSelector';
+import GoHomeLink from 'modules/moduleReports/components/GoHomeLink/GoHomeLink';
 import { NavLink } from 'react-router-dom';
 
 const ReportBar = () => {
