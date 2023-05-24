@@ -1,14 +1,29 @@
 {
   "files": {
-    "main.css": "/react-bc50-1-budget-boss/static/css/main.93c563be.css",
+    "main.css": "/react-bc50-1-budget-boss/static/css/main.c24390a5.css",
     "main.js": "/react-bc50-1-budget-boss/static/js/main.4bfe23a2.js",
+    "static/media/Montserrat-Regular.eot": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.f31a20deab7e6add760e.eot",
+    "static/media/Montserrat-Regular.ttf": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.2eebf45d4afad8932424.ttf",
+    "static/media/Roboto-Medium.eot": "/react-bc50-1-budget-boss/static/media/Roboto-Medium.f9f0c87146a33023da7e.eot",
+    "static/media/Roboto-Medium.ttf": "/react-bc50-1-budget-boss/static/media/Roboto-Medium.ef677e217f2009c16854.ttf",
+    "static/media/Roboto-Regular.eot": "/react-bc50-1-budget-boss/static/media/Roboto-Regular.30b57652c88c5dbd65de.eot",
+    "static/media/Roboto-Regular.ttf": "/react-bc50-1-budget-boss/static/media/Roboto-Regular.25e40da956314b12d333.ttf",
+    "static/media/Roboto-Black.eot": "/react-bc50-1-budget-boss/static/media/Roboto-Black.d747b63eb41cdc64e3dd.eot",
+    "static/media/Roboto-Black.ttf": "/react-bc50-1-budget-boss/static/media/Roboto-Black.8e5479279b074720e15f.ttf",
+    "static/media/Roboto-Bold.eot": "/react-bc50-1-budget-boss/static/media/Roboto-Bold.6490694b37b0ee09bd91.eot",
+    "static/media/Roboto-Bold.ttf": "/react-bc50-1-budget-boss/static/media/Roboto-Bold.5e9f6556d3c0bf6230f0.ttf",
     "static/media/wallet.png": "/react-bc50-1-budget-boss/static/media/wallet.69a5117ccf911700a1f4.png",
+    "static/media/Montserrat-Regular.woff": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.c9b929c5af98e41422ff.woff",
+    "static/media/Roboto-Medium.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Medium.b14ca2d2b289afceb0b0.woff",
+    "static/media/Roboto-Black.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Black.88d7f1b3ca9a9494d8e3.woff",
+    "static/media/Roboto-Bold.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Bold.3f2cbde6b72e8d05669f.woff",
+    "static/media/Roboto-Regular.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Regular.31012f9b3e3da44f87e8.woff",
     "index.html": "/react-bc50-1-budget-boss/index.html",
-    "main.93c563be.css.map": "/react-bc50-1-budget-boss/static/css/main.93c563be.css.map",
+    "main.c24390a5.css.map": "/react-bc50-1-budget-boss/static/css/main.c24390a5.css.map",
     "main.4bfe23a2.js.map": "/react-bc50-1-budget-boss/static/js/main.4bfe23a2.js.map"
   },
   "entrypoints": [
-    "static/css/main.93c563be.css",
+    "static/css/main.c24390a5.css",
     "static/js/main.4bfe23a2.js"
   ]
 }
