@@ -5,6 +5,7 @@ import {
   addTransactionIncome,
   addTransactionExpense,
   deleteTransaction,
+  getTransactionByPeriod,
 } from './transactionOperations';
 
 const initialState = {
@@ -71,6 +72,9 @@ const transactionSlice = createSlice({
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+      }) // ================= GET BY PERIOD
+      .addCase(getTransactionByPeriod.fulfilled, (state, { payload }) => {
+        state.transaction = payload;
       });
   },
 });
