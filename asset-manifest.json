@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-bc50-1-budget-boss/static/css/main.e3c109fc.css",
-    "main.js": "/react-bc50-1-budget-boss/static/js/main.087384f3.js",
+    "main.css": "/react-bc50-1-budget-boss/static/css/main.fbc41291.css",
+    "main.js": "/react-bc50-1-budget-boss/static/js/main.29eaabd1.js",
     "static/media/Montserrat-Regular.eot": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.f31a20deab7e6add760e.eot",
     "static/media/Montserrat-Regular.ttf": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.2eebf45d4afad8932424.ttf",
     "static/media/Roboto-Medium.eot": "/react-bc50-1-budget-boss/static/media/Roboto-Medium.f9f0c87146a33023da7e.eot",
@@ -12,19 +12,23 @@
     "static/media/Roboto-Black.ttf": "/react-bc50-1-budget-boss/static/media/Roboto-Black.8e5479279b074720e15f.ttf",
     "static/media/Roboto-Bold.eot": "/react-bc50-1-budget-boss/static/media/Roboto-Bold.6490694b37b0ee09bd91.eot",
     "static/media/Roboto-Bold.ttf": "/react-bc50-1-budget-boss/static/media/Roboto-Bold.5e9f6556d3c0bf6230f0.ttf",
-    "static/media/wallet.png": "/react-bc50-1-budget-boss/static/media/wallet.69a5117ccf911700a1f4.png",
+    "static/media/wallet@2x-min.png": "/react-bc50-1-budget-boss/static/media/wallet@2x-min.192423ccc01f28190d28.png",
+    "static/media/money@2x-min.png": "/react-bc50-1-budget-boss/static/media/money@2x-min.cd3d7153789ff0ae4442.png",
     "static/media/Montserrat-Regular.woff": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.c9b929c5af98e41422ff.woff",
     "static/media/Roboto-Medium.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Medium.b14ca2d2b289afceb0b0.woff",
     "static/media/Roboto-Black.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Black.88d7f1b3ca9a9494d8e3.woff",
     "static/media/Roboto-Bold.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Bold.3f2cbde6b72e8d05669f.woff",
     "static/media/Roboto-Regular.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Regular.31012f9b3e3da44f87e8.woff",
+    "static/media/wallet-min.png": "/react-bc50-1-budget-boss/static/media/wallet-min.723312e6518325c67f49.png",
+    "static/media/money-min.png": "/react-bc50-1-budget-boss/static/media/money-min.ff3c95e4775032224baf.png",
+    "static/media/google.svg": "/react-bc50-1-budget-boss/static/media/google.be8448ceb53172f1c7d9d02db0eba923.svg",
     "static/media/calendar.svg": "/react-bc50-1-budget-boss/static/media/calendar.855c09fa15b7a1575782.svg",
     "index.html": "/react-bc50-1-budget-boss/index.html",
-    "main.e3c109fc.css.map": "/react-bc50-1-budget-boss/static/css/main.e3c109fc.css.map",
-    "main.087384f3.js.map": "/react-bc50-1-budget-boss/static/js/main.087384f3.js.map"
+    "main.fbc41291.css.map": "/react-bc50-1-budget-boss/static/css/main.fbc41291.css.map",
+    "main.29eaabd1.js.map": "/react-bc50-1-budget-boss/static/js/main.29eaabd1.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3c109fc.css",
-    "static/js/main.087384f3.js"
+    "static/css/main.fbc41291.css",
+    "static/js/main.29eaabd1.js"
   ]
 }
