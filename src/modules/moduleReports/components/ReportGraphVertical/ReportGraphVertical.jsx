@@ -60,17 +60,14 @@ const renderCustomBarLabel = ({ x, y, width, value }) => {
       x={x + width / 2}
       y={y}
       fontSize="12"
-      //   fontFamily="Roboto"
+      fontFamily="Roboto"
       fill="#C7CCDC"
       textAnchor="middle"
       dy={-6}
     >{`${value} UAH`}</text>
   );
 };
-// const graphContainer = document.querySelector('.bar');
-// console.log(graphContainer);
-// let windowWidth = window.getComputedStyle(graphContainer).width;
-// console.log(windowWidth);
+
 export default function ReportGraphVertical() {
   return (
     <ResponsiveContainer>
@@ -85,9 +82,8 @@ export default function ReportGraphVertical() {
           top: 50,
           right: 0,
           left: 0,
-          bottom: 5,
+          bottom: 25,
         }}
-        // defaultShowTooltip={true}
       >
         <CartesianGrid vertical={false} stroke={'grey'} />
         <defs>
@@ -96,30 +92,15 @@ export default function ReportGraphVertical() {
             <stop offset="100%" stopColor="#383C46" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <XAxis
-          dataKey="name"
-          fontSize="12"
-          //   fontFamily="Roboto"
-          stroke="#C7CCDC"
-          axisLine={false}
-          tickLine={false}
-        />
-        {/* <YAxis /> */}
-        {/* <Tooltip /> */}
-        {/* <Legend  /> */}
+        <XAxis axisLine={false} tickLine={false} hide />
 
-        <Bar
-          dataKey="uv"
-          fill="url(#colorUv)"
-          //   barSize={38}
-          //   label={{ position: 'top' }}
-          // label={renderCustomBarLabel}
-          radius={[10, 10, 0, 0]}
-        >
+        <Bar dataKey="uv" fill="url(#colorUv)" radius={[10, 10, 0, 0]}>
+          <LabelList content={renderCustomBarLabel} position="top" />
           <LabelList
-            content={renderCustomBarLabel}
-            // dataKey="uv"
-            position="top"
+            dataKey="name"
+            position="bottom"
+            fill="#C7CCDC"
+            fontFamily="Roboto"
           />
         </Bar>
       </BarChart>
