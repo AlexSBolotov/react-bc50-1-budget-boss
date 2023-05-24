@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
-import { Formik, useFormik } from 'formik'; // Form, Field
-import { loginUser } from 'redux/auth/authOperations';
+import { Formik, useFormik } from 'formik';
+import { loginUser, registerUser } from 'redux/auth/authOperations';
 import { ReactComponent as IconGoogle } from 'modules/shared/images/svg/google.svg';
 import {
   AuthButton,
@@ -20,6 +20,7 @@ import {
   GoogleTitle,
   LabelTitle,
 } from 'modules/moduleLoginRegister/components/LoginForm/LoginForm.styled';
+import { useState } from 'react';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -41,18 +42,13 @@ const LoginForm = () => {
     },
   });
 
-  //   const handleFormSubmit = event => {
-  //     event.preventDefault();
-  //     const form = event.currentTarget.elements;
-  //     const formValues = {
-  //       email: formik.values.email,
-  //       password: formik.values.password,
-  //     };
-  //     const submit = event.nativeEvent.submitter.name;
-  //     submit === 'login'
-  //       ? dispatch(loginUser(formValues))
-  //       : dispatch(registerUser(formValues));
-  // 	};
+  const [isLogin, setIsLogin] = useState(null);
+
+  const handleBtnClick = e => {
+    setIsLogin(e.target.name);
+  };
+
+  console.log(isLogin);
 
   return (
     <AuthWrapper>
@@ -73,12 +69,19 @@ const LoginForm = () => {
       <Formik
         initialValues={formik.initialValues}
         onSubmit={(values, { resetForm }) => {
-          dispatch(
-            loginUser({
-              email: values.email,
-              password: values.password,
-            })
-          );
+          isLogin === 'login'
+            ? dispatch(
+                loginUser({
+                  email: values.email,
+                  password: values.password,
+                })
+              )
+            : dispatch(
+                registerUser({
+                  email: values.email,
+                  password: values.password,
+                })
+              );
           resetForm();
         }}
         validationSchema={validationSchema}
@@ -131,13 +134,16 @@ const LoginForm = () => {
               </AuthLabel>
 
               <AuthButtonWrapper>
-                <AuthButton
-                  type="submit"
-                  onClick={e => console.log('Login', e)}
-                >
+                <AuthButton type="submit" name="login" onClick={handleBtnClick}>
                   Log in
                 </AuthButton>
-                <AuthButton type="submit">Registration</AuthButton>
+                <AuthButton
+                  type="submit"
+                  name="register"
+                  onClick={handleBtnClick}
+                >
+                  Registration
+                </AuthButton>
               </AuthButtonWrapper>
             </Form>
           </FormWrapper>

@@ -9,6 +9,7 @@ const Home = () => {
   return (
     <section>
       <HomeBar />
+
       <TransactionDate />
       <TransactionForm />
       <TransactionContainer />
