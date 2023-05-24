@@ -37,7 +37,7 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   color: var(--color--text);
-  border-bottom: 7px solid var(--primary-black);
+  border-bottom: 4px solid #383847;
   font-size: 0.9em;
 
   font-family: 'Roboto';
