@@ -1,0 +1,28 @@
+.goBackLink {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 12px;
+display: flex;
+align-items: center;
+text-align: center;
+letter-spacing: 0.02em;
+text-transform: uppercase;
+color: #F6F7FB;
+}
+
+@media screen and (min-width: 768px) {
+  .goBackLink {
+    display: block;
+    text-decoration: none;
+    color: #F6F7FB;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+  
+}

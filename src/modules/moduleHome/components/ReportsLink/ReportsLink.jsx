@@ -1,13 +1,14 @@
-import s from './ReportsLink.module.css'
-const Reports = () => {
+
+import s from './ReportsLink.module.css';
+
+const ReportsLink = () => {
   return (
     <div className={s.divToReports}>
-      <p to="/report" className={s.GoToReportsLink}>
+      <span to="/report" className={s.reports}>
         Reports
-      
-      </p>
+      </span>
     </div>
   );
 };
 
-export default Reports;
+export default ReportsLink;

@@ -9,6 +9,7 @@
   top: 120%;
   position: absolute;
   z-index: 2;
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
