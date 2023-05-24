@@ -28,7 +28,7 @@ export const AuthContainer = styled.div`
 export const AuthImage = styled.div`
   width: 647px;
 
-  margin-bottom: -226px;
+  margin-bottom: -246px;
 
   @media screen and (min-width: 1280px) {
     width: 675px;

@@ -33,6 +33,11 @@ export const GoogleTitle = styled.h1`
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.04em;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.18;
+  }
 `;
 
 export const GoogleButton = styled.button`
@@ -51,7 +56,7 @@ export const GoogleButton = styled.button`
   &:hover,
   :focus {
     transform: scale(1.05);
-	transition: 300ms;
+    transition: 300ms;
   }
 
   &:active {
@@ -92,11 +97,18 @@ export const AuthDescr = styled.p`
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.04em;
+
+  @media screen and (min-width: 768px) {
+	width: 288px;
+
+    font-size: 14px;
+    line-height: 1.16;
+  }
 `;
 
 // ============== Form ===============
 export const FormWrapper = styled.div`
-  margin-top: 24px;  
+  margin-top: 24px;
 
   @media screen and (min-width: 768px) {
     margin-top: 32px;
@@ -135,8 +147,8 @@ export const AuthInput = styled.input`
 `;
 
 export const ErrorWrapper = styled.div`
-	height: 10px;
-`
+  height: 10px;
+`;
 
 export const ErrorText = styled.p`
   margin-top: 8px;
@@ -159,7 +171,11 @@ export const AuthButtonWrapper = styled.div`
   align-items: center;
   gap: 8px;
 
-  margin-top: 20px;
+  margin-top: 10px;
+
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+  }
 `;
 
 export const AuthButton = styled.button`
@@ -186,5 +202,9 @@ export const AuthButton = styled.button`
   }
   &:active {
     transform: scale(0.95);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 136px;
   }
 `;
