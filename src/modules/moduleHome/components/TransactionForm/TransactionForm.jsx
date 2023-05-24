@@ -2,8 +2,10 @@ const TransactionForm = () => {
   return (
     <div>
       <form>
-        <input type="date" name="date" />
-        <input type="text" name="text" />
+        {/* <input type="date" name="date" />
+        <input type="text" name="text" /> */
+        // закоментила ибо дейтпикер отдельный компонент 
+        }
         <select name="categories">
           <option value="products">Products</option>
           <option value="alcohol">Alcohol</option>
