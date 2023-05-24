@@ -1,0 +1,80 @@
+.summaryWrapper {
+  @media screen and (min-width: 768px) {
+    width: 213px;
+    height: 290px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    /* for FireFox browser styles */
+    scrollbar-width: thin;
+    scrollbar-color: #60c470 #474759;
+    /* for Chrome, Safari and Opersa browsers styles */
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: #474759;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #60c470;
+      border-radius: 5px;
+    }
+  }
+}
+
+.summaryTable {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: table;
+    width: 100%;
+    border-spacing: 0 2px;
+  }
+}
+.summaryTableHeading {
+  padding: 10px 20px;
+  background: rgba(86, 86, 107, 0.5);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  color: var(--color--text);
+  border-bottom: 7px solid var(--primary-black);
+  font-size: 0.9em;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  &:first-child {
+    text-align: left;
+  }
+  &:last-child {
+    text-align: center;
+  }
+}
+
+.summaryTableCell {
+  padding-left: 12px;
+  text-align: left;
+  vertical-align: middle;
+  padding: 10px 0 10px 12px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-bieg);
+  background: rgba(86, 86, 107, 0.5);
+
+  &:first-child {
+    border-right: none;
+  }
+  &:nth-child(2) {
+    padding-left: 0px;
+    padding-right: 12px;
+    text-align: right;
+  }
+}
