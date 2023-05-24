@@ -6,16 +6,15 @@
   align-items: center;
 
   text-decoration: none;
-  color: #52555fb2;
+  color: #52555f;
   font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.04em;
-
-
+  transition: color var(--transition-timing) var(--transition-function);
 }
 
 .GoToReportsLink:hover {
-  color: rgba(199, 204, 220, 0.5);
+  color: #ff751d;
 }
 
 .divToReports {
@@ -39,10 +38,12 @@
   height: 24px;
   margin-left: 15px;
   fill: #52555f;
-
+  transition: fill var(--transition-timing) var(--transition-function);
 }
 
-
+.iconReport:hover {
+  fill: #ff751d;
+}
 .divToReports {
   margin-bottom: 40px;
 }
