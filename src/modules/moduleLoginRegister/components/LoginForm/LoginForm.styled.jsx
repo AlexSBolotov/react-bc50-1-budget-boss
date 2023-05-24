@@ -57,6 +57,10 @@ export const GoogleButton = styled.button`
   &:active {
     transform: scale(0.95);
   }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
 `;
 
 export const GoogleBtnWrapper = styled.div`
@@ -92,7 +96,11 @@ export const AuthDescr = styled.p`
 
 // ============== Form ===============
 export const FormWrapper = styled.div`
-  margin-top: 24px;
+  margin-top: 24px;  
+
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+  }
 `;
 
 export const LabelTitle = styled.p`
@@ -117,7 +125,7 @@ export const Form = styled.form`
 export const AuthLabel = styled.label``;
 
 export const AuthInput = styled.input`
-  width: 240px;
+  width: 100%;
   height: 48px;
 
   padding: 16px;
