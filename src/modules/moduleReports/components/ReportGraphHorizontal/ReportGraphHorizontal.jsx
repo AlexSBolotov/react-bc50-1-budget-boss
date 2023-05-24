@@ -7,7 +7,7 @@ import {
   ResponsiveContainer,
   LabelList,
   // YAxis
-  CartesianGrid,
+  //   CartesianGrid,
   //   Tooltip,
   //   Legend,
 } from 'recharts';
@@ -70,15 +70,16 @@ const data = [
 
 export default function ReportGraphHorizontal() {
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer height="100%">
       <BarChart
         layout="vertical"
-        width={500}
-        height={100}
+        // width={500}
+        // height={100}
         data={data}
-        barGap={50}
+        barGap={36}
         barSize={15}
         // reverseStackOrder={true}
+        // style={{ stroke: '#fff', strokeWidth: 20 }}
         margin={{
           top: 50,
           right: 30,
@@ -87,7 +88,7 @@ export default function ReportGraphHorizontal() {
         }}
         // defaultShowTooltip={true}
       >
-        <CartesianGrid vertical={false} horizontal={false} />
+        {/* <CartesianGrid vertical={false} horizontal={false} /> */}
         <defs>
           <linearGradient id="colorUv" x1="1" y1="0" x2="0" y2="0">
             <stop offset="0%" stopColor="#60C470" stopOpacity={1} />
@@ -99,8 +100,8 @@ export default function ReportGraphHorizontal() {
           //   fontSize="12"
           //   fontFamily="Roboto"
           //   stroke="#C7CCDC"
-          axisLine={false}
-          tickLine={false}
+          //   axisLine={false}
+          //   tickLine={false}
           hide
         />
         {/* <YAxis /> */}
@@ -108,6 +109,7 @@ export default function ReportGraphHorizontal() {
         {/* <Legend  /> */}
 
         <Bar
+          //   layout="vertical"
           dataKey="uv"
           fill="url(#colorUv)"
           //   barSize={38}

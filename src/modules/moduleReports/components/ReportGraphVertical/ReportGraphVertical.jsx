@@ -15,43 +15,43 @@ import {
 const data = [
   {
     name: 'Pork',
-    uv: 1100,
+    value: 1100,
   },
   {
     name: 'Beef',
-    uv: 1000,
+    value: 1000,
   },
   {
     name: 'Chiken',
-    uv: 800,
+    value: 800,
   },
   {
     name: 'Fish',
-    uv: 660,
+    value: 660,
   },
   {
     name: 'Panini',
-    uv: 350,
+    value: 350,
   },
   {
     name: 'Coffee',
-    uv: 420,
+    value: 420,
   },
   {
     name: 'Spaghetti',
-    uv: 230,
+    value: 230,
   },
   {
     name: 'Chocolate',
-    uv: 200,
+    value: 200,
   },
   {
     name: 'Olives',
-    uv: 320,
+    value: 320,
   },
   {
     name: 'Greens',
-    uv: 720,
+    value: 720,
   },
 ];
 const renderCustomBarLabel = ({ x, y, width, value }) => {
@@ -72,11 +72,8 @@ export default function ReportGraphVertical() {
   return (
     <ResponsiveContainer>
       <BarChart
-        // layout="vertical"
-        width={500}
-        height={300}
         data={data}
-        barGap={25}
+        barGap={250}
         barSize={38}
         margin={{
           top: 50,
@@ -92,9 +89,9 @@ export default function ReportGraphVertical() {
             <stop offset="100%" stopColor="#383C46" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <XAxis axisLine={false} tickLine={false} hide />
+        <XAxis hide />
 
-        <Bar dataKey="uv" fill="url(#colorUv)" radius={[10, 10, 0, 0]}>
+        <Bar dataKey="value" fill="url(#colorUv)" radius={[10, 10, 0, 0]}>
           <LabelList content={renderCustomBarLabel} position="top" />
           <LabelList
             dataKey="name"
