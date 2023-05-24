@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-bc50-1-budget-boss/static/css/main.84da45f6.css",
-    "main.js": "/react-bc50-1-budget-boss/static/js/main.e8bf34d0.js",
+    "main.css": "/react-bc50-1-budget-boss/static/css/main.e3c109fc.css",
+    "main.js": "/react-bc50-1-budget-boss/static/js/main.087384f3.js",
     "static/media/Montserrat-Regular.eot": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.f31a20deab7e6add760e.eot",
     "static/media/Montserrat-Regular.ttf": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.2eebf45d4afad8932424.ttf",
     "static/media/Roboto-Medium.eot": "/react-bc50-1-budget-boss/static/media/Roboto-Medium.f9f0c87146a33023da7e.eot",
@@ -18,12 +18,13 @@
     "static/media/Roboto-Black.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Black.88d7f1b3ca9a9494d8e3.woff",
     "static/media/Roboto-Bold.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Bold.3f2cbde6b72e8d05669f.woff",
     "static/media/Roboto-Regular.woff": "/react-bc50-1-budget-boss/static/media/Roboto-Regular.31012f9b3e3da44f87e8.woff",
+    "static/media/calendar.svg": "/react-bc50-1-budget-boss/static/media/calendar.855c09fa15b7a1575782.svg",
     "index.html": "/react-bc50-1-budget-boss/index.html",
-    "main.84da45f6.css.map": "/react-bc50-1-budget-boss/static/css/main.84da45f6.css.map",
-    "main.e8bf34d0.js.map": "/react-bc50-1-budget-boss/static/js/main.e8bf34d0.js.map"
+    "main.e3c109fc.css.map": "/react-bc50-1-budget-boss/static/css/main.e3c109fc.css.map",
+    "main.087384f3.js.map": "/react-bc50-1-budget-boss/static/js/main.087384f3.js.map"
   },
   "entrypoints": [
-    "static/css/main.84da45f6.css",
-    "static/js/main.e8bf34d0.js"
+    "static/css/main.e3c109fc.css",
+    "static/js/main.087384f3.js"
   ]
 }
