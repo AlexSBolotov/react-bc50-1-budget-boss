@@ -22,8 +22,6 @@ const Report = () => {
   const fetchedData = useMemo(() => {
     return data;
   }, [data]);
-  // console.log(dispatch('2023-05'));
-  // console.log(data.incomes);
 
   return (
     <section>
