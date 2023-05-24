@@ -1,0 +1,147 @@
+.balance_title {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.17;
+  color: #52555fb2;
+
+  margin-bottom: 6px;
+  margin-top: 0;
+}
+.balance_submit {
+  display: inline-block;
+  color: #C7CCDC;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: center;
+  text-transform: uppercase;
+ 
+  margin-left: 0px;
+  border-radius: 0px 22px 22px 0px;
+  border: 2px solid #80848F;
+  background-color:  #474759;
+  width: 142px;
+  height: 44px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+
+}
+.balance_submit:hover {
+  background-color: rgba(82, 85, 95, 0.15);
+  color: #ffffff;
+}
+
+.balance_value {
+  color: #F6F7FB;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.17;
+  text-align: end;
+  text-transform: uppercase;
+
+  padding-right: 6px;
+  width: 140px;
+  height: 39px;
+  border-radius: 22px 0px 0px 22px;
+  border: 2px solid #80848F;
+  background-color:  #474759;
+
+}
+
+.balance_value_none {
+ 
+  border-radius: 16px;
+}
+.balance_value_span {
+  position: relative;
+}
+.balance_value_span::after {
+  position: absolute;
+  top: 6px;
+  font-weight: bold;
+  content: "UAH";
+  right: 17px;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .balance_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  .balance_submit {
+    border-radius: 16px;
+    margin-left: 15px;
+  }
+  .balance_value {
+    border-radius: 16px;
+  }
+  .balance_value::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  .balance_title {
+    margin-bottom: 0px;
+    margin-right: 21px;
+  }
+  .balance_value_span::after {
+    position: absolute;
+    font-weight: bold;
+    content: "UAH";
+    top: 15px;
+    right: 20px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .balance_submit_none {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balance_form {
+    padding-left: 20px;
+    margin: 0 auto;
+  }
+
+  .balance_submit {
+    border-radius: 16px;
+    margin-left: 15px;
+  }
+
+  .balance_submit_none {
+    height: 44px;
+    display: inline-block;
+    color: #52555fb2;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 12px 6px 12px 6px;
+    margin-left: 0px;
+    border-radius: 16px;
+    margin-left: 15px;
+    border: 2px solid rgba(255, 255, 255, 1);
+    background-color: #f2f5fc;
+    width: 125px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+
+  .balance_submit_none:hover {
+    background-color: rgba(82, 85, 95, 0.15);
+    color: #ffffff;
+  }
+}
+
+.balance_form {
+  position: relative;
+}
