@@ -1,0 +1,42 @@
+.container {
+ border-radius: none;
+display: flex;
+justify-content: center;
+}
+
+.one {
+background: #383847;
+border-width: 0px 0px 0px 0px;
+border-style: solid;
+border-radius: 0px 16px 0px 0px;
+width: 159px;
+height: 53px;
+text-align: center;
+padding: 20px 0px;
+color: #F6F7FB;
+background: linear-gradient(340deg, #383847 14.1%, #2D2D38 89.51%);
+font-weight: 700;
+    font-size: 12px;
+    
+text-transform: uppercase;
+}
+
+.two {
+    border-width: 0px 0px 0px 0px;
+    font-weight: 700;
+    font-size: 12px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    width: 159px;
+    height: 53px;
+    left: 161px;
+    top: 514px;
+    border-radius: 16px 0px 0px 0px;
+    color: #F6F7FB;
+    background: linear-gradient(355deg, #383847 14.1%, #2D2D38 89.51%);
+}
+
+
+
