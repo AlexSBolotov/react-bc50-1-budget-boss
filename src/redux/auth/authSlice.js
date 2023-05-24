@@ -12,11 +12,15 @@ const initialState = {
   accessToken: null,
   refreshToken: null,
   sid: null,
-  email: null,
-  balance: null,
   error: null,
   isLoading: false,
   isAuth: false,
+  userData: {
+    email: null,
+    balance: null,
+    id: null,
+    transaction: null,
+  },
 };
 
 const authSlice = createSlice({
