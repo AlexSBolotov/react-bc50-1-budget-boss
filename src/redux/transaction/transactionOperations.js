@@ -6,6 +6,7 @@ import {
   addTransactionIncomeApi,
   deleteTransactionApi,
   getTransactionIncomeApi,
+  getTransactionPeriodDataApi,
 } from 'services/kapustaApi';
 
 export const getTransactionIncome = createAsyncThunk(
@@ -71,12 +72,28 @@ export const deleteTransaction = createAsyncThunk(
   'transaction/delete',
   async (transactionId, { rejectWithValue, dispatch }) => {
     try {
+      console.log(111);
       const { data } = await deleteTransactionApi(transactionId);
       return data;
     } catch (error) {
+      console.log(error);
       dispatch(
         errorHandler({ error, cb: () => deleteTransaction(transactionId) })
       );
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getTransactionByPeriod = createAsyncThunk(
+  'transaction/getPeriod',
+  async (param, { rejectWithValue, dispatch }) => {
+    try {
+      console.log(222);
+      const { data } = await getTransactionPeriodDataApi(param);
+      return data;
+    } catch (error) {
+      dispatch(errorHandler({ error, cb: () => deleteTransaction(param) }));
       return rejectWithValue(error.message);
     }
   }
