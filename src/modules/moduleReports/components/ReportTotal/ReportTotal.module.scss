@@ -1,3 +1,32 @@
 .items {
-  color: red;
+  background: linear-gradient(
+    115.74deg,
+    #383847 23.54%,
+    rgba(56, 56, 71, 0.29) 107.94%
+  );
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+}
+
+@media (min-width: 768px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 1440px) {
+  .items {
+    max-width: 1034px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #c7ccdc;
+    height: 50px;
+    padding: 17px 0;
+
+    .expenses {
+      color: #fe4566;
+    }
+    .incomes {
+      color: #60c470;
+    }
+  }
 }
