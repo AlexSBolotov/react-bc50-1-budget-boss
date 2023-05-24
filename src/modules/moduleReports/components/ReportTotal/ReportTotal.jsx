@@ -5,14 +5,18 @@ const ReportTotal = ({ data }) => {
   // const { expenses, incomes } = data;
   return (
     <div className={s.items}>
-      Expenses:
-      <span className={s.expenses}>
-        - {data?.expenses.expenseTotal || '00'} UAH.
-      </span>
-      | Income:
-      <span className={s.incomes}>
-        {data?.incomes.incomeTotal || '00'} UAH.
-      </span>
+      <div className={s.itemExpenses}>
+        <span>Expenses:</span>
+        <span className={s.expenses}>
+          - {data?.expenses.expenseTotal || '00'} UAH.
+        </span>
+      </div>
+      <div className={s.itemIncomes}>
+        Income:
+        <span className={s.incomes}>
+          {data?.incomes.incomeTotal || '00'} UAH.
+        </span>
+      </div>
     </div>
   );
 };
