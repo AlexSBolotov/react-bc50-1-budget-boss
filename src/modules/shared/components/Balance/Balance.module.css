@@ -4,7 +4,7 @@
   font-weight: 500;
   text-align: center;
   line-height: 1.17;
-  color: #52555fb2;
+  color: #C7CCDC;
 
   margin-bottom: 6px;
   margin-top: 0;
@@ -14,7 +14,7 @@
   color: #C7CCDC;
   font-weight: 400;
   font-size: 12px;
-  line-height: 1.17;
+  /* line-height: 1.17; */
   text-align: center;
   text-transform: uppercase;
  
@@ -22,16 +22,16 @@
   border-radius: 0px 22px 22px 0px;
   border: 2px solid #80848F;
   background-color:  #474759;
-  width: 142px;
+  width: 140px;
   height: 44px;
   letter-spacing: 0.02em;
   cursor: pointer;
 
 }
-.balance_submit:hover {
+/* .balance_submit:hover {
   background-color: rgba(82, 85, 95, 0.15);
   color: #ffffff;
-}
+} */
 
 .balance_value {
   color: #F6F7FB;
@@ -43,7 +43,7 @@
 
   padding-right: 6px;
   width: 140px;
-  height: 39px;
+  height: 44px;
   border-radius: 22px 0px 0px 22px;
   border: 2px solid #80848F;
   background-color:  #474759;
@@ -57,14 +57,14 @@
 .balance_value_span {
   position: relative;
 }
-.balance_value_span::after {
+/* .balance_value_span::after {
   position: absolute;
   top: 6px;
   font-weight: bold;
   content: "UAH";
   right: 17px;
   font-size: 12px;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .balance_form {
@@ -92,7 +92,7 @@
   .balance_value_span::after {
     position: absolute;
     font-weight: bold;
-    content: "UAH";
+   
     top: 15px;
     right: 20px;
     font-size: 12px;
@@ -100,9 +100,9 @@
 }
 
 @media screen and (max-width: 1279px) {
-  .balance_submit_none {
+  /* .balance_submit_none {
     display: none;
-  }
+  } */
 }
 
 @media screen and (min-width: 1280px) {
@@ -119,7 +119,7 @@
   .balance_submit_none {
     height: 44px;
     display: inline-block;
-    color: #52555fb2;
+    color: #C7CCDC;
     font-weight: 400;
     font-size: 12px;
     line-height: 1.17;
