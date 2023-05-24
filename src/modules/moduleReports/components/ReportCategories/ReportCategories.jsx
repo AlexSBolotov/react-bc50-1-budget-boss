@@ -2,9 +2,9 @@ import s from 'modules/moduleReports/components/ReportTotal/ReportTotal.module.s
 const ReportCategories = () => {
   return (
     <div className={s.reportCategories}>
-      <span>{'<'}</span>
-      <h2 className="title-reports">EXPRENSES</h2>
-      <span>{'>'}</span>
+      <h2 className="title-reports">
+        <span>{'<'}</span> EXPRENSES <span>{'>'}</span>
+      </h2>
     </div>
   );
 };
