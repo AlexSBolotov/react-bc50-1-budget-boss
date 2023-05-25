@@ -3,6 +3,7 @@ import { logoutUser } from 'redux/auth/authOperations';
 import s from './UserLogout.module.css';
 import logout from 'modules/moduleLayout/images/logout.png';
 import initials from 'modules/moduleLayout/images/initials.png';
+
 export default function UserLogout() {
   const dispatch = useDispatch();
 
