@@ -18,8 +18,10 @@ const PeriodSelector = ({ onClick }) => {
     onClick(date.format(fnData(val), 'YYYY-MM'));
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => onClick(date.format(newData, 'YYYY-MM')), []);
+  useEffect(() => {
+    onClick(date.format(newData, 'YYYY-MM'));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={s.dataBlock}>
