@@ -73,7 +73,7 @@ export default function ReportGraphVertical() {
     <ResponsiveContainer>
       <BarChart
         data={data}
-        barGap={250}
+        // barGap={250}
         barSize={38}
         margin={{
           top: 50,

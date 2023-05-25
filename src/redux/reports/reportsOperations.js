@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getTransactionExpenseCategoriesApi,
   getTransactionIncomeCategoriesApi,
-  getTransactionPeriodDataApi,
+  // getTransactionPeriodDataApi,
 } from 'services/kapustaApi';
 
 export const getTransactionIncomeCategories = createAsyncThunk(
@@ -28,15 +28,3 @@ export const getTransactionExpenseCategories = createAsyncThunk(
     }
   }
 );
-
-// export const getTransactionPeriod = createAsyncThunk(
-//   'transaction/period-data',
-//   async (date, { rejectWithValue }) => {
-//     try {
-//       const { data } = await getTransactionPeriodDataApi(date);
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );

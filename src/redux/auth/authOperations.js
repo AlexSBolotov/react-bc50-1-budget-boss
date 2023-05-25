@@ -4,9 +4,10 @@ import {
   registerUserApi,
   loginUserApi,
   logoutUserApi,
-  // refreshTokenApi,
   token,
   getUserInfoApi,
+  addTransactionExpenseApi,
+  //   refreshTokenApi,
   // googleAuthApi,
 } from 'services/kapustaApi';
 
@@ -54,21 +55,34 @@ export const logoutUser = createAsyncThunk(
 
 export const getAuthUser = createAsyncThunk(
   'auth/getAuthUser',
-  async (_, { getState, rejectWithValue, dispatch }) => {
-    const userToken = getState.accessToken.token;
+  async (_, { getState, rejectWithValue }) => {
+    const userToken = getState().auth.accessToken;
     token.set(userToken);
     try {
       const { data } = await getUserInfoApi();
       return data;
     } catch (error) {
-      setTimeout(() => {
-        dispatch(errorHandler({ error, cb: getAuthUser }));
-      }, 0);
       return rejectWithValue(error.message);
     }
   }
 );
-
+export const addTransactionExpense = createAsyncThunk(
+  'transaction/expense/add',
+  async (transactionForm, { rejectWithValue, dispatch }) => {
+    try {
+      const { data } = await addTransactionExpenseApi(transactionForm);
+      return data;
+    } catch (error) {
+      dispatch(
+        errorHandler({
+          error,
+          cb: () => addTransactionExpense(transactionForm),
+        })
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);
 // export const refreshToken = createAsyncThunk(
 //   'auth/refreshToken',
 //   async (cb, { getState, rejectWithValue, dispatch }) => {
