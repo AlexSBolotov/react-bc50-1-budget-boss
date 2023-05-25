@@ -1,7 +1,7 @@
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import s from 'modules/moduleReports/components/PeriodSelector/PeriodSelector.module.scss';
 import date from 'date-and-time';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const PeriodSelector = ({ onClick }) => {
   const [data, setData] = useState(0);
@@ -13,6 +13,10 @@ const PeriodSelector = ({ onClick }) => {
     console.log(val, nextMonth);
     onClick(date.format(nextMonth, 'YYYY-MM'));
   };
+
+  useEffect(() => {
+    onClick(date.format(now, 'YYYY-MM'));
+  }, []);
 
   return (
     <div className={s.dataBlock}>
