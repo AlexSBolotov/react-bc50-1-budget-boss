@@ -20,6 +20,7 @@ const TransactionDate = () => {
       ></input>
       ));
     return (
+      <div className="wrapper-container">
       <DatePicker
         dateFormat="dd.MM.yyyy"
         selected={startDate}
@@ -29,7 +30,10 @@ const TransactionDate = () => {
         customInput={<ExampleCustomInput/>}
         
         
+        
+        
       />
+      </div>
     );
   };
   export default TransactionDate;
