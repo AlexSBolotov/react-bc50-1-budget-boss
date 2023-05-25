@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandler } from 'redux/error/errorHandler';
 import {
-  addTransactionExpenseApi,
   getTransactionExpenseApi,
   addTransactionIncomeApi,
   deleteTransactionApi,
@@ -50,23 +49,23 @@ export const getTransactionExpense = createAsyncThunk(
   }
 );
 
-export const addTransactionExpense = createAsyncThunk(
-  'transaction/expense/add',
-  async (transactionForm, { rejectWithValue, dispatch }) => {
-    try {
-      const { data } = await addTransactionExpenseApi(transactionForm);
-      return data;
-    } catch (error) {
-      dispatch(
-        errorHandler({
-          error,
-          cb: () => addTransactionExpense(transactionForm),
-        })
-      );
-      return rejectWithValue(error.message);
-    }
-  }
-);
+// export const addTransactionExpense = createAsyncThunk(
+//   'transaction/expense/add',
+//   async (transactionForm, { rejectWithValue, dispatch }) => {
+//     try {
+//       const { data } = await addTransactionExpenseApi(transactionForm);
+//       return data;
+//     } catch (error) {
+//       dispatch(
+//         errorHandler({
+//           error,
+//           cb: () => addTransactionExpense(transactionForm),
+//         })
+//       );
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const deleteTransaction = createAsyncThunk(
   'transaction/delete',
