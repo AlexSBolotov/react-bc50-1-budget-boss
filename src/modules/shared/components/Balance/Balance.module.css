@@ -21,7 +21,7 @@
   margin-left: 0px;
   border-radius: 0px 22px 22px 0px;
   border: 2px solid #80848F;
-  background-color:  #474759;
+  background-color: rgba(0, 0, 0, 0);
   width: 140px;
   height: 44px;
   letter-spacing: 0.02em;
@@ -41,12 +41,12 @@
   text-align: end;
   text-transform: uppercase;
 
-  padding-right: 6px;
+  padding-right: 16px;
   width: 140px;
   height: 44px;
   border-radius: 22px 0px 0px 22px;
   border: 2px solid #80848F;
-  background-color:  #474759;
+  background-color: rgba(0, 0, 0, 0);
 
 }
 
@@ -69,17 +69,23 @@
 @media screen and (min-width: 768px) {
   .balance_form {
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    padding-left: 20px;
+    /* padding-left: 20px; */
   }
 
   .balance_submit {
     border-radius: 16px;
     margin-left: 15px;
+    width: 125px;
+    height: 44px;
   }
   .balance_value {
     border-radius: 16px;
+    width: 125px;
+    height: 44px;
+    text-align: center;
+    padding-right: 0px;
   }
   .balance_value::-webkit-inner-spin-button {
     display: none;
@@ -107,13 +113,23 @@
 
 @media screen and (min-width: 1280px) {
   .balance_form {
-    padding-left: 20px;
+    /* padding-left: 20px; */
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
 
   .balance_submit {
     border-radius: 16px;
     margin-left: 15px;
+    width: 125px;
+    height: 44px;
+  }
+
+  .balance_value {
+    width: 125px;
+    height: 44px;
+    padding-right: 0px;
   }
 
   .balance_submit_none {
