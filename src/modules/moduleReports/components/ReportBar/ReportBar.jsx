@@ -2,16 +2,17 @@ import Balance from 'modules/shared/components/Balance/Balance';
 import PeriodSelector from 'modules/moduleReports/components/PeriodSelector/PeriodSelector';
 import GoHomeLink from 'modules/moduleReports/components/GoHomeLink/GoHomeLink';
 import { NavLink } from 'react-router-dom';
+import s from 'modules/moduleReports/components/ReportBar/bar.module.scss';
 
-const ReportBar = () => {
+const ReportBar = ({ onClick }) => {
   return (
-    <section>
+    <div className={s.bar}>
       <NavLink to="/home">
         <GoHomeLink />
       </NavLink>
       <Balance />
-      <PeriodSelector />
-    </section>
+      <PeriodSelector onClick={onClick} />
+    </div>
   );
 };
 

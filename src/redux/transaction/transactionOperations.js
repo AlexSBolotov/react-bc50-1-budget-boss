@@ -98,3 +98,16 @@ export const getTransactionByPeriod = createAsyncThunk(
     }
   }
 );
+
+export const getAllCategories = createAsyncThunk(
+  'categoties/all',
+  async (_, { rejectWithValue }) => {
+    try {
+      const incomes = await getTransactionIncomeApi();
+      const expenses = await getTransactionExpenseApi();
+      return { incomes, expenses };
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
