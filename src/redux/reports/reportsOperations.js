@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getTransactionExpenseCategoriesApi,
   getTransactionIncomeCategoriesApi,
-  getTransactionPeriodDataApi,
+  // getTransactionPeriodDataApi,
 } from 'services/kapustaApi';
 
 export const getTransactionIncomeCategories = createAsyncThunk(

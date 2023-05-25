@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useMemo } from 'react';
 import {
   selectPeriod,
-  selectAllCategories,
+  // selectAllCategories,
 } from 'redux/transaction/transactionSelectors';
 // import { getTransactionPeriod } from 'redux/reports/reportsOperations';
 import {
@@ -19,7 +19,7 @@ const Report = () => {
   useLogCheck();
   const dispatch = useDispatch();
   const data = useSelector(selectPeriod);
-  const allCategories = useSelector(selectAllCategories);
+  // const allCategories = useSelector(selectAllCategories);
   const handleDataChooser = data => dispatch(getTransactionByPeriod(data));
   useEffect(() => {
     dispatch(getAllCategories());
