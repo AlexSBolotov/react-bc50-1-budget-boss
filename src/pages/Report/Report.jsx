@@ -30,7 +30,7 @@ const Report = () => {
   }, [data]);
 
   return (
-    <section className="container">
+    <section>
       <ReportBar onClick={handleDataChooser} />
       <ReportTotal data={fetchedData} />
       <ReportCategories />
