@@ -4,9 +4,12 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { selectAuth } from 'redux/auth/authSelectors';
 
+
+
 const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
   // useLogCheck();
   const isAuth = useSelector(selectAuth);
+
 
   return !isAuth ? <Navigate to={redirectTo} /> : <Component />;
 };
