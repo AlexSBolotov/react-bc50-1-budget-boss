@@ -17,7 +17,7 @@ const initialState = {
   isAuth: false,
   userData: {
     email: null,
-    balance: null,
+    balance: 0,
     id: null,
     transaction: null,
   },

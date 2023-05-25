@@ -10,8 +10,16 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<RestrictedRoute component={LoginRegister} redirectTo='/home' />} />
-        <Route path="home" element={<PrivateRoute component={Home} redirectTo='/' />} />
+        <Route
+          index
+          element={
+            <RestrictedRoute component={LoginRegister} redirectTo="/home" />
+          }
+        />
+        <Route
+          path="home"
+          element={<PrivateRoute component={Home} redirectTo="/" />}
+        />
         <Route path="reports" element={<Report />} />
         {/* <Route path='google-redirect' element={<h1>This is google redirect page</h1>}/> */}
         <Route path="*" element={<Navigate to="/" />} />
