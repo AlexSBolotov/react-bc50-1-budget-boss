@@ -2,12 +2,12 @@ import TransactionsSummary from 'modules/moduleHome/components/TransactionsSumma
 import TransactionsList from 'modules/moduleHome/components/TransactionsList/TransactionsList';
 import TransactionsListMobile from '../TransactionListMobile/TransactionListMobile';
 
-const TransactionContainer = () => {
+const TransactionContainer = ({ selectedDate }) => {
   return (
     <section>
-      <TransactionsList />
+      <TransactionsList selectedDate={selectedDate} />
       <TransactionsSummary />
-      <TransactionsListMobile />
+      <TransactionsListMobile selectedDate={selectedDate} />
     </section>
   );
 };

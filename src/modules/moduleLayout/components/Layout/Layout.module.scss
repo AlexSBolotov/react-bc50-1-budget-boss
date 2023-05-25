@@ -15,18 +15,17 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 80px;
+    height: 100%;
+    background-image: url(../../images/bg-tablet-1x.png),
+      url(../../images/Ellipse-tablet.png);
+
+    background-size: cover;
   }
 }
-
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .container {
-    max-width: 1440px;
-    padding-left: 91px;
-    padding-right: 91px;
-    padding-bottom: 80px;
+    height: 100vh;
+    background-image: url(../../images/bg-desk-1x.png),
+      url(../../images/Ellipse-desk.png);
   }
 }
