@@ -6,6 +6,7 @@ import {
   addTransactionExpense,
   deleteTransaction,
   getTransactionByPeriod,
+  getAllCategories,
 } from './transactionOperations';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   monthStats: null,
   isLoading: false,
   error: null,
+  categories: [],
 };
 
 const transactionSlice = createSlice({
@@ -75,6 +77,9 @@ const transactionSlice = createSlice({
       }) // ================= GET BY PERIOD
       .addCase(getTransactionByPeriod.fulfilled, (state, { payload }) => {
         state.transaction = payload;
+      }) // GET ALL CATEGORIES
+      .addCase(getAllCategories.fulfilled, (state, { payload }) => {
+        state.categories = payload;
       });
   },
 });

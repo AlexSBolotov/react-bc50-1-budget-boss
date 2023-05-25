@@ -1,8 +1,8 @@
-import s from 'modules/moduleReports/components/ReportTotal/ReportTotal.module.scss';
+import s from 'modules/moduleReports/components/ReportCategories/ReportCategories.module.css';
 const ReportCategories = () => {
   return (
-    <div className={s.reportCategories}>
-      <h2 className="title-reports">
+    <div>
+      <h2 className={s.titleReports}>
         <span>{'<'}</span> EXPRENSES <span>{'>'}</span>
       </h2>
     </div>
