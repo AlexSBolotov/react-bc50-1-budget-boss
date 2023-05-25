@@ -1,17 +1,11 @@
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import s from 'modules/moduleReports/components/PeriodSelector/PeriodSelector.module.scss';
 import date from 'date-and-time';
-import { useState, useCallback } from 'react';
-
-// const test = Date.now();
-// console.log(test);
-// console.log(date.parse('2015/01/02 23:14:05', 'YYYY/MM/DD'));
-// console.log(test);
+import { useState, useEffect, useCallback } from 'react';
 
 const PeriodSelector = ({ onClick }) => {
   const data = new Date();
 
-  // const [data, setData] = useState(new Date());
   const [count, setCount] = useState(0);
 
   const newData = date.addMonths(data, count);
@@ -24,9 +18,8 @@ const PeriodSelector = ({ onClick }) => {
     onClick(date.format(fnData(val), 'YYYY-MM'));
   };
 
-  // useEffect(() => {
-  //   onClick(date.format(now, 'YYYY-MM'));
-  // }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => onClick(date.format(newData, 'YYYY-MM')), []);
 
   return (
     <div className={s.dataBlock}>
