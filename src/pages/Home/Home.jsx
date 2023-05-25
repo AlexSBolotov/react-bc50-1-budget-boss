@@ -3,14 +3,13 @@ import TransactionContainer from 'modules/moduleHome/components/TransactionConta
 import TransactionForm from 'modules/moduleHome/components/TransactionForm/TransactionForm';
 // import s from 'pages/Home/Home.module.scss';
 import TransactionDate from 'modules/moduleHome/components/TransactionDate/TransactionDate';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   getTransactionExpenseCategories,
   getTransactionIncomeCategories,
 } from 'redux/reports/reportsOperations';
 // import { getTransactionExpenseCategories } from 'redux/reports/reportsOperations';
-
 import { useDispatch } from 'react-redux';
 import {
   selectExpensesCategories,
@@ -18,11 +17,12 @@ import {
 } from 'redux/transaction/transactionSelectors';
 
 const Home = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const dispatch = useDispatch();
-  const expenses = useSelector(selectExpensesCategories);
-  const incomes = useSelector(selectIncomesCategories);
-  console.log(expenses);
-  console.log(incomes);
+  const expensesCategories = useSelector(selectExpensesCategories);
+  const incomesCategories = useSelector(selectIncomesCategories);
+  console.log(expensesCategories);
+  console.log(incomesCategories);
   useEffect(() => {
     dispatch(getTransactionExpenseCategories());
     dispatch(getTransactionIncomeCategories());
@@ -31,9 +31,12 @@ const Home = () => {
     <section>
       <HomeBar />
 
-      <TransactionDate />
-      <TransactionForm />
-      <TransactionContainer />
+      <TransactionDate
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
+      <TransactionForm selectedDate={selectedDate} />
+      <TransactionContainer selectedDate={selectedDate} />
     </section>
   );
 };

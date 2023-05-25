@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import s from './TransactionListMobile.module.scss';
 
-const TransactionsListMobile = () => {
+const TransactionsListMobile = ({ selectedDate }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (

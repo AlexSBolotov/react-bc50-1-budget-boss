@@ -7,7 +7,7 @@ import {
   ResponsiveContainer,
   LabelList,
   // YAxis
-  //   CartesianGrid,
+  // CartesianGrid,
   //   Tooltip,
   //   Legend,
 } from 'recharts';
@@ -15,43 +15,43 @@ import {
 const data = [
   {
     name: 'Pork',
-    uv: 1100,
+    value: 1100,
   },
   {
     name: 'Beef',
-    uv: 1000,
+    value: 1000,
   },
   {
     name: 'Chiken',
-    uv: 800,
+    value: 800,
   },
   {
     name: 'Fish',
-    uv: 660,
+    value: 660,
   },
   {
     name: 'Panini',
-    uv: 350,
+    value: 350,
   },
   {
     name: 'Coffee',
-    uv: 420,
+    value: 420,
   },
   {
     name: 'Spaghetti',
-    uv: 230,
+    value: 230,
   },
   {
     name: 'Chocolate',
-    uv: 200,
+    value: 200,
   },
   {
     name: 'Olives',
-    uv: 320,
+    value: 320,
   },
   {
     name: 'Greens',
-    uv: 720,
+    value: 720,
   },
 ];
 // const renderCustomBarLabel = ({ x, y, width, value }) => {
@@ -70,13 +70,11 @@ const data = [
 
 export default function ReportGraphHorizontal() {
   return (
-    <ResponsiveContainer height="100%">
+    <ResponsiveContainer>
       <BarChart
         layout="vertical"
-        // width={500}
-        // height={100}
         data={data}
-        barGap={36}
+        // barGap={36}
         barSize={15}
         // reverseStackOrder={true}
         // style={{ stroke: '#fff', strokeWidth: 20 }}
@@ -86,37 +84,16 @@ export default function ReportGraphHorizontal() {
           left: 20,
           bottom: 5,
         }}
-        // defaultShowTooltip={true}
       >
-        {/* <CartesianGrid vertical={false} horizontal={false} /> */}
         <defs>
           <linearGradient id="colorUv" x1="1" y1="0" x2="0" y2="0">
             <stop offset="0%" stopColor="#60C470" stopOpacity={1} />
             <stop offset="100%" stopColor="#383C46" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <XAxis
-          //   dataKey="name"
-          //   fontSize="12"
-          //   fontFamily="Roboto"
-          //   stroke="#C7CCDC"
-          //   axisLine={false}
-          //   tickLine={false}
-          hide
-        />
-        {/* <YAxis /> */}
-        {/* <Tooltip /> */}
-        {/* <Legend  /> */}
+        <XAxis hide />
 
-        <Bar
-          //   layout="vertical"
-          dataKey="uv"
-          fill="url(#colorUv)"
-          //   barSize={38}
-          //   label={{ position: 'top' }}
-          // label={renderCustomBarLabel}
-          radius={[0, 10, 10, 0]}
-        >
+        <Bar dataKey="value" fill="url(#colorUv)" radius={[0, 10, 10, 0]}>
           <LabelList
             // content={renderCustomBarLabel}
             dataKey="name"
@@ -126,7 +103,7 @@ export default function ReportGraphHorizontal() {
           />
           <LabelList
             // content={renderCustomBarLabel}
-            dataKey="uv"
+            dataKey="value"
             position="right"
             fill="#C7CCDC"
             fontFamily="Roboto"
