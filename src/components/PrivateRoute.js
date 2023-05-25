@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { selectAuth } from 'redux/auth/authSelectors';
-import { useLogCheck } from 'hooks/uselogCheck';
+
+
 
 const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
   useLogCheck();
   const isAuth = useSelector(selectAuth);
-  // const isRefresh = useSelector(selectRefreshToken);
+
 
   return !isAuth ? <Navigate to={redirectTo} /> : <Component />;
 };

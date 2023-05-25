@@ -88,7 +88,7 @@ const authSlice = createSlice({
           isAuth: true,
           isLoading: false,
           error: null,
-          ...payload,
+          userData: { ...payload },
         };
       })
       .addCase(getAuthUser.rejected, (state, { payload }) => {
