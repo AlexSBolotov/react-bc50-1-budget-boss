@@ -55,7 +55,7 @@ export const GoogleButton = styled.button`
 
   &:hover,
   :focus {
-    transform: scale(1.05);
+    transform: scale(1.03);
     transition: 300ms;
   }
 
