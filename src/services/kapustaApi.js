@@ -44,7 +44,7 @@ export const addTransactionIncomeApi = transactionForm => {
 };
 
 export const getTransactionIncomeApi = () => {
-  return axios.get('/transaction/income').then(res => res);
+  return axios.get('/transaction/income').then(res => res.data);
 };
 
 export const addTransactionExpenseApi = transactionForm => {
@@ -54,7 +54,7 @@ export const addTransactionExpenseApi = transactionForm => {
 };
 
 export const getTransactionExpenseApi = () => {
-  return axios.get('/transaction/expense').then(res => res);
+  return axios.get('/transaction/expense').then(res => res.data);
 };
 
 export const deleteTransactionApi = transactionId => {

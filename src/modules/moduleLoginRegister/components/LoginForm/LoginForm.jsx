@@ -48,8 +48,6 @@ const LoginForm = () => {
     setIsLogin(e.target.name);
   };
 
-  console.log(isLogin);
-
   return (
     <AuthWrapper>
       <GoogleTitle>You can log in with your Google Account:</GoogleTitle>

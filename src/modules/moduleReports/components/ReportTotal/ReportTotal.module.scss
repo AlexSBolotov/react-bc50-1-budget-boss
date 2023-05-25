@@ -68,7 +68,8 @@
     display: inline;
   }
 }
-@media (min-width: 768px) {
+
+@media screen and (min-width: 768px) {
   .items {
     border-radius: 0;
     height: 50px;
@@ -90,7 +91,7 @@
     border-radius: 30px;
   }
 }
-@media (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .items {
     max-width: 1034px;
     border-radius: 30px;

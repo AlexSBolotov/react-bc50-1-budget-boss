@@ -38,5 +38,40 @@ text-transform: uppercase;
     background: linear-gradient(355deg, #383847 14.1%, #2D2D38 89.51%);
 }
 
+@media screen and (min-width: 768px) {
+     .container {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .one {
+       border-radius: 16px 16px 0px 0px; 
+       width: 138px;
+       height: 40px;
+       padding: 0px;
+    }
 
+    .two {
+        border-radius: 16px 16px 0px 0px;
+        width: 138px;
+        height: 40px;; 
+    }
+}
 
+@media screen and (min-width: 1280px){
+    .container {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .one {
+       border-radius: 16px 16px 0px 0px; 
+       width: 138px;
+       height: 40px;
+    }
+
+    .two {
+        border-radius: 16px 16px 0px 0px;
+        width: 138px;
+        height: 40px;; 
+    }
+}
