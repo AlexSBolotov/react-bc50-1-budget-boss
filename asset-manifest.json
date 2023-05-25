@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-bc50-1-budget-boss/static/css/main.5b2a4e76.css",
+    "main.css": "/react-bc50-1-budget-boss/static/css/main.91a5931d.css",
     "main.js": "/react-bc50-1-budget-boss/static/js/main.bc29dc38.js",
     "static/media/Montserrat-Regular.eot": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.f31a20deab7e6add760e.eot",
     "static/media/Montserrat-Regular.ttf": "/react-bc50-1-budget-boss/static/media/Montserrat-Regular.2eebf45d4afad8932424.ttf",
@@ -24,11 +24,11 @@
     "static/media/google.svg": "/react-bc50-1-budget-boss/static/media/google.be8448ceb53172f1c7d9d02db0eba923.svg",
     "static/media/calendar.svg": "/react-bc50-1-budget-boss/static/media/calendar.855c09fa15b7a1575782.svg",
     "index.html": "/react-bc50-1-budget-boss/index.html",
-    "main.5b2a4e76.css.map": "/react-bc50-1-budget-boss/static/css/main.5b2a4e76.css.map",
+    "main.91a5931d.css.map": "/react-bc50-1-budget-boss/static/css/main.91a5931d.css.map",
     "main.bc29dc38.js.map": "/react-bc50-1-budget-boss/static/js/main.bc29dc38.js.map"
   },
   "entrypoints": [
-    "static/css/main.5b2a4e76.css",
+    "static/css/main.91a5931d.css",
     "static/js/main.bc29dc38.js"
   ]
 }
