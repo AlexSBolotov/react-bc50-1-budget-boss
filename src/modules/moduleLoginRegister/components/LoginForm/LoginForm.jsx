@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { Formik, useFormik } from 'formik';
@@ -10,6 +11,7 @@ import {
   AuthInput,
   AuthLabel,
   AuthWrapper,
+  ErrorStar,
   ErrorText,
   ErrorWrapper,
   Form,
@@ -20,7 +22,6 @@ import {
   GoogleTitle,
   LabelTitle,
 } from 'modules/moduleLoginRegister/components/LoginForm/LoginForm.styled';
-import { useState } from 'react';
 
 const validationSchema = yup.object().shape({
   email: yup
@@ -29,7 +30,7 @@ const validationSchema = yup.object().shape({
     .required('E-mail is a required field'),
   password: yup
     .string()
-    .min(8, 'Password must be at least 6 characters')
+    .min(8, 'Password must be at least 8 characters')
     .required('Password is a required field'),
 });
 
@@ -96,7 +97,12 @@ const LoginForm = () => {
           <FormWrapper>
             <Form autoComplete="on" onSubmit={handleSubmit}>
               <AuthLabel htmlFor={'email'}>
-                <LabelTitle>Email</LabelTitle>
+                <LabelTitle>
+                  <ErrorStar>
+                    {errors.email && touched.email && <span>*</span>}
+                  </ErrorStar>
+                  Email
+                </LabelTitle>
                 <AuthInput
                   type="email"
                   name="email"
@@ -114,7 +120,12 @@ const LoginForm = () => {
               </AuthLabel>
 
               <AuthLabel htmlFor={'password'}>
-                <LabelTitle>Password</LabelTitle>
+                <LabelTitle>
+                  <ErrorStar>
+                    {errors.password && touched.password && <span>*</span>}
+                  </ErrorStar>
+                  Password
+                </LabelTitle>
                 <AuthInput
                   type="password"
                   name="password"
