@@ -1,10 +1,12 @@
-.container {
-  width: 100%;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #383847;
-  padding-bottom: 60px;
+@media screen and (max-width: 479px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #383847;
+    padding-bottom: 60px;
+  }
 }
 
 @media screen and (min-width: 480px) {
