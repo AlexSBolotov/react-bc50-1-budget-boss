@@ -1,6 +1,11 @@
 // .date {
    
 // }
+// .datepicker{
+//     margin-top: 40px;
+// }
+
+
 .icon-input{
   background: url("../../../shared/images/svg/calendar.svg") no-repeat left;
   background-size: 20px;
@@ -18,6 +23,7 @@
   max-width: 104px;
   height: 40px;
   cursor:pointer;
+
 }
 .icon-input:focus{
     outline: none;
