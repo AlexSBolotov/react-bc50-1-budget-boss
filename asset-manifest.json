@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-bc50-1-budget-boss/static/css/main.02dd49dd.css",
-    "main.js": "/react-bc50-1-budget-boss/static/js/main.4ad2a7f1.js",
+    "main.js": "/react-bc50-1-budget-boss/static/js/main.e66421c2.js",
     "static/media/Ellipse-desk.png": "/react-bc50-1-budget-boss/static/media/Ellipse-desk.f5be08a6817a6c4a37fb.png",
     "static/media/Ellipse-tablet.png": "/react-bc50-1-budget-boss/static/media/Ellipse-tablet.4f0173a8f7adc11be5ed.png",
     "static/media/bg-tablet-1x.png": "/react-bc50-1-budget-boss/static/media/bg-tablet-1x.1553eddfe804aa4f8eb5.png",
@@ -29,10 +29,10 @@
     "static/media/calendar.svg": "/react-bc50-1-budget-boss/static/media/calendar.855c09fa15b7a1575782.svg",
     "index.html": "/react-bc50-1-budget-boss/index.html",
     "main.02dd49dd.css.map": "/react-bc50-1-budget-boss/static/css/main.02dd49dd.css.map",
-    "main.4ad2a7f1.js.map": "/react-bc50-1-budget-boss/static/js/main.4ad2a7f1.js.map"
+    "main.e66421c2.js.map": "/react-bc50-1-budget-boss/static/js/main.e66421c2.js.map"
   },
   "entrypoints": [
     "static/css/main.02dd49dd.css",
-    "static/js/main.4ad2a7f1.js"
+    "static/js/main.e66421c2.js"
   ]
 }
