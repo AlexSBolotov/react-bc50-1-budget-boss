@@ -6,27 +6,3 @@
   background-color: #383847;
   padding-bottom: 60px;
 }
-
-@media screen and (min-width: 480px) {
-  .container {
-    max-width: 480px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    height: 100%;
-    background-image: url(../../images/bg-tablet-1x.png),
-      url(../../images/Ellipse-tablet.png);
-
-    background-size: cover;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-    height: 100vh;
-    background-image: url(../../images/bg-desk-1x.png),
-      url(../../images/Ellipse-desk.png);
-  }
-}
