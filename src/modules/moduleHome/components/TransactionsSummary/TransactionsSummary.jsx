@@ -4,71 +4,71 @@ import { monthTranslation } from './monthTranslation';
 import {
   selectExpensesStats,
   selectIncomesStats,
+  selectCurrentTransactionType,
 } from 'redux/transaction/transactionSelectors';
-
-//объект ответв= от бека /transaction/income or /transaction/expense
-const monthlyIncome = {
-  incomes: [
-    {
-      description: 'Income description',
-      amount: 100,
-      date: '2020-12-31',
-      category: 'Доход',
-      _id: '507f1f77bcf86cd799439011',
-    },
-  ],
-  monthStats: {
-    Январь: 10000,
-    Февраль: 20000,
-    Март: 30000,
-    Апрель: 10000,
-    Май: 20000,
-    Июнь: 10000,
-    Июль: 30000,
-    Август: 30000,
-    Сентябрь: 20000,
-    Октябрь: 5000,
-    Ноябрь: 7000,
-    Декабрь: 10000,
-  },
-};
+import { useEffect, useState } from 'react';
 
 const TransactionsSummary = () => {
   const expensesStats = useSelector(selectExpensesStats);
   const incomesStats = useSelector(selectIncomesStats);
-  console.log(expensesStats, incomesStats);
+  const currentTransactionType = useSelector(selectCurrentTransactionType);
 
-  // берем у объекта ответа от бека массив пар ключ-значение,
-  // пока не реализована логика выбора массива затрат или расходов, для примера взят массив доходов
-  const values = Object.entries(monthlyIncome.monthStats);
+  const [incomes, setIncomes] = useState(incomesStats);
 
-  // создаем новый массив с объектами с ключами-названиями месяцов, а значениями - суммами,
-  // логика перевода названий месяцов пока не реализована
-  const changedMonthlyIncome = values.map(el => ({
-    month: el[0],
-    amount: el[1],
-  }));
+  const [expenses, setExpenses] = useState(expensesStats);
+
+  useEffect(() => {
+    setIncomes(incomesStats);
+  }, [incomesStats]);
+
+  useEffect(() => {
+    setExpenses(expensesStats);
+  }, [expensesStats]);
+
+  console.log(incomesStats);
+
+  let summaryData = [];
+
+  if (currentTransactionType === 'incomes') {
+    summaryData = Object.entries(incomes) ?? [];
+  } else {
+    summaryData = Object.entries(expenses) ?? [];
+  }
+
+  // console.log(summaryData);
 
   return (
-    <div className={s.summaryWrapper}>
-      <table className={s.summaryTable}>
-        <thead className={s.summaryHead}>
-          <tr>
-            <th colSpan="2" className={s.summaryTableHeading}>
-              Summary
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {changedMonthlyIncome.map(({ month, amount }) => (
-            <tr key={month}>
-              <td className={s.summaryTableCell}>{monthTranslation(month)}</td>
-              <td className={s.summaryTableCell}>{monthTranslation(amount)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      {summaryData.map(el => el !== 'N/A') && (
+        <div className={s.summaryWrapper}>
+          <table className={s.summaryTable}>
+            <thead className={s.summaryHead}>
+              <tr>
+                <th colSpan="2" className={s.summaryTableHeading}>
+                  Summary
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {summaryData.map(el => {
+                if (el[1] === 'N/A') {
+                  return false;
+                } else {
+                  return (
+                    <tr key={`${el[0]}${el[1]}`}>
+                      <td className={s.summaryTableCell}>
+                        {monthTranslation(el[0])}
+                      </td>
+                      <td className={s.summaryTableCell}>{el[1]}</td>
+                    </tr>
+                  );
+                }
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </>
   );
 };
 
