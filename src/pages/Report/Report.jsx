@@ -16,14 +16,13 @@ import {
 import { useLogCheck } from 'hooks/uselogCheck';
 
 const Report = () => {
-  const selected = useSelector(selectPeriod);
   const [objforGrph, setObjforGrph] = useState([]);
   useLogCheck();
   const dispatch = useDispatch();
   const data = useSelector(selectPeriod);
 
   const handleDataChooser = data => dispatch(getTransactionByPeriod(data));
-  const handleSelected = data => console.log(data);
+  const handleSelected = data => setObjforGrph(data);
   const fetchedData = useMemo(() => {
     return data;
   }, [data]);
