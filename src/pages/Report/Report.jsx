@@ -3,7 +3,7 @@ import ReportCategories from 'modules/moduleReports/components/ReportCategories/
 import ReportGraph from 'modules/moduleReports/components/ReportGraph/ReportGraph';
 import ReportTotal from 'modules/moduleReports/components/ReportTotal/ReportTotal';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import {
   selectPeriod,
   // selectAllCategories,
@@ -11,7 +11,7 @@ import {
 // import { getTransactionPeriod } from 'redux/reports/reportsOperations';
 import {
   getTransactionByPeriod,
-  getAllCategories,
+  // getAllCategories,
 } from 'redux/transaction/transactionOperations';
 import { useLogCheck } from 'hooks/uselogCheck';
 
@@ -19,11 +19,8 @@ const Report = () => {
   useLogCheck();
   const dispatch = useDispatch();
   const data = useSelector(selectPeriod);
-  // const allCategories = useSelector(selectAllCategories);
+
   const handleDataChooser = data => dispatch(getTransactionByPeriod(data));
-  useEffect(() => {
-    dispatch(getAllCategories());
-  }, [dispatch]);
 
   const fetchedData = useMemo(() => {
     return data;

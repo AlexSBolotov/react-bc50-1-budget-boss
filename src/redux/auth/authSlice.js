@@ -3,9 +3,11 @@ import {
   getAuthUser,
   loginUser,
   logoutUser,
+
   // refreshToken,
   registerUser,
   // googleAuth,
+  addTransactionExpense,
 } from './authOperations';
 
 const initialState = {
@@ -17,9 +19,9 @@ const initialState = {
   isAuth: false,
   userData: {
     email: null,
-    balance: null,
+    balance: 0,
     id: null,
-    transaction: null,
+    transactions: [],
   },
 };
 
@@ -88,10 +90,31 @@ const authSlice = createSlice({
           isAuth: true,
           isLoading: false,
           error: null,
-          ...payload,
+          userData: { ...payload },
         };
       })
       .addCase(getAuthUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      // ================== ADD TRANSACTION EXPENSE
+      .addCase(addTransactionExpense.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(addTransactionExpense.fulfilled, (state, { payload }) => {
+        console.log(payload);
+        state.isLoading = false;
+        state.error = null;
+        console.log(state.userData.transactions);
+        console.log(state.userData.balance);
+        state.userData.balance = payload.newBalance;
+        state.userData.transactions.push(payload.transaction);
+        // state.userData.transactions = [
+        //   ...state.userData.transactions,
+        //   payload.transaction,
+        // ];
+      })
+      .addCase(addTransactionExpense.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });

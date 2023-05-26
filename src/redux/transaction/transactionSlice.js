@@ -3,20 +3,26 @@ import {
   getTransactionIncome,
   getTransactionExpense,
   addTransactionIncome,
-  addTransactionExpense,
   deleteTransaction,
   getTransactionByPeriod,
   getAllCategories,
 } from './transactionOperations';
 
+import {
+  getTransactionIncomeCategories,
+  getTransactionExpenseCategories,
+} from 'redux/reports/reportsOperations';
+
 const initialState = {
-  newBalance: null,
-  transaction: null,
+  // newBalance: null,
+  // transaction: null,
   incomes: null,
   monthStats: null,
   isLoading: false,
   error: null,
   categories: [],
+  incomesCategories: [],
+  expensesCategories: [],
 };
 
 const transactionSlice = createSlice({
@@ -57,14 +63,30 @@ const transactionSlice = createSlice({
         state.error = payload;
       })
       // ================== ADD TRANSACTION EXPENSE
-      .addCase(addTransactionExpense.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(addTransactionExpense.fulfilled)
-      .addCase(addTransactionExpense.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      })
+      // .addCase(addTransactionExpense.pending, state => {
+      //   state.isLoading = true;
+      // })
+      // .addCase(addTransactionExpense.fulfilled, (state, { payload }) => {
+      //   state.isLoading = false;
+      //   state.error = null;
+      // })
+      // .addCase(addTransactionExpense.rejected, (state, { payload }) => {
+      //   state.isLoading = false;
+      //   state.error = payload;
+      // })
+      // ======== GET EXPENSES CATEGORIES
+      .addCase(
+        getTransactionExpenseCategories.fulfilled,
+        (state, { payload }) => {
+          state.expensesCategories = [...payload];
+        }
+      ) // GET INCOMES CATEGORIES
+      .addCase(
+        getTransactionIncomeCategories.fulfilled,
+        (state, { payload }) => {
+          state.incomesCategories = [...payload];
+        }
+      )
 
       // ================== DELETE TRANSACTION
       .addCase(deleteTransaction.pending, state => {

@@ -2,7 +2,6 @@ import { useState, forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './TransactionDate.scss';
-
 import { enGB } from 'date-fns/locale';
 
 const TransactionDate = () => {
@@ -19,8 +18,6 @@ const TransactionDate = () => {
       }}
     ></input>
   ));
-
-  console.log(startDate);
   return (
     <div className="wrapper-container">
       <DatePicker
