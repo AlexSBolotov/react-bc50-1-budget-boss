@@ -5,7 +5,6 @@ import { Outlet } from 'react-router-dom';
 
 import s from 'modules/moduleLayout/components/Layout/Layout.module.scss';
 
-
 const Layout = () => {
   return (
     <>
