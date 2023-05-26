@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { selectTransactions } from 'redux/auth/authSelectors';
 import { deleteTransaction } from 'redux/transaction/transactionOperations';
 import { format } from 'date-fns';
-import { selectCurrentTransactionType } from 'redux/transaction/transactionSelectors';
+// import { selectCurrentTransactionType } from 'redux/transaction/transactionSelectors';
 import { deleteTransactionById } from 'redux/transaction/transactionSlice';
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
@@ -11,12 +11,13 @@ const formatEventStart = date => {
 const TransactionsList = ({ selectedDate }) => {
   // const date = useSelector(selectSelectedDate);
   const dispatch = useDispatch();
-  // const normalizedDate = formatEventStart(selectedDate);
+  const normalizedDate = formatEventStart(selectedDate);
+  console.log('normDate', normalizedDate);
   // const transactions = useSelector(selectTransactions);
   // const filteredTransactions = transactions.filter(
   //   transaction => transaction.date === normalizedDate
   // );
-  const currentTransactionType = useSelector(selectCurrentTransactionType);
+  // const currentTransactionType = useSelector(selectCurrentTransactionType);
   const handlerDeleteClick = id => {
     dispatch(deleteTransaction(id));
     dispatch(deleteTransactionById(id));
