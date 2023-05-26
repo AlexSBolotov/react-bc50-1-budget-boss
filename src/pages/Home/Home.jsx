@@ -15,7 +15,6 @@ import {
   selectExpensesCategories,
   selectIncomesCategories,
 } from 'redux/transaction/transactionSelectors';
-
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const dispatch = useDispatch();
@@ -30,7 +29,6 @@ const Home = () => {
   return (
     <section>
       <HomeBar />
-
       <TransactionDate
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
