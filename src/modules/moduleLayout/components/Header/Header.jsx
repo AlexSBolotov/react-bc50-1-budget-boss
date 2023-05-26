@@ -1,6 +1,6 @@
 import logo from 'modules/shared/images/logo.png';
 import UserLogout from 'modules/moduleLayout/components/UserLogout/UserLogout';
-import s from './Header.module.css';
+import s from 'modules/moduleLayout/components/Header/Header.module.scss';
 
 const Header = () => {
   return (

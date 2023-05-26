@@ -1,5 +1,10 @@
 import s from './TransactionsSummary.module.css';
+import { useSelector } from 'react-redux';
 import { monthTranslation } from './monthTranslation';
+import {
+  selectExpensesStats,
+  selectIncomesStats,
+} from 'redux/transaction/transactionSelectors';
 
 //объект ответв= от бека /transaction/income or /transaction/expense
 const monthlyIncome = {
@@ -29,6 +34,10 @@ const monthlyIncome = {
 };
 
 const TransactionsSummary = () => {
+  const expensesStats = useSelector(selectExpensesStats);
+  const incomesStats = useSelector(selectIncomesStats);
+  console.log(expensesStats, incomesStats);
+
   // берем у объекта ответа от бека массив пар ключ-значение,
   // пока не реализована логика выбора массива затрат или расходов, для примера взят массив доходов
   const values = Object.entries(monthlyIncome.monthStats);

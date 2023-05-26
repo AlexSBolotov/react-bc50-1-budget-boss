@@ -4,7 +4,7 @@ import s from 'modules/moduleReports/components/ReportCategories/ReportCategorie
 import * as images from 'modules/moduleReports';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
-const ReportCategories = () => {
+const ReportCategories = ({ onclick }) => {
   const periodData = useSelector(selectPeriod);
 
   let expenses = null;
@@ -17,7 +17,7 @@ const ReportCategories = () => {
       .sort((b, a) => a[1].total - b[1].total)
       .map((item, index) => {
         return (
-          <li key={index} className={s.item}>
+          <li key={index} className={s.item} onClick={() => onclick(item)}>
             <p>{item[1].total}</p>
             <div>
               <img src={images.products} alt={item[0]} />

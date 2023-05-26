@@ -1,21 +1,39 @@
-import { useSelector } from 'react-redux';
-import { selectTransactions } from 'redux/auth/authSelectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteTransaction } from 'redux/transaction/transactionOperations';
+import {
+  selectCurrentTransactionType,
+  selectExpenses,
+  selectIncomes,
+} from 'redux/transaction/transactionSelectors';
 import { format } from 'date-fns';
-
+import { deleteTransactionById } from 'redux/transaction/transactionSlice';
+import { getAuthUser } from 'redux/auth/authOperations';
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
 
 const TransactionsList = ({ selectedDate }) => {
-  // const date = useSelector(selectSelectedDate);
+  const currentTransactionType = useSelector(selectCurrentTransactionType);
+  const incomes = useSelector(selectIncomes);
+  const expenses = useSelector(selectExpenses);
 
+  const dispatch = useDispatch();
   const normalizedDate = formatEventStart(selectedDate);
-  console.log(normalizedDate);
-  const transactions = useSelector(selectTransactions);
-  const filteredTransactions = transactions.filter(
-    transaction => transaction.date === normalizedDate
-  );
+
+  const filteredTransactions =
+    currentTransactionType === 'incomes'
+      ? incomes.filter(transaction => transaction.date === normalizedDate)
+      : expenses.filter(transaction => transaction.date === normalizedDate);
   console.log(filteredTransactions);
+
+  const handlerDeleteClick = id => {
+    dispatch(deleteTransaction(id));
+    dispatch(deleteTransactionById(id));
+    setTimeout(() => {
+      dispatch(getAuthUser());
+    }, 200);
+  };
+
   return (
     <div>
       <table>
@@ -35,7 +53,12 @@ const TransactionsList = ({ selectedDate }) => {
             <td>Salary</td>
             <td>20 000.00 UAH.</td>
             <td>
-              <button type="button">delete</button>
+              <button
+                type="button"
+                onClick={() => handlerDeleteClick('64707566eb03bb3d9868c89d')}
+              >
+                delete
+              </button>
             </td>
           </tr>
         </tbody>

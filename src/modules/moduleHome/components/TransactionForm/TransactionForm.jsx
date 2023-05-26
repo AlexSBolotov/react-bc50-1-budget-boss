@@ -1,8 +1,17 @@
 // import Select from 'react-select';
 import { format } from 'date-fns';
 import s from './TransactionForm.module.scss';
-import { useDispatch } from 'react-redux';
-import { addTransactionExpense } from 'redux/auth/authOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectCurrentTransactionType,
+  selectExpensesCategories,
+  selectIncomesCategories,
+} from 'redux/transaction/transactionSelectors';
+import {
+  // addTransactionExpense,
+  addTransactionIncome,
+} from 'redux/transaction/transactionOperations';
+import { getAuthUser } from 'redux/auth/authOperations';
 
 // const OPTIONS = [
 //   { value: 'products', label: 'Products' },
@@ -22,6 +31,11 @@ const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
 const TransactionForm = ({ selectedDate }) => {
+  const currentTransactionType = useSelector(selectCurrentTransactionType);
+  const expensesCategories = useSelector(selectExpensesCategories);
+  const incomesCategories = useSelector(selectIncomesCategories);
+  console.log(currentTransactionType, expensesCategories, incomesCategories);
+
   const dispatch = useDispatch();
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -31,12 +45,18 @@ const TransactionForm = ({ selectedDate }) => {
     const date = formatEventStart(selectedDate);
     const payload = {
       description,
-      amount,
+      amount: Number(amount),
       date,
       category,
     };
-    dispatch(addTransactionExpense(payload));
-    console.log(description, category, amount, date);
+    console.log(payload);
+    // dispatch(addTransactionExpense(payload));
+    dispatch(addTransactionIncome(payload));
+    setTimeout(() => {
+      dispatch(getAuthUser());
+    }, 200);
+
+    // console.log(description, category, amount, date);
   };
   return (
     <div>
@@ -48,6 +68,9 @@ const TransactionForm = ({ selectedDate }) => {
           className={s.input}
         />
         <select name="categories" className={s.select}>
+          {/* map me */}
+          <option value="З/П">Salary</option>
+          <option value="Доп. доход">Add. income</option>
           <option value="Продукты">Products</option>
           <option value="Алкоголь">Alcohol</option>
           <option value="Развлечения">Entertainment</option>

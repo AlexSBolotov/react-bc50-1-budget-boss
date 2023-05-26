@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import {
   getTransactionIncome,
   getTransactionExpense,
@@ -6,6 +6,7 @@ import {
   deleteTransaction,
   getTransactionByPeriod,
   getAllCategories,
+  addTransactionExpense,
 } from './transactionOperations';
 
 import {
@@ -13,26 +14,44 @@ import {
   getTransactionExpenseCategories,
 } from 'redux/reports/reportsOperations';
 
-// const categoriesAdapter = createEntityAdapter({
+const categoriesAdapter = createEntityAdapter();
 
-// });
-
-const initialState = {
-  // newBalance: null,
-  // transaction: null,
-  incomes: null,
-  monthStats: null,
+const initialState = categoriesAdapter.getInitialState({
+  newBalance: 0,
+  expenses: [],
+  expensesStats: {},
+  incomes: [],
+  incomesStats: {},
+  currentTransactionType: 'expenses',
   isLoading: false,
   error: null,
   categories: [],
   incomesCategories: [],
   expensesCategories: [],
   transaction: null,
-};
+});
 
 const transactionSlice = createSlice({
   name: 'transactions',
   initialState,
+  reducers: {
+    changeTransactionType: {
+      reducer(state, { payload }) {
+        state.currentTransactionType = payload;
+      },
+    },
+    deleteTransactionById: {
+      reducer(state, { payload }) {
+        console.log(state.currentTransactionType);
+
+        const transactionType = state.currentTransactionType;
+        console.log(state[transactionType]);
+        state[transactionType] = state[transactionType].filter(
+          transaction => transaction._id !== payload
+        );
+      },
+    },
+  },
   extraReducers: builder => {
     builder
       // ================== GET TRANSACTION INCOME
@@ -42,8 +61,9 @@ const transactionSlice = createSlice({
       .addCase(getTransactionIncome.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+
         state.incomes = payload.incomes;
-        state.monthStats = payload.monthStats;
+        state.incomesStats = payload.monthsStats;
       })
       .addCase(getTransactionIncome.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -53,7 +73,12 @@ const transactionSlice = createSlice({
       .addCase(getTransactionExpense.pending, state => {
         state.isLoading = true;
       })
-      .addCase(getTransactionExpense.fulfilled)
+      .addCase(getTransactionExpense.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.expenses = payload.expenses;
+        state.expensesStats = payload.monthsStats;
+      })
       .addCase(getTransactionExpense.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
@@ -62,23 +87,30 @@ const transactionSlice = createSlice({
       .addCase(addTransactionIncome.pending, state => {
         state.isLoading = true;
       })
-      .addCase(addTransactionIncome.fulfilled)
+      .addCase(addTransactionIncome.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.newBalance = payload.newBalance;
+        state.incomes.push(payload.transaction);
+      })
       .addCase(addTransactionIncome.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
       // ================== ADD TRANSACTION EXPENSE
-      // .addCase(addTransactionExpense.pending, state => {
-      //   state.isLoading = true;
-      // })
-      // .addCase(addTransactionExpense.fulfilled, (state, { payload }) => {
-      //   state.isLoading = false;
-      //   state.error = null;
-      // })
-      // .addCase(addTransactionExpense.rejected, (state, { payload }) => {
-      //   state.isLoading = false;
-      //   state.error = payload;
-      // })
+      .addCase(addTransactionExpense.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(addTransactionExpense.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.newBalance = payload.newBalance;
+        state.expenses.push(payload.transaction);
+      })
+      .addCase(addTransactionExpense.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
       // ======== GET EXPENSES CATEGORIES
       .addCase(
         getTransactionExpenseCategories.fulfilled,
@@ -97,62 +129,92 @@ const transactionSlice = createSlice({
       .addCase(deleteTransaction.pending, state => {
         state.isLoading = true;
       })
-      .addCase(deleteTransaction.fulfilled)
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.newBalance = payload.newBalance;
+      })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       }) // ================= GET BY PERIOD
       .addCase(getTransactionByPeriod.fulfilled, (state, { payload }) => {
         state.transaction = payload;
-
-        console.log(Array.from(state.transaction.expenses));
-        // state.transaction.expenses.expensesData = [...data];
-
-        // categoriesAdapter.setAll(state);
-      }) // GET ALL CATEGORIES
+        console.log(payload.expenses);
+        categoriesAdapter.upsertMany(state, payload.expenses);
+      })
+      // GET ALL CATEGORIES
       .addCase(getAllCategories.fulfilled, (state, { payload }) => {
-        state.categories = payload;
+        state.categories = payload.incomes.incomesData;
       });
   },
 });
-
+export const { changeTransactionType, deleteTransactionById } =
+  transactionSlice.actions;
 export default transactionSlice.reducer;
 
-//   [
-//     "Продукты",
-//     "Алкоголь",
-//     "Развлечения",
-//     "Здоровье",
-//     "Транспорт",
-//     "Всё для дома",
-//     "Техника",
-//     "Коммуналка и связь",
-//     "Спорт и хобби",
-//     "Образование",
-//     "Прочее"
-//   ]
-//   {
-//     "incomes": {
-//       "total": 12000,
-//       "incomesData": {
-//         "З/П": {
-//           "total": 12000,
-//           "Аванс": 5000,
-//           "Основная": 7000
-//         }
-//       }
-//     },
-//     "expenses": {
-//       "total": 5200,
-//       "incomesData": {
-//         "Транспорт": {
-//           "total": 4000,
-//           "СТО": 3500,
-//           "Мойка": 500
-//         },
-//         "Всё для дома": {
-//           "total": 1200,
-//           "Вазон": 150,
-//           "Шкаф-купе": 1050
-//         }
-//       }
+/*
+export const categoryTranslationRuToEn = name => {
+  switch (name.trim()) {
+    case 'Продукты':
+      return 'Products';
+    case 'Алкоголь':
+      return 'Alcohol';
+    case 'Развлечения':
+      return 'Entertainment';
+    case 'Здоровье':
+      return 'Health';
+    case 'Транспорт':
+      return 'Transport';
+    case 'Всё для дома':
+      return 'Housing';
+    case 'Техника':
+      return 'Technics';
+    case 'Коммуналка и связь':
+      return 'Communal and communication';
+    case 'Спорт и хобби':
+      return 'Sport and hobby';
+    case 'Образование':
+      return 'Education';
+    case 'Прочее':
+      return 'Other';
+    case 'З/П':
+      return 'Salary';
+    case 'Доп. доход':
+      return 'Additional income';
+    default:
+      break;
+  }
+};
+export const categoryTranslationEnToRu = name => {
+  switch (name.trim()) {
+    case 'Products':
+      return 'Продукты';
+    case 'Alcohol':
+      return 'Алкоголь';
+    case 'Entertainment':
+      return 'Развлечения';
+    case 'Health':
+      return 'Здоровье';
+    case 'Transport':
+      return 'Транспорт';
+    case 'Housing':
+      return 'Всё для дома';
+    case 'Technics':
+      return 'Техника';
+    case 'Communal and communication':
+      return 'Коммуналка и связь';
+    case 'Sport and hobby':
+      return 'Спорт и хобби';
+    case 'Education':
+      return 'Образование';
+    case 'Other':
+      return 'Прочее';
+    case 'Salary':
+      return 'З/П';
+    case 'Additional income':
+      return 'Доп. доход';
+    default:
+      break;
+  }
+}; */

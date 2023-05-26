@@ -7,7 +7,6 @@ import {
   // refreshToken,
   registerUser,
   // googleAuth,
-  addTransactionExpense,
 } from './authOperations';
 
 const initialState = {
@@ -28,11 +27,14 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  // reducers: {
-  //   googleAuth(state, { payload }) {
-  //     return { ...state, ...payload };
-  //   },
-  // },
+  reducers: {
+    // googleAuth(state, { payload }) {
+    //   return { ...state, ...payload };
+    //   },
+    refreshError(state, { payload }) {
+      state.error = payload;
+    },
+  },
   extraReducers: builder => {
     builder
       // ============== REGISTRATION ====================
@@ -96,28 +98,8 @@ const authSlice = createSlice({
       .addCase(getAuthUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-      })
-      // ================== ADD TRANSACTION EXPENSE
-      .addCase(addTransactionExpense.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(addTransactionExpense.fulfilled, (state, { payload }) => {
-        console.log(payload);
-        state.isLoading = false;
-        state.error = null;
-        console.log(state.userData.transactions);
-        console.log(state.userData.balance);
-        state.userData.balance = payload.newBalance;
-        state.userData.transactions.push(payload.transaction);
-        // state.userData.transactions = [
-        //   ...state.userData.transactions,
-        //   payload.transaction,
-        // ];
-      })
-      .addCase(addTransactionExpense.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
       });
+
     // ================ REFRESH TOKEN =====================
     // .addCase(refreshToken.pending, state => {
     //   state.isLoading = true;
@@ -153,5 +135,5 @@ const authSlice = createSlice({
   },
 });
 
-// export const { googleAuth } = authSlice.actions;
+export const { refreshError } = authSlice.actions; //googleAuth
 export default authSlice.reducer;

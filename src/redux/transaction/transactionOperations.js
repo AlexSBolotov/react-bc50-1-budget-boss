@@ -6,13 +6,14 @@ import {
   deleteTransactionApi,
   getTransactionIncomeApi,
   getTransactionPeriodDataApi,
+  addTransactionExpenseApi,
 } from 'services/kapustaApi';
 
 export const getTransactionIncome = createAsyncThunk(
   'transaction/income/get',
   async (_, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await getTransactionIncomeApi();
+      const data = await getTransactionIncomeApi();
       return data;
     } catch (error) {
       dispatch(errorHandler({ error, cb: getTransactionIncome }));
@@ -40,7 +41,7 @@ export const getTransactionExpense = createAsyncThunk(
   'transaction/expense/get',
   async (_, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await getTransactionExpenseApi();
+      const data = await getTransactionExpenseApi();
       return data;
     } catch (error) {
       dispatch(errorHandler({ error, cb: getTransactionExpense }));
@@ -49,33 +50,31 @@ export const getTransactionExpense = createAsyncThunk(
   }
 );
 
-// export const addTransactionExpense = createAsyncThunk(
-//   'transaction/expense/add',
-//   async (transactionForm, { rejectWithValue, dispatch }) => {
-//     try {
-//       const { data } = await addTransactionExpenseApi(transactionForm);
-//       return data;
-//     } catch (error) {
-//       dispatch(
-//         errorHandler({
-//           error,
-//           cb: () => addTransactionExpense(transactionForm),
-//         })
-//       );
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const addTransactionExpense = createAsyncThunk(
+  'transaction/expense/add',
+  async (transactionForm, { rejectWithValue, dispatch }) => {
+    try {
+      const { data } = await addTransactionExpenseApi(transactionForm);
+      return data;
+    } catch (error) {
+      dispatch(
+        errorHandler({
+          error,
+          cb: () => addTransactionExpense(transactionForm),
+        })
+      );
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 export const deleteTransaction = createAsyncThunk(
   'transaction/delete',
   async (transactionId, { rejectWithValue, dispatch }) => {
     try {
-      console.log(111);
       const { data } = await deleteTransactionApi(transactionId);
       return data;
     } catch (error) {
-      console.log(error);
       dispatch(
         errorHandler({ error, cb: () => deleteTransaction(transactionId) })
       );

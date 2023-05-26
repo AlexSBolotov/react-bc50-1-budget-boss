@@ -7,3 +7,11 @@ export const selectExpensesCategories = state =>
 export const selectIncomesCategories = state =>
   state.transactions.incomesCategories;
 export const selectSelectedDate = state => state.transactions.selectedDate;
+export const selectIncomes = state => state.transactions.incomes;
+export const selectIncomesStats = state => state.transactions.incomesStats;
+export const selectExpenses = state => state.transactions.expenses;
+export const selectExpensesStats = state => state.transactions.expensesStats;
+export const selectCurrentTransactionType = state =>
+  state.transactions.currentTransactionType;
+
+export const selectNewBalance = state => state.transactions.newBalance;

@@ -4,8 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './TransactionDate.scss';
 import { enGB } from 'date-fns/locale';
 
-const TransactionDate = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const TransactionDate = ({ selectedDate, setSelectedDate }) => {
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <input
       value={value}
@@ -22,8 +21,11 @@ const TransactionDate = () => {
     <div className="wrapper-container">
       <DatePicker
         dateFormat="dd.MM.yyyy"
-        selected={startDate}
-        onChange={date => setStartDate(date)}
+        selected={selectedDate}
+        onChange={date => {
+          setSelectedDate(date);
+          // console.log(selectedDate);
+        }}
         locale={enGB}
         maxDate={new Date()}
         customInput={<ExampleCustomInput />}

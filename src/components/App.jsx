@@ -9,6 +9,7 @@ import Report from 'pages/Report/Report';
 import Home from 'pages/Home/Home';
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
+import Header from 'modules/moduleLayout/components/Header/Header';
 
 export const App = () => {
   const isAuth = useSelector(selectAuth);
@@ -22,25 +23,28 @@ export const App = () => {
   }, [dispatch, token]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={
-            <RestrictedRoute component={LoginRegister} redirectTo="/home" />
-          }
-        />
-        <Route
-          path="home"
-          element={<PrivateRoute component={Home} redirectTo="/" />}
-        />
-        <Route path="reports" element={<Report />} />
-        {/* <Route path='google-redirect' element={<h1>This is google redirect page</h1>}/> */}
-        <Route
-          path="*"
-          element={!isAuth ? <Navigate to="/" /> : <Navigate to="/home" />}
-        />
-      </Route>
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <RestrictedRoute component={LoginRegister} redirectTo="/home" />
+            }
+          />
+          <Route
+            path="home"
+            element={<PrivateRoute component={Home} redirectTo="/" />}
+          />
+          <Route path="reports" element={<Report />} />
+          {/* <Route path='google-redirect' element={<h1>This is google redirect page</h1>}/> */}
+          <Route
+            path="*"
+            element={!isAuth ? <Navigate to="/" /> : <Navigate to="/home" />}
+          />
+        </Route>
+      </Routes>
+    </>
   );
 };

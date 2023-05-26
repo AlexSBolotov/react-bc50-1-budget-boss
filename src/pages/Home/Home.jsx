@@ -9,22 +9,29 @@ import {
   getTransactionExpenseCategories,
   getTransactionIncomeCategories,
 } from 'redux/reports/reportsOperations';
+import {
+  getTransactionIncome,
+  getTransactionExpense,
+} from 'redux/transaction/transactionOperations';
 // import { getTransactionExpenseCategories } from 'redux/reports/reportsOperations';
 import { useDispatch } from 'react-redux';
 import {
-  selectExpensesCategories,
-  selectIncomesCategories,
+  // selectExpensesCategories,
+  // selectIncomesCategories,
+  selectCurrentTransactionType,
 } from 'redux/transaction/transactionSelectors';
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const dispatch = useDispatch();
-  const expensesCategories = useSelector(selectExpensesCategories);
-  const incomesCategories = useSelector(selectIncomesCategories);
-  console.log(expensesCategories);
-  console.log(incomesCategories);
+  // const expensesCategories = useSelector(selectExpensesCategories);
+  // const incomesCategories = useSelector(selectIncomesCategories);
+  const currentTransactionType = useSelector(selectCurrentTransactionType);
+  console.log(currentTransactionType);
   useEffect(() => {
     dispatch(getTransactionExpenseCategories());
     dispatch(getTransactionIncomeCategories());
+    dispatch(getTransactionIncome());
+    dispatch(getTransactionExpense());
   }, [dispatch]);
   return (
     <section>
