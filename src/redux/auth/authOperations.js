@@ -19,7 +19,7 @@ export const registerUser = createAsyncThunk(
       token.set(data.accessToken);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -32,7 +32,7 @@ export const loginUser = createAsyncThunk(
       token.set(data.accessToken);
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
