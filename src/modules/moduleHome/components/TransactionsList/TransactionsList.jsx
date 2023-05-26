@@ -1,26 +1,37 @@
-import { useDispatch } from 'react-redux';
-// import { selectTransactions } from 'redux/auth/authSelectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteTransaction } from 'redux/transaction/transactionOperations';
+import {
+  selectCurrentTransactionType,
+  selectExpenses,
+  selectIncomes,
+} from 'redux/transaction/transactionSelectors';
 import { format } from 'date-fns';
-// import { selectCurrentTransactionType } from 'redux/transaction/transactionSelectors';
 import { deleteTransactionById } from 'redux/transaction/transactionSlice';
+import { getAuthUser } from 'redux/auth/authOperations';
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
 
 const TransactionsList = ({ selectedDate }) => {
-  // const date = useSelector(selectSelectedDate);
+  const currentTransactionType = useSelector(selectCurrentTransactionType);
+  const incomes = useSelector(selectIncomes);
+  const expenses = useSelector(selectExpenses);
+
   const dispatch = useDispatch();
   const normalizedDate = formatEventStart(selectedDate);
-  console.log('normDate', normalizedDate);
-  // const transactions = useSelector(selectTransactions);
-  // const filteredTransactions = transactions.filter(
-  //   transaction => transaction.date === normalizedDate
-  // );
-  // const currentTransactionType = useSelector(selectCurrentTransactionType);
+
+  const filteredTransactions =
+    currentTransactionType === 'incomes'
+      ? incomes.filter(transaction => transaction.date === normalizedDate)
+      : expenses.filter(transaction => transaction.date === normalizedDate);
+  console.log(filteredTransactions);
+
   const handlerDeleteClick = id => {
     dispatch(deleteTransaction(id));
     dispatch(deleteTransactionById(id));
+    setTimeout(() => {
+      dispatch(getAuthUser());
+    }, 200);
   };
 
   return (

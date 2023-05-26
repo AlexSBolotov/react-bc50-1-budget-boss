@@ -13,3 +13,5 @@ export const selectExpenses = state => state.transactions.expenses;
 export const selectExpensesStats = state => state.transactions.expensesStats;
 export const selectCurrentTransactionType = state =>
   state.transactions.currentTransactionType;
+
+export const selectNewBalance = state => state.transactions.newBalance;
