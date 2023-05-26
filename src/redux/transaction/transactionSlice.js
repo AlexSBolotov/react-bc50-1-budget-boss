@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import {
   getTransactionIncome,
   getTransactionExpense,
@@ -13,6 +13,14 @@ import {
   getTransactionExpenseCategories,
 } from 'redux/reports/reportsOperations';
 
+const categoriesAdapter = createEntityAdapter({
+  // Assume IDs are stored in a field other than `book.id`
+  // selectId: book => book.bookId,
+  // Keep the "all IDs" array sorted based on book titles
+  // sortComparer: (a, b) => a.title.localeCompare(b.title),
+  // selectId: expenses => expenses.expenseTotal,
+});
+
 const initialState = {
   // newBalance: null,
   // transaction: null,
@@ -23,6 +31,7 @@ const initialState = {
   categories: [],
   incomesCategories: [],
   expensesCategories: [],
+  transaction: null,
 };
 
 const transactionSlice = createSlice({
@@ -99,6 +108,11 @@ const transactionSlice = createSlice({
       }) // ================= GET BY PERIOD
       .addCase(getTransactionByPeriod.fulfilled, (state, { payload }) => {
         state.transaction = payload;
+
+        console.log(Array.from(state.transaction.expenses));
+        // state.transaction.expenses.expensesData = [...data];
+
+        // categoriesAdapter.setAll(state);
       }) // GET ALL CATEGORIES
       .addCase(getAllCategories.fulfilled, (state, { payload }) => {
         state.categories = payload;

@@ -24,6 +24,7 @@
 }
 @media screen and (min-width: 1280px) {
   .container {
+    max-width: 1280px;
     height: 100vh;
     background-image: url(../../images/bg-desk-1x.png),
       url(../../images/Ellipse-desk.png);
