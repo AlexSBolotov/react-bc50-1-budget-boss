@@ -88,7 +88,6 @@ export const getTransactionByPeriod = createAsyncThunk(
   'transaction/getPeriod',
   async (param, { rejectWithValue, dispatch }) => {
     try {
-      console.log(222);
       const { data } = await getTransactionPeriodDataApi(param);
       return data;
     } catch (error) {
@@ -102,9 +101,14 @@ export const getAllCategories = createAsyncThunk(
   'categoties/all',
   async (_, { rejectWithValue }) => {
     try {
-      const incomes = await getTransactionIncomeApi();
-      const expenses = await getTransactionExpenseApi();
-      return { incomes, expenses };
+      const data = await Promise.allSettled([
+        getTransactionIncomeApi,
+        getTransactionExpenseApi,
+      ]);
+      // const incomes = await getTransactionIncomeApi;
+      // const expenses = await getTransactionExpenseApi();
+      // return { incomes, expenses };
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
