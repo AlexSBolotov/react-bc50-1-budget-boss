@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-bc50-1-budget-boss/static/css/main.19fd5c62.css",
-    "main.js": "/react-bc50-1-budget-boss/static/js/main.a2e5b519.js",
+    "main.css": "/react-bc50-1-budget-boss/static/css/main.3182bed6.css",
+    "main.js": "/react-bc50-1-budget-boss/static/js/main.36d5d126.js",
     "static/media/Ellipse-desk.png": "/react-bc50-1-budget-boss/static/media/Ellipse-desk.f5be08a6817a6c4a37fb.png",
     "static/media/Ellipse-tablet.png": "/react-bc50-1-budget-boss/static/media/Ellipse-tablet.4f0173a8f7adc11be5ed.png",
     "static/media/bg-tablet-1x.png": "/react-bc50-1-budget-boss/static/media/bg-tablet-1x.1553eddfe804aa4f8eb5.png",
@@ -28,11 +28,11 @@
     "static/media/google.svg": "/react-bc50-1-budget-boss/static/media/google.be8448ceb53172f1c7d9d02db0eba923.svg",
     "static/media/calendar.svg": "/react-bc50-1-budget-boss/static/media/calendar.855c09fa15b7a1575782.svg",
     "index.html": "/react-bc50-1-budget-boss/index.html",
-    "main.19fd5c62.css.map": "/react-bc50-1-budget-boss/static/css/main.19fd5c62.css.map",
-    "main.a2e5b519.js.map": "/react-bc50-1-budget-boss/static/js/main.a2e5b519.js.map"
+    "main.3182bed6.css.map": "/react-bc50-1-budget-boss/static/css/main.3182bed6.css.map",
+    "main.36d5d126.js.map": "/react-bc50-1-budget-boss/static/js/main.36d5d126.js.map"
   },
   "entrypoints": [
-    "static/css/main.19fd5c62.css",
-    "static/js/main.a2e5b519.js"
+    "static/css/main.3182bed6.css",
+    "static/js/main.36d5d126.js"
   ]
 }
