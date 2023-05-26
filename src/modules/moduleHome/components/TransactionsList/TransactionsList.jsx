@@ -12,7 +12,7 @@ const TransactionsList = ({ selectedDate }) => {
   // const date = useSelector(selectSelectedDate);
   const dispatch = useDispatch();
   const normalizedDate = formatEventStart(selectedDate);
-  console.log(normalizedDate);
+  console.log('normDate', normalizedDate);
   // const transactions = useSelector(selectTransactions);
   // const filteredTransactions = transactions.filter(
   //   transaction => transaction.date === normalizedDate
