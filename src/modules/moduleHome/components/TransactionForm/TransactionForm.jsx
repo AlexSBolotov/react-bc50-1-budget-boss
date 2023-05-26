@@ -2,7 +2,10 @@
 import { format } from 'date-fns';
 import s from './TransactionForm.module.scss';
 import { useDispatch } from 'react-redux';
-import { addTransactionExpense } from 'redux/auth/authOperations';
+import {
+  // addTransactionExpense,
+  addTransactionIncome,
+} from 'redux/transaction/transactionOperations';
 
 // const OPTIONS = [
 //   { value: 'products', label: 'Products' },
@@ -35,8 +38,9 @@ const TransactionForm = ({ selectedDate }) => {
       date,
       category,
     };
-    dispatch(addTransactionExpense(payload));
-    console.log(description, category, amount, date);
+    // dispatch(addTransactionExpense(payload));
+    dispatch(addTransactionIncome(payload));
+    // console.log(description, category, amount, date);
   };
   return (
     <div>
@@ -48,6 +52,8 @@ const TransactionForm = ({ selectedDate }) => {
           className={s.input}
         />
         <select name="categories" className={s.select}>
+          <option value="З/П">Salary</option>
+          <option value="Доп. доход">Add. income</option>
           <option value="Продукты">Products</option>
           <option value="Алкоголь">Alcohol</option>
           <option value="Развлечения">Entertainment</option>
