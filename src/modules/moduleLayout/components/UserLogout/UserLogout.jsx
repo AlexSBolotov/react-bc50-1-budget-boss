@@ -3,7 +3,8 @@ import { logoutUser } from 'redux/auth/authOperations';
 import s from './UserLogout.module.css';
 import logout from 'modules/moduleLayout/images/logout.png';
 import initials from 'modules/moduleLayout/images/initials.png';
-import ModalConcern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
+// import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
+import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
 
 export default function UserLogout() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function UserLogout() {
         <button
           className={s.headerExitBtn}
           onClick={handleLogout}
+          // onClick={() => ModalConsern({ title: 'Are you sure?' })}
           type="button"
         >
           <img
@@ -32,7 +34,7 @@ export default function UserLogout() {
           <p className={s.userExitWord}>Exit</p>
         </button>
       </div>
-      <ModalConcern />
+      <ModalConsern />
     </>
   );
 }
