@@ -28,11 +28,14 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  // reducers: {
-  //   googleAuth(state, { payload }) {
-  //     return { ...state, ...payload };
-  //   },
-  // },
+  reducers: {
+    // googleAuth(state, { payload }) {
+    //   return { ...state, ...payload };
+    //   },
+    refreshError(state, { payload }) {
+      state.error = payload;
+    },
+  },
   extraReducers: builder => {
     builder
       // ============== REGISTRATION ====================
@@ -153,5 +156,5 @@ const authSlice = createSlice({
   },
 });
 
-// export const { googleAuth } = authSlice.actions;
+export const { refreshError } = authSlice.actions; //googleAuth
 export default authSlice.reducer;
