@@ -3,6 +3,7 @@ import s from 'modules/moduleReports/components/ReportTotal/ReportTotal.module.s
 
 const ReportTotal = ({ data }) => {
   // const { expenses, incomes } = data;
+  console.log(data);
   return (
     <div className={s.items}>
       <div className={s.itemExpenses}>
