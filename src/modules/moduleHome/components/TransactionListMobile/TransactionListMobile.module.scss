@@ -1,0 +1,34 @@
+.mobileContainer {
+  display: flex;
+  margin: auto;
+  // padding: 0 20px;
+  max-width: 282px;
+}
+
+.mobileList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.mobileItem {
+  display: flex;
+  justify-content: space-between;
+  // gap: 20px;
+}
+.categoryContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryWrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.ammountWrapper {
+  display: flex;
+  gap: 8px;
+}

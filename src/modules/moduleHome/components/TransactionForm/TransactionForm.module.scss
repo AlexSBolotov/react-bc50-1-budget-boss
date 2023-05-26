@@ -1,0 +1,146 @@
+.input {
+  width: 196.8px;
+  padding: 8px 20px;
+  color: rgba(199, 204, 220, 0.5);
+  border: 2px solid #474759;
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 16px;
+  background-color: rgba(56, 56, 71, 1);
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+}
+// цвет один и тот же но не совпадает
+.input:focus {
+  outline: none;
+  border: 2px solid #474759;
+}
+
+.select {
+  // width: ;
+  padding: 8px 20px;
+  color: rgba(199, 204, 220, 0.5);
+  border: 2px solid #474759;
+  border-radius: 0;
+  border-bottom-right-radius: 10px;
+  font-size: 16px;
+  background-color: rgba(56, 56, 71, 1);
+  appearance: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+}
+
+.select:focus {
+  outline: none;
+  border: 2px solid #474759;
+}
+
+.select option {
+  box-sizing: border-box;
+  padding: 8px 20px !important;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  color: rgba(199, 204, 220, 0.5);
+  background-color: rgba(56, 56, 71, 1);
+  border: 0;
+  /* Styles for the options */
+}
+
+//   .select option:hover {
+//     background-color: #474759;
+//     color:rgba(246, 247, 251, 1);
+//     /* Styles for the options on hover */
+//   }
+.select option:focus {
+  background-color: #474759;
+  color: rgba(246, 247, 251, 1);
+  /* Styles for the options on hover */
+}
+
+.select option:checked,
+.select option:hover {
+  background-color: #474759;
+  color: rgba(246, 247, 251, 1);
+  /* Styles for the selected option */
+}
+.input_calc {
+  padding: 12px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  color: #c7ccdc;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background-image: ('../../../shared/images/svg/calendar.svg') no-repeat left;
+  border: 2px solid #474759;
+  border-radius: 22px;
+}
+.btn_input {
+    border: 2px solid transparent;
+  padding: 12px 36px;
+  border-radius: 16px;
+  background: #42a652;
+  box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #F6F7FB;
+}
+.btn_clear {
+  border-radius: 16px;
+  border: 2px solid #474759;
+  padding: 12px 36px;
+  background-color: rgba(71, 71, 89, 1);
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #F6F7FB;
+}
+//   .my-select::-ms-expand {
+//     display: none; /* Removes arrow icon on Internet Explorer/Edge */
+//   }
+
+// .react-select__control{
+//     background-color: rgba(56, 56, 71, 1);
+
+// }
+// .react-select__option{
+//     background-color: rgba(56, 56, 71, 1);
+// }
+// .react-select__option--is-selected,
+// .react-select__option--is-focused{
+//     background-color: #474759;
+// }
+// .react-select__single-value,
+// .react-select__placeholder{
+//     font-family: 'Roboto';
+// font-style: normal;
+// font-weight: 400;
+// font-size: 12px;
+// line-height: 1.16;
+// letter-spacing: 0.02em;
+// color: rgba(199, 204, 220, 0.5);
+// }

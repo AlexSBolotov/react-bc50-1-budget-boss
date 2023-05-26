@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorHandler } from 'redux/error/errorHandler';
 import {
-  addTransactionExpenseApi,
   getTransactionExpenseApi,
   addTransactionIncomeApi,
   deleteTransactionApi,
@@ -50,23 +49,23 @@ export const getTransactionExpense = createAsyncThunk(
   }
 );
 
-export const addTransactionExpense = createAsyncThunk(
-  'transaction/expense/add',
-  async (transactionForm, { rejectWithValue, dispatch }) => {
-    try {
-      const { data } = await addTransactionExpenseApi(transactionForm);
-      return data;
-    } catch (error) {
-      dispatch(
-        errorHandler({
-          error,
-          cb: () => addTransactionExpense(transactionForm),
-        })
-      );
-      return rejectWithValue(error.message);
-    }
-  }
-);
+// export const addTransactionExpense = createAsyncThunk(
+//   'transaction/expense/add',
+//   async (transactionForm, { rejectWithValue, dispatch }) => {
+//     try {
+//       const { data } = await addTransactionExpenseApi(transactionForm);
+//       return data;
+//     } catch (error) {
+//       dispatch(
+//         errorHandler({
+//           error,
+//           cb: () => addTransactionExpense(transactionForm),
+//         })
+//       );
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const deleteTransaction = createAsyncThunk(
   'transaction/delete',
@@ -94,6 +93,19 @@ export const getTransactionByPeriod = createAsyncThunk(
       return data;
     } catch (error) {
       dispatch(errorHandler({ error, cb: () => deleteTransaction(param) }));
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getAllCategories = createAsyncThunk(
+  'categoties/all',
+  async (_, { rejectWithValue }) => {
+    try {
+      const incomes = await getTransactionIncomeApi();
+      const expenses = await getTransactionExpenseApi();
+      return { incomes, expenses };
+    } catch (error) {
       return rejectWithValue(error.message);
     }
   }

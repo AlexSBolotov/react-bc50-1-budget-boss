@@ -8,6 +8,7 @@ export const AuthContainer = styled.div`
   display: flex;
   justify-content: center;
 
+  margin: 0 auto;
   padding: 68px 20px 40px 20px;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {

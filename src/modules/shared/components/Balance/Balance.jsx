@@ -19,23 +19,24 @@
 //       </button>
 //     </>
 //   );
-  
+
 // }
 
 // export default Balance;
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import BalanceModal from '../BalanceModal/BalanceModal';
 import BtnConfirmBalance from './BtnConfirmBalance';
 
-import  getBalance  from '../../../../redux/balance/balanceSelectors';
+import { selectBalance } from 'redux/auth/authSelectors';
 
 import s from './Balance.module.css';
 
 const Balance = ({ displayStyle }) => {
-  const initialBalance = useSelector(getBalance);
+  const initialBalance = useSelector(selectBalance);
+  console.log(initialBalance);
 
   const [input, setInput] = useState(initialBalance);
 
@@ -43,9 +44,9 @@ const Balance = ({ displayStyle }) => {
     setInput(e.target.value);
   };
 
-  useEffect(() => {
-    setInput(initialBalance);
-  }, [initialBalance]);
+  // useEffect(() => {
+  //   setInput(initialBalance);
+  // }, [initialBalance]);
 
   return (
     <div className={s.balance_form}>
@@ -60,11 +61,12 @@ const Balance = ({ displayStyle }) => {
           value={input}
           onChange={handleChange}
           placeholder={`00.00 UAH`}
-    
         />
       </span>
 
-      <BtnConfirmBalance input={input} displayStyle={displayStyle} />
+      {!initialBalance && (
+        <BtnConfirmBalance input={input} displayStyle={displayStyle} />
+      )}
       {!initialBalance && <BalanceModal />}
     </div>
   );

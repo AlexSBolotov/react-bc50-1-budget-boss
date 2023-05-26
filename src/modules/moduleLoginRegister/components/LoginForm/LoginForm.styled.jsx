@@ -55,7 +55,7 @@ export const GoogleButton = styled.button`
 
   &:hover,
   :focus {
-    transform: scale(1.05);
+    transform: scale(1.03);
     transition: 300ms;
   }
 
@@ -99,7 +99,7 @@ export const AuthDescr = styled.p`
   letter-spacing: 0.04em;
 
   @media screen and (min-width: 768px) {
-	width: 288px;
+    width: 288px;
 
     font-size: 14px;
     line-height: 1.16;
@@ -117,8 +117,6 @@ export const FormWrapper = styled.div`
 
 export const LabelTitle = styled.p`
   margin-bottom: 8px;
-
-  padding-left: 9px;
 
   font-family: 'Roboto';
   font-style: normal;
@@ -144,6 +142,14 @@ export const AuthInput = styled.input`
 
   background: var(--color--text);
   border-radius: 16px;
+`;
+
+export const ErrorStar = styled.span`
+  width: 10px;
+
+  display: inline-block;
+
+  color: var(--text-warning);
 `;
 
 export const ErrorWrapper = styled.div`

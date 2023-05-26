@@ -1,15 +1,15 @@
 .goBackLink {
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 700;
-font-size: 10px;
-line-height: 12px;
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.02em;
-text-transform: uppercase;
-color: #F6F7FB;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  /* text-transform: uppercase; */
+  color: #F6F7FB;
 }
 
 @media screen and (min-width: 768px) {
@@ -24,5 +24,5 @@ color: #F6F7FB;
     display: flex;
     align-items: center;
   }
-  
+
 }
