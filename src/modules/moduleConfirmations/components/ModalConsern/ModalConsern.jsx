@@ -45,7 +45,7 @@ const ModalConsern = ({ title, isOpen, onCancel, onSubmit }) => {
 };
 
 ModalConsern.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   isOpen: PropTypes.bool,
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
