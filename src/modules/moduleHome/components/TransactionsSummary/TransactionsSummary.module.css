@@ -31,6 +31,7 @@
     border-spacing: 0 2px;
   }
 }
+
 .summaryTableHeading {
   padding: 10px 20px;
   background: rgba(86, 86, 107, 0.5);
@@ -47,9 +48,11 @@
   line-height: 14px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+
   &:first-child {
     text-align: left;
   }
+
   &:last-child {
     text-align: center;
   }
@@ -72,6 +75,7 @@
   &:first-child {
     border-right: none;
   }
+
   &:nth-child(2) {
     padding-left: 0px;
     padding-right: 12px;
