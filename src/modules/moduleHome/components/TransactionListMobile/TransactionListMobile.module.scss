@@ -16,19 +16,54 @@
 .mobileItem {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #80848f;
   // gap: 20px;
 }
 .categoryContainer {
   display: flex;
   flex-direction: column;
+  gap: 7px;
+}
+
+.categoryDescription {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  // text-transform: uppercase;
+  color: var(--text-biege);
 }
 
 .categoryWrapper {
   display: flex;
+  justify-content: space-between;
   gap: 10px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 9px;
+  letter-spacing: 0.04em;
+  color: var(--text-biege);
+}
+
+.transactionDate {
+  margin-right: 20px;
 }
 
 .ammountWrapper {
   display: flex;
   gap: 8px;
+  align-items: baseline;
+}
+
+.transactionAmount {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
 }

@@ -1,13 +1,11 @@
-import { forwardRef } from 'react';
+import { useState, forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './TransactionDate.scss';
 import { enGB } from 'date-fns/locale';
 
-const TransactionDate = ({ setSelectedDate, selectedDate }) => {
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
+const TransactionDate = () => {
+  const [startDate, setStartDate] = useState(new Date());
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <input
       value={value}
@@ -20,13 +18,12 @@ const TransactionDate = ({ setSelectedDate, selectedDate }) => {
       }}
     ></input>
   ));
-
   return (
     <div className="wrapper-container">
       <DatePicker
         dateFormat="dd.MM.yyyy"
-        selected={selectedDate}
-        onChange={date => handleDateChange(date)}
+        selected={startDate}
+        onChange={date => setStartDate(date)}
         locale={enGB}
         maxDate={new Date()}
         customInput={<ExampleCustomInput />}

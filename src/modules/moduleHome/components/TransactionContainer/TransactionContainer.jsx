@@ -7,7 +7,7 @@ const TransactionContainer = ({ selectedDate }) => {
     <section>
       <TransactionsList selectedDate={selectedDate} />
       <TransactionsSummary />
-      <TransactionsListMobile selectedDate={selectedDate} />
+      <TransactionsListMobile />
     </section>
   );
 };

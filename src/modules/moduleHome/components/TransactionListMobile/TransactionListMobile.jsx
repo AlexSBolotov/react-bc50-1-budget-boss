@@ -1,7 +1,24 @@
 import { useMediaQuery } from 'react-responsive';
 import s from './TransactionListMobile.module.scss';
 
-const TransactionsListMobile = ({ selectedDate }) => {
+// const transactions = [
+//   {
+//     description: "Transaction's description",
+//     category: 'Продукты',
+//     amount: 400,
+//     date: '2020-12-31',
+//     _id: '507f1f77bcf86cd799439013',
+//   },
+//   {
+//     description: "Transaction's description",
+//     category: 'Авто',
+//     amount: 600,
+//     date: '2020-12-31',
+//     _id: '507f1f77bcf86cd799439013',
+//   },
+// ];
+
+const TransactionsListMobile = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
@@ -10,27 +27,27 @@ const TransactionsListMobile = ({ selectedDate }) => {
         <ul className={s.mobileList}>
           <li className={s.mobileItem}>
             <div className={s.categoryContainer}>
-              <p>Undeground</p>
+              <p className={s.categoryDescription}>Undeground</p>
               <div className={s.categoryWrapper}>
-                <span>21.11.2019</span>
+                <span className={s.transactionDate}>21.11.2019</span>
                 <span>Transport</span>
               </div>
             </div>
             <div className={s.ammountWrapper}>
-              <p>800</p>
+              <p className={s.transactionAmount}>800 {'UAH'}</p>
               <button>Delete</button>
             </div>
           </li>
           <li className={s.mobileItem}>
             <div className={s.categoryContainer}>
-              <p>Undeground</p>
+              <p className={s.categoryDescription}>Undeground</p>
               <div className={s.categoryWrapper}>
-                <span>21.11.2019</span>
+                <span className={s.transactionDate}>21.11.2019</span>
                 <span>Transport</span>
               </div>
             </div>
             <div className={s.ammountWrapper}>
-              <p>800</p>
+              <p className={s.transactionAmount}>1000 {'UAH'}</p>
               <button>Delete</button>
             </div>
           </li>

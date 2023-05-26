@@ -1,4 +1,5 @@
 import s from './TransactionsSummary.module.css';
+import { monthTranslation } from './monthTranslation';
 
 //объект ответв= от бека /transaction/income or /transaction/expense
 const monthlyIncome = {
@@ -52,8 +53,8 @@ const TransactionsSummary = () => {
         <tbody>
           {changedMonthlyIncome.map(({ month, amount }) => (
             <tr key={month}>
-              <td className={s.summaryTableCell}>{month}</td>
-              <td className={s.summaryTableCell}>{amount}</td>
+              <td className={s.summaryTableCell}>{monthTranslation(month)}</td>
+              <td className={s.summaryTableCell}>{monthTranslation(amount)}</td>
             </tr>
           ))}
         </tbody>
