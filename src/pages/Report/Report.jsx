@@ -3,7 +3,7 @@ import ReportCategories from 'modules/moduleReports/components/ReportCategories/
 import ReportGraph from 'modules/moduleReports/components/ReportGraph/ReportGraph';
 import ReportTotal from 'modules/moduleReports/components/ReportTotal/ReportTotal';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import {
   selectPeriod,
   // selectAllCategories,
@@ -16,12 +16,14 @@ import {
 import { useLogCheck } from 'hooks/uselogCheck';
 
 const Report = () => {
+  const selected = useSelector(selectPeriod);
+  const [objforGrph, setObjforGrph] = useState([]);
   useLogCheck();
   const dispatch = useDispatch();
   const data = useSelector(selectPeriod);
 
   const handleDataChooser = data => dispatch(getTransactionByPeriod(data));
-
+  const handleSelected = data => console.log(data);
   const fetchedData = useMemo(() => {
     return data;
   }, [data]);
@@ -30,8 +32,8 @@ const Report = () => {
     <section>
       <ReportBar onClick={handleDataChooser} />
       <ReportTotal data={fetchedData} />
-      <ReportCategories />
-      <ReportGraph />
+      <ReportCategories onclick={handleSelected} />
+      <ReportGraph data={objforGrph} />
     </section>
   );
 };
