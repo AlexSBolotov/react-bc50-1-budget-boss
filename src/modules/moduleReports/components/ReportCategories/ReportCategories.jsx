@@ -8,10 +8,10 @@ const ReportCategories = () => {
   const periodData = useSelector(selectPeriod);
 
   let expenses = null;
-  let incomes = null;
+  // let incomes = null;
   if (periodData) {
     expenses = Object.entries(periodData.expenses.expensesData);
-    incomes = Object.entries(periodData.incomes.incomesData);
+    // incomes = Object.entries(periodData.incomes.incomesData);
 
     expenses = [...expenses]
       .sort((b, a) => a[1].total - b[1].total)

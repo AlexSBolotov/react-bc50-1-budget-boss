@@ -1,4 +1,4 @@
-import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   getTransactionIncome,
   getTransactionExpense,
@@ -13,13 +13,9 @@ import {
   getTransactionExpenseCategories,
 } from 'redux/reports/reportsOperations';
 
-const categoriesAdapter = createEntityAdapter({
-  // Assume IDs are stored in a field other than `book.id`
-  // selectId: book => book.bookId,
-  // Keep the "all IDs" array sorted based on book titles
-  // sortComparer: (a, b) => a.title.localeCompare(b.title),
-  // selectId: expenses => expenses.expenseTotal,
-});
+// const categoriesAdapter = createEntityAdapter({
+
+// });
 
 const initialState = {
   // newBalance: null,
