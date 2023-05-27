@@ -3,25 +3,10 @@ import React from 'react';
 import {
   BarChart,
   Bar,
-  XAxis,
   YAxis,
   ResponsiveContainer,
   LabelList,
 } from 'recharts';
-
-// const renderCustomBarLabel = ({ x, y, width, value }) => {
-//   return (
-//     <text
-//       x={x + width / 2}
-//       y={y}
-//       fontSize="12"
-//       fontFamily="Roboto"
-//       fill="#C7CCDC"
-//       textAnchor="middle"
-//       dy={-6}
-//     >{`${value} UAH`}</text>
-//   );
-// };
 
 export default function ReportGraphHorizontal({ notSortedData }) {
   const category = notSortedData.name_ru;
