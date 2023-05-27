@@ -19,18 +19,21 @@ const Report = () => {
   const [objforGrph, setObjforGrph] = useState([]);
   useLogCheck();
   const dispatch = useDispatch();
-  const data = useSelector(selectPeriod);
+  // const data = useSelector(selectPeriod);
+  const totalExpenses = useSelector(
+    state => state.transactions.reports.expenses.total
+  );
+  const totalIncomes = useSelector(
+    state => state.transactions.reports.incomes.total
+  );
 
   const handleDataChooser = data => dispatch(getTransactionByPeriod(data));
   const handleSelected = data => setObjforGrph(data);
-  const fetchedData = useMemo(() => {
-    return data;
-  }, [data]);
 
   return (
     <section>
       <ReportBar onClick={handleDataChooser} />
-      <ReportTotal data={fetchedData} />
+      <ReportTotal data={{ totalExpenses, totalIncomes }} />
       <ReportCategories onclick={handleSelected} />
       <ReportGraph data={objforGrph} />
     </section>

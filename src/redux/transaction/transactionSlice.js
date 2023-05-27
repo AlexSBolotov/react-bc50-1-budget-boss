@@ -14,9 +14,19 @@ import {
   getTransactionExpenseCategories,
 } from 'redux/reports/reportsOperations';
 
-const categoriesAdapter = createEntityAdapter();
+import translate from 'hooks/translator';
 
-const initialState = categoriesAdapter.getInitialState({
+export const categoriesAdapter = createEntityAdapter({
+  selectId: id => {
+    id.name_en = translate(id.name_ru);
+    return id.id;
+  },
+  sortComparer: (a, b) => {
+    return a.total - b.total;
+  },
+});
+
+const initialState = {
   newBalance: 0,
   expenses: [],
   expensesStats: {},
@@ -29,7 +39,11 @@ const initialState = categoriesAdapter.getInitialState({
   incomesCategories: [],
   expensesCategories: [],
   transaction: null,
-});
+  reports: {
+    expenses: categoriesAdapter.getInitialState({ total: 0 }),
+    incomes: categoriesAdapter.getInitialState({ total: 0 }),
+  },
+};
 
 const transactionSlice = createSlice({
   name: 'transactions',
@@ -139,9 +153,33 @@ const transactionSlice = createSlice({
         state.error = payload;
       }) // ================= GET BY PERIOD
       .addCase(getTransactionByPeriod.fulfilled, (state, { payload }) => {
-        state.transaction = payload;
-        console.log(payload.expenses);
-        categoriesAdapter.upsertMany(state, payload.expenses);
+        function payloadUniverse(value) {
+          const keys = Object.keys(payload[value][`${value}Data`]);
+          const values = Object.values(payload[value][`${value}Data`]);
+          const normalize = keys.reduce((acc, val, index) => {
+            return {
+              ...acc,
+              [index]: {
+                ...values[index],
+                [val]: values[index],
+                id: index,
+                name_ru: val,
+                name_en: 123,
+              },
+            };
+          }, {});
+          return normalize;
+        }
+        state.reports.expenses.total = payload.expenses.expenseTotal;
+        state.reports.incomes.total = payload.incomes.incomeTotal;
+        categoriesAdapter.setAll(
+          state.reports.expenses,
+          payloadUniverse('expenses')
+        );
+        categoriesAdapter.setAll(
+          state.reports.incomes,
+          payloadUniverse('incomes')
+        );
       })
       // GET ALL CATEGORIES
       .addCase(getAllCategories.fulfilled, (state, { payload }) => {
@@ -152,69 +190,3 @@ const transactionSlice = createSlice({
 export const { changeTransactionType, deleteTransactionById } =
   transactionSlice.actions;
 export default transactionSlice.reducer;
-
-/*
-export const categoryTranslationRuToEn = name => {
-  switch (name.trim()) {
-    case 'Продукты':
-      return 'Products';
-    case 'Алкоголь':
-      return 'Alcohol';
-    case 'Развлечения':
-      return 'Entertainment';
-    case 'Здоровье':
-      return 'Health';
-    case 'Транспорт':
-      return 'Transport';
-    case 'Всё для дома':
-      return 'Housing';
-    case 'Техника':
-      return 'Technics';
-    case 'Коммуналка и связь':
-      return 'Communal and communication';
-    case 'Спорт и хобби':
-      return 'Sport and hobby';
-    case 'Образование':
-      return 'Education';
-    case 'Прочее':
-      return 'Other';
-    case 'З/П':
-      return 'Salary';
-    case 'Доп. доход':
-      return 'Additional income';
-    default:
-      break;
-  }
-};
-export const categoryTranslationEnToRu = name => {
-  switch (name.trim()) {
-    case 'Products':
-      return 'Продукты';
-    case 'Alcohol':
-      return 'Алкоголь';
-    case 'Entertainment':
-      return 'Развлечения';
-    case 'Health':
-      return 'Здоровье';
-    case 'Transport':
-      return 'Транспорт';
-    case 'Housing':
-      return 'Всё для дома';
-    case 'Technics':
-      return 'Техника';
-    case 'Communal and communication':
-      return 'Коммуналка и связь';
-    case 'Sport and hobby':
-      return 'Спорт и хобби';
-    case 'Education':
-      return 'Образование';
-    case 'Other':
-      return 'Прочее';
-    case 'Salary':
-      return 'З/П';
-    case 'Additional income':
-      return 'Доп. доход';
-    default:
-      break;
-  }
-}; */
