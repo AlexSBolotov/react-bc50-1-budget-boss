@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-bc50-1-budget-boss/static/css/main.65b27e4e.css",
-    "main.js": "/react-bc50-1-budget-boss/static/js/main.f3531132.js",
+    "main.js": "/react-bc50-1-budget-boss/static/js/main.3c8496d3.js",
     "static/css/916.c237fde8.chunk.css": "/react-bc50-1-budget-boss/static/css/916.c237fde8.chunk.css",
     "static/js/916.7adf1f71.chunk.js": "/react-bc50-1-budget-boss/static/js/916.7adf1f71.chunk.js",
     "static/css/277.d44e1f33.chunk.css": "/react-bc50-1-budget-boss/static/css/277.d44e1f33.chunk.css",
@@ -39,7 +39,7 @@
     "static/media/diagram.svg": "/react-bc50-1-budget-boss/static/media/diagram.68e03afe713740f7b7e7c5db20717faa.svg",
     "static/media/backLeftArrow.svg": "/react-bc50-1-budget-boss/static/media/backLeftArrow.8e2a924c142ff7a7b5bc480dfecdbc79.svg",
     "main.65b27e4e.css.map": "/react-bc50-1-budget-boss/static/css/main.65b27e4e.css.map",
-    "main.f3531132.js.map": "/react-bc50-1-budget-boss/static/js/main.f3531132.js.map",
+    "main.3c8496d3.js.map": "/react-bc50-1-budget-boss/static/js/main.3c8496d3.js.map",
     "916.c237fde8.chunk.css.map": "/react-bc50-1-budget-boss/static/css/916.c237fde8.chunk.css.map",
     "916.7adf1f71.chunk.js.map": "/react-bc50-1-budget-boss/static/js/916.7adf1f71.chunk.js.map",
     "277.d44e1f33.chunk.css.map": "/react-bc50-1-budget-boss/static/css/277.d44e1f33.chunk.css.map",
@@ -51,6 +51,6 @@
   },
   "entrypoints": [
     "static/css/main.65b27e4e.css",
-    "static/js/main.f3531132.js"
+    "static/js/main.3c8496d3.js"
   ]
 }
