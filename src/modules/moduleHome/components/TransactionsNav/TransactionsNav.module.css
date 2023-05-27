@@ -1,23 +1,23 @@
 .container {
-border-radius: none;
-display: flex;
-justify-content: center;
+    border-radius: none;
+    display: flex;
+    justify-content: center;
 }
 
 .one {
-background: #383847;
-border-width: 0px 0px 0px 0px;
-border-style: solid;
-border-radius: 0px 16px 0px 0px;
-width: 159px;
-height: 53px;
-text-align: center;
-padding: 20px 0px;
-color: #F6F7FB;
-background: linear-gradient(340deg, #383847 14.1%, #2D2D38 89.51%);
-font-weight: 700;
-font-size: 12px;
-text-transform: uppercase;
+    background: #383847;
+    border-width: 0px 0px 0px 0px;
+    border-style: solid;
+    border-radius: 0px 16px 0px 0px;
+    width: 159px;
+    height: 53px;
+    text-align: center;
+    padding: 20px 0px;
+    color: #F6F7FB;
+    background: linear-gradient(340deg, #383847 14.1%, #2D2D38 89.51%);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
 .two {
@@ -37,12 +37,12 @@ text-transform: uppercase;
     background: linear-gradient(355deg, #383847 14.1%, #2D2D38 89.51%);
 }
 .one:focus,
-.one:focus {
+.one:hover {
     box-shadow: 0px 0px 6px #41A350;
     color: #60C470;
 }
 .two:focus,
-.two:focus {
+.two:hover {
     box-shadow: 0px 0px 6px #41A350;
     color: #60C470;
 }
@@ -57,20 +57,32 @@ text-transform: uppercase;
        width: 138px;
        height: 40px;
        padding: 0px;
+       background: #2D2D38 ;
     }
 
     .two {
         border-radius: 16px 16px 0px 0px;
         width: 138px;
-        height: 40px;; 
+        height: 40px;
+        background: #2D2D38 ;
     }
     .one:active {
         color: #60C470;
-        background: #383847;
     }
     .two:active {
         color: #60C470;
+    }
+    .one:focus,
+    .one:hover{
+        color: #60C470;
         background: #383847;
+        box-shadow: none;
+    }
+    .two:focus,
+    .two:hover{
+        color: #60C470;
+        background-color: #383847;
+        box-shadow: none;
     }
 }
 
@@ -97,9 +109,23 @@ text-transform: uppercase;
     .one:active {
         color: #60C470;
         background: #383847;
+        
     }
     .two:active {
         color: #60C470;
         background: #383847;
+        
+    }
+    .one:focus,
+    .one:hover{
+        color: #60C470;
+        background: #383847;
+        box-shadow: none;
+    }
+    .two:focus,
+    .two:hover{
+        color: #60C470;
+        background: #383847;
+        box-shadow: none;
     }
 }

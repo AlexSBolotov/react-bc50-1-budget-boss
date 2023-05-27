@@ -1,17 +1,4 @@
-// export default function TransactionsNav() {
-//   return (
-//     <div>
-//       <button type="button" to="expenses">
-//         Expenses
-//       </button>
-//       <button type="button" to="income">
-//         Income
-//       </button>
-//     </div>
-//   );
-// }
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import styles from './TransactionsNav.module.css';
 import { useDispatch } from 'react-redux';
 

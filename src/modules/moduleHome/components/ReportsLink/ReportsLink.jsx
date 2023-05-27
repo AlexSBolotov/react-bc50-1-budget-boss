@@ -3,9 +3,11 @@ import s from './ReportsLink.module.css';
 
 const ReportsLink = () => {
   return (
-    <div to="/report" className={s.reports}>
-      Reports
-      <img src={svgDiagram} alt="Diagram"  />
+    <div to="/report">
+      <span className={s.reports}>
+        Reports
+        <img src={svgDiagram} alt="Diagram" />
+      </span>
     </div>
   );
 };
