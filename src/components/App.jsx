@@ -45,7 +45,7 @@ export const App = () => {
               }
             />
 
-            <Route path="reports" element={<Report />} />
+            <Route path="reports" element={<PrivateRoute component={Report} redirectTo="/register" />} />
             {/* <Route path='google-redirect' element={<h1>This is google redirect page</h1>}/> */}
             <Route
               path="*"
