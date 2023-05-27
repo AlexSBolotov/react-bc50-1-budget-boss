@@ -8,15 +8,21 @@ export const AuthWrapper = styled.div`
 
   color: var(--color--text);
 
+  border: none;
+  border-radius: 16px;
+
+  filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.25));
+
   background: #383847;
   box-shadow: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
-  border-radius: 16px;
 
   @media screen and (min-width: 768px) {
     width: 392px;
     height: 554px;
 
     padding: 52px;
+
+	border-radius: 30px;
   }
 `;
 
@@ -50,8 +56,10 @@ export const GoogleButton = styled.button`
 
   margin: 20px auto 24px auto;
 
-  background: var(--color--text);
+  border: none;
   border-radius: 16px;
+
+  background: var(--color--text);
 
   &:hover,
   :focus {
@@ -140,8 +148,10 @@ export const AuthInput = styled.input`
 
   padding: 16px;
 
-  background: var(--color--text);
+  border: none;
   border-radius: 16px;
+
+  background: var(--color--text);
 `;
 
 export const ErrorStar = styled.span`
@@ -196,13 +206,18 @@ export const AuthButton = styled.button`
   letter-spacing: 0.02em;
   text-transform: uppercase;
 
+  border: none;
+  border-radius: 16px;
+  
+  filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.25));
+
   background: var(--color--text);
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
-  border-radius: 16px;
 
   &:hover,
   :focus {
     background-color: #42a652;
+	box-shadow: 3px 3px 5px rgba(96, 196, 112, 0.35);
     color: var(--primary-white);
     transition: 300ms;
   }

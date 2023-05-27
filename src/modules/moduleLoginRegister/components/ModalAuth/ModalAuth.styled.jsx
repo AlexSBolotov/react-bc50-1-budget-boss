@@ -23,12 +23,16 @@ export const ModalContent = styled.div`
 
   padding: 20px;
 
-  background: #383847;
-  box-shadow: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
+  border: none;
   border-radius: 16px;
 
+  filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.25));
+
+  background: #383847;
+  box-shadow: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
+
   @media screen and (min-width: 768px) {
-    width: 392px;;
+    width: 392px;
   }
 `;
 
@@ -60,9 +64,11 @@ export const ModalBtn = styled.button`
 
   color: var(--color--text);
 
-  background: #42a652;
-  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  border: none;
   border-radius: 16px;
+
+  background: #42a652;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 
   &:active {
     transform: scale(0.95);

@@ -66,12 +66,12 @@ const TransactionForm = ({ selectedDate }) => {
         <select name="categories" className={s.select}>
           {currentTransactionType === 'expenses'
             ? expensesCategories.map(category => (
-                <option value={categoryTranslationRuToEn(category)}>
+                <option value={categoryTranslationRuToEn(category)} id='select-option'>
                   {categoryTranslationRuToEn(category)}
                 </option>
               ))
             : incomesCategories.map(category => (
-                <option value={categoryTranslationRuToEn(category)}>
+                <option value={categoryTranslationRuToEn(category)} id='select-option'>
                   {categoryTranslationRuToEn(category)}
                 </option>
               ))}

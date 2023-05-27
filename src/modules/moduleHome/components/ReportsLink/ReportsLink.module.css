@@ -7,7 +7,10 @@
   font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.04em;
-
+  gap: 15px;
+  /* position: absolute;
+  top: 120px;
+  right: 120px; */
 }
 
 
@@ -18,9 +21,9 @@
   .reports {
     display: flex;
     justify-content: flex-end;
-    position: absolute;
-    right: 30px;
-    top: 90px;
+    /* position: absolute;
+    right: 50px;
+    top: 125px; */
   }
  
 }
