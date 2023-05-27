@@ -8,9 +8,13 @@ import {
 import { format } from 'date-fns';
 import { deleteTransactionById } from 'redux/transaction/transactionSlice';
 import { getAuthUser } from 'redux/auth/authOperations';
+import { categoryTranslationRuToEn } from '../TransactionForm/translateFunc';
+
+
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
+
 
 const TransactionsList = ({ selectedDate }) => {
   const currentTransactionType = useSelector(selectCurrentTransactionType);
@@ -54,8 +58,8 @@ const TransactionsList = ({ selectedDate }) => {
                 <tr key={trans._id}>
                   <td>{trans.date}</td>
                   <td>{trans.description}</td>
-                  <td>{trans.category}</td>
-                  <td>{trans.amount}</td>
+                  <td>{categoryTranslationRuToEn(trans.category)}</td>
+                  <td>{`${trans.amount} UAH`}</td>
                   <td>
                     <button
                       type="button"
@@ -70,8 +74,8 @@ const TransactionsList = ({ selectedDate }) => {
                 <tr key={trans._id}>
                   <td>{trans.date}</td>
                   <td>{trans.description}</td>
-                  <td>{trans.category}</td>
-                  <td>{trans.amount}</td>
+                  <td>{categoryTranslationRuToEn(trans.category)}</td>
+                  <td>{`${trans.amount} UAH`}</td>
                   <td>
                     <button
                       type="button"
