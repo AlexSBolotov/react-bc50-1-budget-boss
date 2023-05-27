@@ -26,6 +26,7 @@ const Balance = () => {
           type="number"
           value={input}
           onChange={handleChange}
+          disabled={initialBalance === 0 ? false : true}
           placeholder={
             initialBalance === 0
               ? `00.00 UAH`
