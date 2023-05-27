@@ -1,4 +1,4 @@
-// import s from './ReportGraph.module.css';
+// import s from './ReportGraphVertical.module.css';
 import React from 'react';
 import {
   BarChart,
@@ -6,54 +6,9 @@ import {
   XAxis,
   ResponsiveContainer,
   LabelList,
-  // YAxis
   CartesianGrid,
-  //   Tooltip,
-  //   Legend,
 } from 'recharts';
 
-const data = [
-  {
-    name: 'Pork',
-    value: 1100,
-  },
-  {
-    name: 'Beef',
-    value: 1000,
-  },
-  {
-    name: 'Chiken',
-    value: 800,
-  },
-  {
-    name: 'Fish',
-    value: 660,
-  },
-  {
-    name: 'Panini',
-    value: 350,
-  },
-  {
-    name: 'Coffee',
-    value: 420,
-  },
-  {
-    name: 'Spaghetti',
-    value: 230,
-  },
-  {
-    name: 'Chocolate',
-    value: 200,
-  },
-  {
-    name: 'Olives',
-    value: 320,
-  },
-  {
-    name: 'Greens',
-    value: 720,
-  },
-];
 const renderCustomBarLabel = ({ x, y, width, value }) => {
   return (
     <text
@@ -68,21 +23,25 @@ const renderCustomBarLabel = ({ x, y, width, value }) => {
   );
 };
 
-export default function ReportGraphVertical({ dataExp }) {
-  const newObj = {};
-  // const DataGg = Object.entries(dataExp[2]).forEach((item, index) => ({
-  //   ...newObj,
-  //   name: item[0][index],
-  //   total: item[1][index],
-  // }));
+export default function ReportGraphVertical({ notSortedData }) {
+  const category = notSortedData.name_ru;
+  const notFilteredData = notSortedData[category];
+  let dataArr = [];
+  notFilteredData &&
+    (dataArr = Object.entries(notFilteredData).slice(
+      1,
+      Object.entries(notFilteredData).length
+    ));
+  let dataToRender = [];
+  dataToRender = dataArr.map(el => ({ name: el[0], value: el[1] }));
+  const sortedDataToRender = [...dataToRender].sort(
+    (prevItem, nextItem) => nextItem.value - prevItem.value
+  );
 
-  console.log(dataExp);
-  console.log(newObj);
-  // console.log(DataGg);
   return (
     <ResponsiveContainer>
       <BarChart
-        data={data}
+        data={sortedDataToRender}
         // barGap={250}
         barSize={38}
         margin={{

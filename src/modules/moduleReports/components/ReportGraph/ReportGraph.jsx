@@ -6,16 +6,16 @@ import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 export default function ReportGraph({ data }) {
-  const isMobile = useMediaQuery({ maxWidth: 768 });
-  console.log(data);
-  const data_export = Object.values(data);
-  // console.log(data_export);
+  const isMobile = useMediaQuery({ maxWidth: 480 });
+  console.log(isMobile);
+  // console.log(data);
+
   return (
-    <div className={s.bar}>
+    <div className={s.graph}>
       {isMobile ? (
-        <ReportGraphHorizontal dataExp={data_export} />
+        <ReportGraphHorizontal notSortedData={data} />
       ) : (
-        <ReportGraphVertical dataExp={data_export} />
+        <ReportGraphVertical notSortedData={data} />
       )}
     </div>
   );
