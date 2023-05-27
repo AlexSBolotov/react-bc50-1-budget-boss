@@ -1,12 +1,6 @@
 // import s from './ReportGraph.module.css';
 import React from 'react';
-import {
-  BarChart,
-  Bar,
-  YAxis,
-  ResponsiveContainer,
-  LabelList,
-} from 'recharts';
+import { BarChart, Bar, YAxis, ResponsiveContainer, LabelList } from 'recharts';
 
 export default function ReportGraphHorizontal({ notSortedData }) {
   const category = notSortedData.name_ru;

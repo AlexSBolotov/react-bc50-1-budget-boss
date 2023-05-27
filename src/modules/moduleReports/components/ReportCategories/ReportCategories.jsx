@@ -7,9 +7,24 @@ import { selectAllExpenses, selectAllIncomes } from 'redux/store';
 import { nanoid } from '@reduxjs/toolkit';
 import { useEffect, useRef, useState, useLayoutEffect, createRef } from 'react';
 
-const ReportCategories = ({ onclick }) => {
+const ReportCategories = ({ onclick, data }) => {
+  const format = value => {
+    const form = new Intl.NumberFormat('ru-RU', {
+      style: 'decimal',
+      // currency: 'UAH',
+      // currencyDisplay: 'name',
+      // signDisplay: 'exceptZero',
+      minimumFractionDigits: 2,
+      useGrouping: 'min2',
+      unitDisplay: 'short',
+    })
+      .format(value)
+      .replace(',', '.');
+    // form.substring(0, 1) + ' ' + form.substring(1);
+    return form;
+  };
   const active = useRef();
-  console.log(active);
+
   const [flag, setFlag] = useState(true);
   useLayoutEffect(() => {
     return () => {};
@@ -29,7 +44,7 @@ const ReportCategories = ({ onclick }) => {
   function renderChoise(params) {
     return params.map(item => (
       <li key={nanoid()} className={s.item} onClick={() => onclick(item)}>
-        <p>{item.total}</p>
+        <p>{format(item.total)}</p>
         <div>
           <img
             src={
@@ -48,6 +63,7 @@ const ReportCategories = ({ onclick }) => {
   function handleChoise() {
     setFlag(!flag);
   }
+
   return (
     <div className={s.categories}>
       <div className={s.titleReports}>
@@ -58,6 +74,7 @@ const ReportCategories = ({ onclick }) => {
             onClick={() => handleChoise()}
           />
         </button>
+
         {flag && <h2>EXPRENSES </h2>}
         {!flag && <h2>INCOMES </h2>}
         <button className={s.btn} onClick={() => handleChoise()}>
