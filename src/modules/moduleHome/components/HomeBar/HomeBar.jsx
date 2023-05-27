@@ -5,7 +5,7 @@ import TransactionsNav from 'modules/moduleHome/components/TransactionsNav/Trans
 import s from 'modules/moduleHome/components/HomeBar/HomeBar.module.css';
 const HomeBar = () => {
   return (
-    <section>
+    <section >
       <div className={s.bar}>
         <NavLink to="/reports">
           <ReportsLink />
