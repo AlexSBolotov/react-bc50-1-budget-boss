@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from 'redux/auth/authOperations';
 import s from './UserLogout.module.css';
 import logout from 'modules/moduleLayout/images/logout.png';
-import initial from 'modules/moduleLayout/images/initials.png';
+import initial from 'modules/moduleLayout/images/initial.png';
 import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
 import { selectEmail } from 'redux/auth/authSelectors';
 import { useState } from 'react';
