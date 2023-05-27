@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import {
   getTransactionIncome,
   getTransactionExpense,
@@ -14,9 +14,17 @@ import {
   getTransactionExpenseCategories,
 } from 'redux/reports/reportsOperations';
 
-// const categoriesAdapter = createEntityAdapter({
+import translate from 'hooks/translator';
 
-// });
+const categoriesAdapter = createEntityAdapter({
+  selectId: id => {
+    id.name_en = translate(id.name_ru);
+    return id.id;
+  },
+  sortComparer: (a, b) => {
+    return a.total - b.total;
+  },
+});
 
 const initialState = {
   newBalance: 0,
@@ -31,6 +39,7 @@ const initialState = {
   incomesCategories: [],
   expensesCategories: [],
   transaction: null,
+  reports: categoriesAdapter.getInitialState([]),
 };
 
 const transactionSlice = createSlice({
@@ -140,8 +149,23 @@ const transactionSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       }) // ================= GET BY PERIOD
-      .addCase(getTransactionByPeriod.fulfilled, (state, { payload }) => {
-        state.transaction = payload;
+      .addCase(getTransactionByPeriod.fulfilled, (state, action) => {
+        state.transaction = action.payload;
+        const keys = Object.keys(action.payload.expenses.expensesData);
+        const values = Object.values(action.payload.expenses.expensesData);
+        const normalize = keys.reduce((acc, val, index) => {
+          return {
+            ...acc,
+            [index]: {
+              ...values[index],
+              [val]: values[index],
+              id: index,
+              name_ru: val,
+              name_en: 123,
+            },
+          };
+        }, {});
+        categoriesAdapter.upsertMany(state.reports, normalize);
       })
       // GET ALL CATEGORIES
       .addCase(getAllCategories.fulfilled, (state, { payload }) => {
