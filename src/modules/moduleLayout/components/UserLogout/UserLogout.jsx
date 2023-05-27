@@ -2,18 +2,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from 'redux/auth/authOperations';
 import s from './UserLogout.module.css';
 import logout from 'modules/moduleLayout/images/logout.png';
-import initial from 'modules/moduleLayout/images/initial.png';
-// import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
+import initial from 'modules/moduleLayout/images/initials.png';
 import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
 import { selectEmail } from 'redux/auth/authSelectors';
+import { useState } from 'react';
 
 export default function UserLogout() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const userName = useSelector(selectEmail)
     ?.match(/^([^@]+)/g)
     .join('');
   const dispatch = useDispatch();
 
   const userNameUpper = userName?.charAt(0).toUpperCase() + userName?.slice(1);
+
+  const toggleModal = () => {
+    setModalIsOpen(p => !p);
+  };
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -29,11 +35,7 @@ export default function UserLogout() {
           <p className={s.initial}>{userInitial}</p>
         </div>
         <p className={s.userName}>{userNameUpper}</p>
-        <button
-          className={s.headerExitBtn}
-          onClick={handleLogout}
-          type="button"
-        >
+        <button className={s.headerExitBtn} onClick={toggleModal} type="button">
           <img
             className={s.userExitIcon}
             src={logout}
@@ -44,7 +46,13 @@ export default function UserLogout() {
           <p className={s.userExitWord}>Exit</p>
         </button>
       </div>
-      <ModalConsern />
+      {modalIsOpen && (
+        <ModalConsern
+          closeModal={toggleModal}
+          onSubmit={handleLogout}
+          title="Do you really want to leave?"
+        />
+      )}
     </>
   );
 }
