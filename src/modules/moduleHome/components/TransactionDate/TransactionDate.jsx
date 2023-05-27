@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { useState, forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './TransactionDate.scss';
@@ -17,7 +17,6 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
       }}
     ></input>
   ));
-
   return (
     <div className="wrapper-container">
       <DatePicker

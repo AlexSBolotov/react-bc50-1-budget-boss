@@ -4,13 +4,13 @@
     height: 290px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+    /* overflow-y: scroll;
+    scroll-behavior: smooth; */
     /* for FireFox browser styles */
-    scrollbar-width: thin;
-    scrollbar-color: #60c470 #474759;
+    /* scrollbar-width: thin;
+    scrollbar-color: #60c470 #474759; */
     /* for Chrome, Safari and Opersa browsers styles */
-    &::-webkit-scrollbar {
+    /* &::-webkit-scrollbar {
       width: 6px;
       background-color: #474759;
       border-top-left-radius: 50px;
@@ -19,7 +19,7 @@
     &::-webkit-scrollbar-thumb {
       background-color: #60c470;
       border-radius: 5px;
-    }
+    } */
   }
 }
 
