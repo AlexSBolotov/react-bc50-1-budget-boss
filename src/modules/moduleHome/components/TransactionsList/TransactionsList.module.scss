@@ -1,0 +1,192 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 624px;
+  margin: 0 auto;
+  border: 2px solid rgba(86, 86, 107, 0.5);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  max-height: 358px;
+  overflow: hidden;
+@media screen and (min-width: 1200px){width: 742px;}
+}
+.container tbody{
+    display:block;
+    max-height:100%;
+    overflow-y: auto;
+    scroll-behavior: smooth; 
+    //  for FireFox browser styles 
+     scrollbar-width: thin;
+    scrollbar-color: #60c470 #474759; 
+    //  for Chrome, Safari and Opersa browsers styles
+     &::-webkit-scrollbar {
+      width: 6px;
+      
+      background-color: #474759;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+    }
+    &::-webkit-scrollbar-thumb {
+        // скролл из бордера не работает до конца
+      
+    //   background-color:transparent;
+    //   border-top:130px solid;
+    //   border-color: #60c470;
+    background-color: #60c470;
+      border-radius: 5px;
+      
+    }
+    &::-webkit-scrollbar-track-piece{
+        height:358px;
+    }
+}
+.container thead,
+.container tbody tr{
+    display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.container thead {
+    position: sticky;
+    top: 0; 
+    background-color: rgba(86, 86, 107, 0.5);
+  }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+ 
+ 
+}
+.header {
+  width: 100%;
+  background-color: rgba(86, 86, 107, 0.5);
+  border-radius: 0 20px 0 0;
+  border: 2px solid rgba(86, 86, 107, 0.5);
+ 
+}
+.header_line {
+  width: 100%;
+  
+ 
+//   border-top-left-radius: 20px;
+//   border-top-right-radius: 20px;
+}
+
+.header_text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+
+  color: #f6f7fb;
+}
+.header_text_third {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: #f6f7fb;
+  text-align: center;
+}
+.header_text_fourth {
+  text-align: center !important;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: #f6f7fb;
+}
+
+.header_text:first-of-type {
+  padding-left: 14px;
+//   border-top-left-radius: 20px;
+  text-align: left;
+}
+
+.header_text:last-of-type {
+  padding-right: 14px;
+//   border-top-right-radius: 20px;
+}
+.body {
+  height: 358px;
+  overflow-y: auto;
+
+}
+.body_line {
+  background-color: rgba(71, 71, 89, 1);
+  border-bottom: 2px solid rgba(86, 86, 107, 0.5);
+}
+.body_item {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  text-align: center;
+
+  color: #c7ccdc;
+}
+.body_item_second {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  text-align: left;
+
+  color: #c7ccdc;
+  text-align: left;
+}
+
+.body_item:first-of-type {
+  text-align: left;
+  padding:11px 11px 11px 14px;
+}
+.body_item:last-of-type {
+    text-align: center;
+}
+
+.body_item_red {
+  text-align: center;
+}
+.icon {
+  fill: rgba(199, 204, 220, 0.5);
+  transition: fill 0.3s ease-in-out;
+  width: 15px;
+  height: 18px;
+  &:hover {
+    fill: #f6f7fb !important;
+  }
+}
+// при ховере кнопки филл не меняется????
+.button {
+  position: relative;
+  border-color: transparent;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background-color: rgba(86, 86, 107, 0.1);
+  &:hover {
+    fill: #f6f7fb !important;
+    background-color: rgba(86, 86, 107, 0.5);
+  }
+}
