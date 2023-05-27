@@ -5,33 +5,24 @@
   text-align: center;
   line-height: 1.17;
   color: #C7CCDC;
-
-  margin-bottom: 6px;
-  margin-top: 0;
+  margin-bottom: 8px;
 }
 .balance_submit {
   display: inline-block;
   color: #C7CCDC;
   font-weight: 400;
   font-size: 12px;
-  /* line-height: 1.17; */
   text-align: center;
   text-transform: uppercase;
- 
   margin-left: 0px;
   border-radius: 0px 22px 22px 0px;
   border: 2px solid #80848F;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: inherit;
   width: 140px;
   height: 44px;
   letter-spacing: 0.02em;
   cursor: pointer;
-
 }
-/* .balance_submit:hover {
-  background-color: rgba(82, 85, 95, 0.15);
-  color: #ffffff;
-} */
 
 .balance_value {
   color: #F6F7FB;
@@ -44,34 +35,21 @@
   padding-right: 16px;
   width: 140px;
   height: 44px;
-  border-radius: 22px 0px 0px 22px;
+  border-radius: 22px 22px 22px 22px;
   border: 2px solid #80848F;
-  background-color: rgba(0, 0, 0, 0);
-
+  background-color: inherit;
 }
 
 .balance_value_none {
- 
   border-radius: 16px;
 }
-.balance_value_span {
-  position: relative;
-}
-/* .balance_value_span::after {
-  position: absolute;
-  top: 6px;
-  font-weight: bold;
-  content: "UAH";
-  right: 17px;
-  font-size: 12px;
-} */
 
 @media screen and (min-width: 768px) {
   .balance_form {
     display: flex;
-
+    margin-left: 15px;
     align-items: center;
-    /* padding-left: 20px; */
+    padding-left: 20px;
   }
 
   .balance_submit {
@@ -93,7 +71,8 @@
 
   .balance_title {
     margin-bottom: 0px;
-    margin-right: 21px;
+    margin-right: 20px;
+    margin-top: 0px;
   }
   .balance_value_span::after {
     position: absolute;
@@ -105,18 +84,17 @@
   }
 }
 
-@media screen and (max-width: 1279px) {
-  /* .balance_submit_none {
-    display: none;
-  } */
-}
 
 @media screen and (min-width: 1280px) {
   .balance_form {
-    /* padding-left: 20px; */
+    padding-left: 0px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
+  }
+
+  .balance_title {
+    margin-top: 0px;
   }
 
   .balance_submit {
@@ -158,6 +136,3 @@
   }
 }
 
-.balance_form {
-  position: relative;
-}

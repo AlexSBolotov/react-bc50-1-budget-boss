@@ -17,7 +17,6 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
       }}
     ></input>
   ));
-
   return (
     <div className="wrapper-container">
       <DatePicker
@@ -35,4 +34,5 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
   );
 };
 export default TransactionDate;
-// остается логика и позиционирование вместе с формой
+// допилить логику перезагрузки страницы. Если выбираем дату на дейт пикере а потом обновляем страницу - дата ставится на сегодня.
+// МЕМОИЗАЦИЯ

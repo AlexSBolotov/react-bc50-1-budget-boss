@@ -1,20 +1,31 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from 'redux/auth/authOperations';
 import s from './UserLogout.module.css';
 import logout from 'modules/moduleLayout/images/logout.png';
 import initial from 'modules/moduleLayout/images/initial.png';
-// import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
 import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
+import { selectEmail } from 'redux/auth/authSelectors';
+import { useState } from 'react';
 
 export default function UserLogout() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const userName = useSelector(selectEmail)
+    ?.match(/^([^@]+)/g)
+    .join('');
   const dispatch = useDispatch();
+
+  const userNameUpper = userName?.charAt(0).toUpperCase() + userName?.slice(1);
+
+  const toggleModal = () => {
+    setModalIsOpen(p => !p);
+  };
 
   const handleLogout = () => {
     dispatch(logoutUser());
   };
 
-  const userName = 'Beduin';
-  const userInitial = userName.charAt(0).toUpperCase();
+  const userInitial = userName?.charAt(0).toUpperCase();
 
   return (
     <>
@@ -23,13 +34,8 @@ export default function UserLogout() {
           <img className={s.userInitial} src={initial} alt="Initial" />
           <p className={s.initial}>{userInitial}</p>
         </div>
-        <p className={s.userName}>{userName}</p>
-        <button
-          className={s.headerExitBtn}
-          onClick={handleLogout}
-          // onClick={() => ModalConsern({ title: 'Are you sure?' })}
-          type="button"
-        >
+        <p className={s.userName}>{userNameUpper}</p>
+        <button className={s.headerExitBtn} onClick={toggleModal} type="button">
           <img
             className={s.userExitIcon}
             src={logout}
@@ -40,46 +46,13 @@ export default function UserLogout() {
           <p className={s.userExitWord}>Exit</p>
         </button>
       </div>
-      <ModalConsern />
+      {modalIsOpen && (
+        <ModalConsern
+          closeModal={toggleModal}
+          onSubmit={handleLogout}
+          title="Do you really want to leave?"
+        />
+      )}
     </>
   );
 }
-
-// import { useDispatch } from 'react-redux';
-// import { logoutUser } from 'redux/auth/authOperations';
-// import s from './UserLogout.module.css';
-// import logout from 'modules/moduleLayout/images/logout.png';
-// import initials from 'modules/moduleLayout/images/initials.png';
-// import ModalConcern from './ModalConcern';
-
-// export default function UserLogout() {
-//   const dispatch = useDispatch();
-
-//   const handleLogout = () => {
-//     dispatch(logoutUser());
-//   };
-
-//   return (
-//     <>
-//       <div className={s.headerBar}>
-//         <img className={s.userInitial} src={initials} alt="Initials" />
-//         <p className={s.userName}>User Name</p>
-//         <button
-//           className={s.headerExitBtn}
-//           onClick={() => ModalConcern({ title: 'Are you sure?' })}
-//           type="button"
-//         >
-//           <img
-//             className={s.userExitIcon}
-//             src={logout}
-//             alt="exit"
-//             width="16"
-//             height="16"
-//           />
-//           <p className={s.userExitWord}>Exit</p>
-//         </button>
-//       </div>
-//       <ModalConcern />
-//     </>
-//   );
-// }

@@ -6,6 +6,9 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { selectAllExpenses, selectAllIncomes } from 'redux/store';
 import { nanoid } from '@reduxjs/toolkit';
 import { useEffect, useRef, useState, useLayoutEffect, createRef } from 'react';
+import { selectAllExpenses, selectAllIncomes } from 'redux/store';
+import { nanoid } from '@reduxjs/toolkit';
+import { useEffect, useRef, useState, useLayoutEffect, createRef } from 'react';
 
 const ReportCategories = ({ onclick, data }) => {
   const format = value => {
@@ -63,6 +66,9 @@ const ReportCategories = ({ onclick, data }) => {
   function handleChoise() {
     setFlag(!flag);
   }
+  function handleChoise() {
+    setFlag(!flag);
+  }
   return (
     <div className={s.categories}>
       <div className={s.titleReports}>
@@ -75,10 +81,15 @@ const ReportCategories = ({ onclick, data }) => {
         </button>
         {flag && <h2>EXPRENSES </h2>}
         {!flag && <h2>INCOMES </h2>}
+        {flag && <h2>EXPRENSES </h2>}
+        {!flag && <h2>INCOMES </h2>}
         <button className={s.btn} onClick={() => handleChoise()}>
           <MdKeyboardArrowRight size="26" color="green" />
         </button>
       </div>
+      <ul className={s.items}>
+        {flag ? renderChoise(expenses) : renderChoise(incomes)}
+      </ul>
       <ul className={s.items}>
         {flag ? renderChoise(expenses) : renderChoise(incomes)}
       </ul>

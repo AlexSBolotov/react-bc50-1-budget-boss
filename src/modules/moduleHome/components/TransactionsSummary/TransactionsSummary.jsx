@@ -1,53 +1,48 @@
-import s from './TransactionsSummary.module.css';
+import s from './TransactionsSummary.module.scss';
 import { useSelector } from 'react-redux';
 import { monthTranslation } from './monthTranslation';
 import {
   selectExpensesStats,
   selectIncomesStats,
+  selectCurrentTransactionType,
 } from 'redux/transaction/transactionSelectors';
-
-//объект ответв= от бека /transaction/income or /transaction/expense
-const monthlyIncome = {
-  incomes: [
-    {
-      description: 'Income description',
-      amount: 100,
-      date: '2020-12-31',
-      category: 'Доход',
-      _id: '507f1f77bcf86cd799439011',
-    },
-  ],
-  monthStats: {
-    Январь: 10000,
-    Февраль: 20000,
-    Март: 30000,
-    Апрель: 10000,
-    Май: 20000,
-    Июнь: 10000,
-    Июль: 30000,
-    Август: 30000,
-    Сентябрь: 20000,
-    Октябрь: 5000,
-    Ноябрь: 7000,
-    Декабрь: 10000,
-  },
-};
+import { useEffect, useState } from 'react';
 
 const TransactionsSummary = () => {
   const expensesStats = useSelector(selectExpensesStats);
   const incomesStats = useSelector(selectIncomesStats);
-  console.log(expensesStats, incomesStats);
+  const currentTransactionType = useSelector(selectCurrentTransactionType);
 
-  // берем у объекта ответа от бека массив пар ключ-значение,
-  // пока не реализована логика выбора массива затрат или расходов, для примера взят массив доходов
-  const values = Object.entries(monthlyIncome.monthStats);
+  console.log(expensesStats);
+  console.log(incomesStats);
 
-  // создаем новый массив с объектами с ключами-названиями месяцов, а значениями - суммами,
-  // логика перевода названий месяцов пока не реализована
-  const changedMonthlyIncome = values.map(el => ({
-    month: el[0],
-    amount: el[1],
-  }));
+  const [incomes, setIncomes] = useState(incomesStats);
+
+  const [expenses, setExpenses] = useState(expensesStats);
+
+  useEffect(() => {
+    setIncomes(incomesStats);
+  }, [incomesStats]);
+
+  useEffect(() => {
+    setExpenses(expensesStats);
+  }, [expensesStats]);
+
+  console.log(incomesStats);
+
+  let summaryData = [];
+
+  if (currentTransactionType === 'incomes') {
+    summaryData =
+      Object.entries(incomes)
+        .slice(0, new Date().getMonth() + 1)
+        .reverse() ?? [];
+  } else {
+    summaryData =
+      Object.entries(expenses)
+        .slice(0, new Date().getMonth() + 1)
+        .reverse() ?? [];
+  }
 
   return (
     <div className={s.summaryWrapper}>
@@ -59,13 +54,44 @@ const TransactionsSummary = () => {
             </th>
           </tr>
         </thead>
-        <tbody>
-          {changedMonthlyIncome.map(({ month, amount }) => (
-            <tr key={month}>
-              <td className={s.summaryTableCell}>{monthTranslation(month)}</td>
-              <td className={s.summaryTableCell}>{monthTranslation(amount)}</td>
-            </tr>
-          ))}
+        <tbody className={s.summaryBody}>
+          {summaryData.map(el => {
+            if (el[1] === 'N/A') {
+              el[1] = 0;
+            }
+            return (
+              <tr key={`${el[0]}${el[1]}`} className={s.summaryLine}>
+                <td className={s.summaryTableCell}>
+                  {monthTranslation(el[0])}
+                </td>
+                <td className={s.summaryTableCell}>{el[1]}</td>
+              </tr>
+            );
+          })}
+          <tr style={{ height: 38 }} className={s.summaryLine}>
+            <td className={s.summaryTableCell}></td>
+            <td className={s.summaryTableCell}></td>
+          </tr>
+          <tr style={{ height: 38 }} className={s.summaryLine}>
+            <td className={s.summaryTableCell}></td>
+            <td className={s.summaryTableCell}></td>
+          </tr>
+          <tr style={{ height: 38 }} className={s.summaryLine}>
+            <td className={s.summaryTableCell}></td>
+            <td className={s.summaryTableCell}></td>
+          </tr>
+          <tr style={{ height: 38 }} className={s.summaryLine}>
+            <td className={s.summaryTableCell}></td>
+            <td className={s.summaryTableCell}></td>
+          </tr>
+          <tr style={{ height: 38 }} className={s.summaryLine}>
+            <td className={s.summaryTableCell}></td>
+            <td className={s.summaryTableCell}></td>
+          </tr>
+          <tr style={{ height: 38 }} className={s.summaryLine}>
+            <td className={s.summaryTableCell}></td>
+            <td className={s.summaryTableCell}></td>
+          </tr>
         </tbody>
       </table>
     </div>

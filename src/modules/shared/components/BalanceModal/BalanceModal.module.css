@@ -1,20 +1,21 @@
 .modalDiv {
   width: 260px;
-  left: auto;
+  /* left: auto; */
   background: linear-gradient(118.06deg, #58BB67 3.05%, #368342 125.62%);
   border-radius: 30px;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-  padding: 20px 30px 31px 30px;
+  padding: 24px 32px 24px 32px;
   display: block;
   top: 120%;
   position: absolute;
   z-index: 2;
-  display: none;
+  /* display: none; */
 }
 
 @media screen and (min-width: 768px) {
   .modalDiv {
-    width: 292px;
+    width: 268px;
+    height: 156px;
     left: 15%;
   }
 }
@@ -23,6 +24,8 @@
   .modalDiv {
     width: 292px;
     height: 163px;
+    position: absolute;
+    left: 333px;
   }
 }
 
@@ -30,19 +33,21 @@
   content: "";
   position: absolute;
   left: 30%;
-  top: -20px;
+  top: -19px;
   border: 10px solid transparent;
-  border-bottom: 10px solid #368342;
+  border-bottom: 10px solid #58BB67;
+   
 }
 
 .largeText {
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
+  margin-bottom: 24px;
 }
 
 .littleText {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   color: #ffffff;
 }
