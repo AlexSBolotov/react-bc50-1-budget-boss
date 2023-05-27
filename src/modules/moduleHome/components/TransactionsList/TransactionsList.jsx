@@ -15,6 +15,7 @@ const formatEventStart = date => {
 const TransactionsList = ({ selectedDate }) => {
   const currentTransactionType = useSelector(selectCurrentTransactionType);
   const incomes = useSelector(selectIncomes);
+
   const expenses = useSelector(selectExpenses);
 
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const TransactionsList = ({ selectedDate }) => {
     currentTransactionType === 'incomes'
       ? incomes.filter(transaction => transaction.date === normalizedDate)
       : expenses.filter(transaction => transaction.date === normalizedDate);
-  console.log(filteredTransactions);
+  
 
   const handlerDeleteClick = id => {
     dispatch(deleteTransaction(id));
@@ -47,20 +48,39 @@ const TransactionsList = ({ selectedDate }) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>21.11.2019</td>
-            <td>My salary</td>
-            <td>Salary</td>
-            <td>20 000.00 UAH.</td>
-            <td>
-              <button
-                type="button"
-                onClick={() => handlerDeleteClick('64707566eb03bb3d9868c89d')}
-              >
-                delete
-              </button>
-            </td>
-          </tr>
+          {currentTransactionType === 'expenses'
+            ? filteredTransactions.map(trans => (
+                <tr key={trans._id}>
+                  <td>{trans.date}</td>
+                  <td>{trans.description}</td>
+                  <td>{trans.category}</td>
+                  <td>{trans.amount}</td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => handlerDeleteClick(trans._id)}
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            : filteredTransactions.map(trans => (
+                <tr key={trans._id}>
+                  <td>{trans.date}</td>
+                  <td>{trans.description}</td>
+                  <td>{trans.category}</td>
+                  <td>{trans.amount}</td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => handlerDeleteClick(trans._id)}
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>
