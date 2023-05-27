@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
 import s from './ModalConsern.module.css';
 import icon from '../../../shared/images/svg/close.svg';
 import { useEffect } from 'react';
+
 const ModalConsern = ({ title, closeModal, onSubmit }) => {
+  const modalRoot = document.querySelector('#modal-root');
+
   const handleClick = () => {
     onSubmit();
   };
@@ -26,9 +30,8 @@ const ModalConsern = ({ title, closeModal, onSubmit }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   });
 
-  return (
+  return createPortal(
     <>
-      (
       <div className={s.modalOverlay} onClick={handleBackdropClick}>
         <div className={s.modalWindow}>
           <div className={s.modalClose} onClick={handleCancel}>
@@ -50,8 +53,8 @@ const ModalConsern = ({ title, closeModal, onSubmit }) => {
           </div>
         </div>
       </div>
-      )
-    </>
+    </>,
+    modalRoot
   );
 };
 
