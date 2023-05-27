@@ -3,11 +3,10 @@ import ReportCategories from 'modules/moduleReports/components/ReportCategories/
 import ReportGraph from 'modules/moduleReports/components/ReportGraph/ReportGraph';
 import ReportTotal from 'modules/moduleReports/components/ReportTotal/ReportTotal';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMemo, useState } from 'react';
-import {
-  selectPeriod,
-  // selectAllCategories,
-} from 'redux/transaction/transactionSelectors';
+import { useState } from 'react';
+import // selectPeriod,
+// selectAllCategories,
+'redux/transaction/transactionSelectors';
 // import { getTransactionPeriod } from 'redux/reports/reportsOperations';
 import {
   getTransactionByPeriod,
@@ -19,18 +18,21 @@ const Report = () => {
   const [objforGrph, setObjforGrph] = useState([]);
   useLogCheck();
   const dispatch = useDispatch();
-  const data = useSelector(selectPeriod);
+  // const data = useSelector(selectPeriod);
+  const totalExpenses = useSelector(
+    state => state.transactions.reports.expenses.total
+  );
+  const totalIncomes = useSelector(
+    state => state.transactions.reports.incomes.total
+  );
 
   const handleDataChooser = data => dispatch(getTransactionByPeriod(data));
   const handleSelected = data => setObjforGrph(data);
-  const fetchedData = useMemo(() => {
-    return data;
-  }, [data]);
 
   return (
     <section>
       <ReportBar onClick={handleDataChooser} />
-      <ReportTotal data={fetchedData} />
+      <ReportTotal data={{ totalExpenses, totalIncomes }} />
       <ReportCategories onclick={handleSelected} />
       <ReportGraph data={objforGrph} />
     </section>

@@ -10,11 +10,26 @@ import {
 import { format } from 'date-fns';
 import { deleteTransactionById } from 'redux/transaction/transactionSlice';
 import { getAuthUser } from 'redux/auth/authOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteTransaction } from 'redux/transaction/transactionOperations';
+import {
+  selectCurrentTransactionType,
+  selectExpenses,
+  selectIncomes,
+} from 'redux/transaction/transactionSelectors';
+import { format } from 'date-fns';
+import { deleteTransactionById } from 'redux/transaction/transactionSlice';
+import { getAuthUser } from 'redux/auth/authOperations';
 
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
+const formatEventStart = date => {
+  return format(Date.parse(date), 'yyyy-MM-dd');
+};
 
+const TransactionsListMobile = ({ selectedDate }) => {
+  //   console.log(selectedDate);
 const TransactionsListMobile = ({ selectedDate }) => {
   //   console.log(selectedDate);
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -54,6 +69,14 @@ const TransactionsListMobile = ({ selectedDate }) => {
                   <span className={s.transactionDate}>{el.date}</span>
                   <span>{el.category}</span>
                 </div>
+          {filteredTransactions.map(el => (
+            <li className={s.mobileItem} key={el._id}>
+              <div className={s.categoryContainer}>
+                <p className={s.categoryDescription}>{el.description}</p>
+                <div className={s.categoryWrapper}>
+                  <span className={s.transactionDate}>{el.date}</span>
+                  <span>{el.category}</span>
+                </div>
               </div>
               <div className={s.ammountWrapper}>
                 <p className={s.transactionAmount}>
@@ -63,6 +86,8 @@ const TransactionsListMobile = ({ selectedDate }) => {
                   Delete
                 </button>
               </div>
+            </li>
+          ))}
             </li>
           ))}
         </ul>

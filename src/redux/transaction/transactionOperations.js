@@ -88,6 +88,7 @@ export const getTransactionByPeriod = createAsyncThunk(
   async (param, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await getTransactionPeriodDataApi(param);
+
       return data;
     } catch (error) {
       dispatch(errorHandler({ error, cb: () => deleteTransaction(param) }));
@@ -107,6 +108,7 @@ export const getAllCategories = createAsyncThunk(
       // const incomes = await getTransactionIncomeApi;
       // const expenses = await getTransactionExpenseApi();
       // return { incomes, expenses };
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

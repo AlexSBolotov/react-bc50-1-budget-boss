@@ -1,3 +1,4 @@
+import { categoriesAdapter } from 'redux/transaction/transactionSlice';
 import {
   FLUSH,
   PAUSE,
@@ -37,3 +38,11 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+//! ===============
+export const { selectAll: selectAllExpenses } = categoriesAdapter.getSelectors(
+  state => state.transactions.reports.expenses
+);
+export const { selectAll: selectAllIncomes } = categoriesAdapter.getSelectors(
+  state => state.transactions.reports.incomes
+);

@@ -1,34 +1,53 @@
 import { useSelector } from 'react-redux';
-import { selectPeriod } from 'redux/transaction/transactionSelectors';
+
 import s from 'modules/moduleReports/components/ReportCategories/ReportCategories.module.scss';
 import * as images from 'modules/moduleReports';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+import { selectAllExpenses, selectAllIncomes } from 'redux/store';
+import { nanoid } from '@reduxjs/toolkit';
+import { useEffect, useRef, useState, useLayoutEffect, createRef } from 'react';
 
 const ReportCategories = ({ onclick }) => {
-  const periodData = useSelector(selectPeriod);
+  const active = useRef();
+  console.log(active);
+  const [flag, setFlag] = useState(true);
+  useLayoutEffect(() => {
+    return () => {};
+  }, []);
 
-  let expenses = null;
-  // let incomes = null;
-  if (periodData) {
-    expenses = Object.entries(periodData.expenses.expensesData);
-    // incomes = Object.entries(periodData.incomes.incomesData);
-
-    expenses = [...expenses]
-      .sort((b, a) => a[1].total - b[1].total)
-      .map((item, index) => {
-        return (
-          <li key={index} className={s.item} onClick={() => onclick(item)}>
-            <p>{item[1].total}</p>
-            <div>
-              <img src={images.products} alt={item[0]} />
-            </div>
-            <p>{item[0]}</p>
-          </li>
-        );
-      });
+  const active3 = createRef(() => 1);
+  console.log(active3);
+  const expenses = useSelector(selectAllExpenses);
+  useEffect(() => {
+    const active2 = document.querySelector('.item');
+    console.log(active2);
+    setTimeout(() => {
+      console.log(active);
+    }, 0);
+  }, []);
+  const incomes = useSelector(selectAllIncomes);
+  function renderChoise(params) {
+    return params.map(item => (
+      <li key={nanoid()} className={s.item} onClick={() => onclick(item)}>
+        <p>{item.total}</p>
+        <div>
+          <img
+            src={
+              item.name_en
+                ? images[item.name_en.toLowerCase().split(',')[0]]
+                : images.other
+            }
+            alt={item.name_en}
+          />
+        </div>
+        <p>{item.name_en}</p>
+      </li>
+    ));
   }
 
-  function handleChoise(params) {}
+  function handleChoise() {
+    setFlag(!flag);
+  }
   return (
     <div className={s.categories}>
       <div className={s.titleReports}>
@@ -39,12 +58,15 @@ const ReportCategories = ({ onclick }) => {
             onClick={() => handleChoise()}
           />
         </button>
-        <h2>EXPRENSES </h2>
+        {flag && <h2>EXPRENSES </h2>}
+        {!flag && <h2>INCOMES </h2>}
         <button className={s.btn} onClick={() => handleChoise()}>
           <MdKeyboardArrowRight size="26" color="green" />
         </button>
       </div>
-      <ul className={s.items}>{expenses}</ul>
+      <ul className={s.items}>
+        {flag ? renderChoise(expenses) : renderChoise(incomes)}
+      </ul>
     </div>
   );
 };
