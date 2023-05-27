@@ -26,13 +26,11 @@ const TransactionsListMobile = ({ selectedDate }) => {
   const dispatch = useDispatch();
   const normalizedDate = formatEventStart(selectedDate);
 
-  //   console.log(incomes);
-
   const filteredTransactions =
     currentTransactionType === 'incomes'
       ? incomes.filter(transaction => transaction.date === normalizedDate)
       : expenses.filter(transaction => transaction.date === normalizedDate);
-  //   console.log(filteredTransactions);
+  // console.log(isMobile);
 
   const handlerDeleteClick = id => {
     dispatch(deleteTransaction(id));
@@ -41,6 +39,8 @@ const TransactionsListMobile = ({ selectedDate }) => {
       dispatch(getAuthUser());
     }, 200);
   };
+  // console.log(currentTransactionType);
+  // console.log(filteredTransactions);
 
   return (
     <div className={s.mobileContainer}>
@@ -59,7 +59,7 @@ const TransactionsListMobile = ({ selectedDate }) => {
                 <p className={s.transactionAmount}>
                   {el.amount} {'UAH'}
                 </p>
-                <button onClick={() => handlerDeleteClick(el.id)}>
+                <button onClick={() => handlerDeleteClick(el._id)}>
                   Delete
                 </button>
               </div>

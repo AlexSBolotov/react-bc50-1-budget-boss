@@ -13,6 +13,9 @@ const TransactionsSummary = () => {
   const incomesStats = useSelector(selectIncomesStats);
   const currentTransactionType = useSelector(selectCurrentTransactionType);
 
+  console.log(expensesStats);
+  console.log(incomesStats);
+
   const [incomes, setIncomes] = useState(incomesStats);
 
   const [expenses, setExpenses] = useState(expensesStats);
@@ -30,44 +33,47 @@ const TransactionsSummary = () => {
   let summaryData = [];
 
   if (currentTransactionType === 'incomes') {
-    summaryData = Object.entries(incomes) ?? [];
+    summaryData =
+      Object.entries(incomes)
+        .slice(0, new Date().getMonth() + 1)
+        .reverse() ?? [];
   } else {
-    summaryData = Object.entries(expenses) ?? [];
+    summaryData =
+      Object.entries(expenses)
+        .slice(0, new Date().getMonth() + 1)
+        .reverse() ?? [];
   }
-
-  // console.log(summaryData);
 
   return (
     <>
-      {summaryData.map(el => el !== 'N/A') && (
-        <div className={s.summaryWrapper}>
-          <table className={s.summaryTable}>
-            <thead className={s.summaryHead}>
-              <tr>
-                <th colSpan="2" className={s.summaryTableHeading}>
-                  Summary
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {summaryData.map(el => {
-                if (el[1] === 'N/A') {
-                  return false;
-                } else {
-                  return (
-                    <tr key={`${el[0]}${el[1]}`}>
-                      <td className={s.summaryTableCell}>
-                        {monthTranslation(el[0])}
-                      </td>
-                      <td className={s.summaryTableCell}>{el[1]}</td>
-                    </tr>
-                  );
-                }
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
+      (
+      <div className={s.summaryWrapper}>
+        <table className={s.summaryTable}>
+          <thead className={s.summaryHead}>
+            <tr>
+              <th colSpan="2" className={s.summaryTableHeading}>
+                Summary
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {summaryData.map(el => {
+              if (el[1] === 'N/A') {
+                el[1] = 0;
+              }
+              return (
+                <tr key={`${el[0]}${el[1]}`}>
+                  <td className={s.summaryTableCell}>
+                    {monthTranslation(el[0])}
+                  </td>
+                  <td className={s.summaryTableCell}>{el[1]}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      )
     </>
   );
 };

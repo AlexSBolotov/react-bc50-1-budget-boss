@@ -19,6 +19,7 @@ const TransactionsList = ({ selectedDate }) => {
 
   const dispatch = useDispatch();
   const normalizedDate = formatEventStart(selectedDate);
+  
 
   const filteredTransactions =
     currentTransactionType === 'incomes'
