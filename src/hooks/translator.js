@@ -1,6 +1,6 @@
 const spells = [
-  ['Продукты', 'PRODUCTS'],
-  ['Алкоголь', 'ALCOHOL'],
+  ['Продукты', 'products'],
+  ['Алкоголь', 'Alcohol'],
   ['Развлечения', 'ENTERTAIMENT'],
   ['Здоровье', 'HEALTH'],
   ['Транспорт', 'TRANSPORT'],
@@ -10,6 +10,8 @@ const spells = [
   ['Спорт и хобби', 'Sports, hobbies'],
   ['Образование', 'Education'],
   ['Прочее', 'Other'],
+  ['З/П', 'SALARY'],
+  ['Доп. доход', 'ADD, INCOME'],
 ];
 
 const translate = name => {
