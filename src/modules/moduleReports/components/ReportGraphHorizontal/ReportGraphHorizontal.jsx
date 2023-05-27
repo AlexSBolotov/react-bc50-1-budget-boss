@@ -4,56 +4,11 @@ import {
   BarChart,
   Bar,
   XAxis,
+  YAxis,
   ResponsiveContainer,
   LabelList,
-  // YAxis
-  // CartesianGrid,
-  //   Tooltip,
-  //   Legend,
 } from 'recharts';
 
-const data = [
-  {
-    name: 'Pork',
-    value: 1100,
-  },
-  {
-    name: 'Beef',
-    value: 1000,
-  },
-  {
-    name: 'Chiken',
-    value: 800,
-  },
-  {
-    name: 'Fish',
-    value: 660,
-  },
-  {
-    name: 'Panini',
-    value: 350,
-  },
-  {
-    name: 'Coffee',
-    value: 420,
-  },
-  {
-    name: 'Spaghetti',
-    value: 230,
-  },
-  {
-    name: 'Chocolate',
-    value: 200,
-  },
-  {
-    name: 'Olives',
-    value: 320,
-  },
-  {
-    name: 'Greens',
-    value: 720,
-  },
-];
 // const renderCustomBarLabel = ({ x, y, width, value }) => {
 //   return (
 //     <text
@@ -68,16 +23,26 @@ const data = [
 //   );
 // };
 
-export default function ReportGraphHorizontal() {
+export default function ReportGraphHorizontal({ notSortedData }) {
+  const category = notSortedData.name_ru;
+  const notFilteredData = notSortedData[category];
+  let dataArr = [];
+  notFilteredData &&
+    (dataArr = Object.entries(notFilteredData).slice(
+      1,
+      Object.entries(notFilteredData).length
+    ));
+  let dataToRender = [];
+  dataToRender = dataArr.map(el => ({ name: el[0], value: el[1] }));
+  const sortedDataToRender = [...dataToRender].sort(
+    (prevItem, nextItem) => nextItem.value - prevItem.value
+  );
   return (
     <ResponsiveContainer>
       <BarChart
         layout="vertical"
-        data={data}
-        // barGap={36}
+        data={sortedDataToRender}
         barSize={15}
-        // reverseStackOrder={true}
-        // style={{ stroke: '#fff', strokeWidth: 20 }}
         margin={{
           top: 50,
           right: 30,
@@ -91,7 +56,7 @@ export default function ReportGraphHorizontal() {
             <stop offset="100%" stopColor="#383C46" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <XAxis hide />
+        <YAxis hide />
 
         <Bar dataKey="value" fill="url(#colorUv)" radius={[0, 10, 10, 0]}>
           <LabelList
