@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import BalanceModal from '../BalanceModal/BalanceModal';
@@ -7,17 +7,13 @@ import { selectBalance } from 'redux/auth/authSelectors';
 
 import s from './Balance.module.css';
 
-const Balance = ({ displayStyle }) => {
+const Balance = () => {
   const initialBalance = useSelector(selectBalance);
-  const [input, setInput] = useState(initialBalance);
+  const [input, setInput] = useState(`${initialBalance.toFixed(2)} UAH`);
 
   const handleChange = e => {
     setInput(e.target.value);
   };
-
-  useEffect(() => {
-    setInput(initialBalance);
-  }, [initialBalance]);
 
   return (
     <div className={s.balance_form}>
@@ -26,18 +22,19 @@ const Balance = ({ displayStyle }) => {
         <input
           className={s.balance_value}
           name="balance"
-          pattern="[0-9, .UAH]*"
           title="Field must contain only numbers"
           type="number"
-          value={input.toFixed(2)}
+          value={input}
           onChange={handleChange}
-          placeholder={`00.00 UAH`}
+          placeholder={
+            initialBalance === 0
+              ? `00.00 UAH`
+              : `${initialBalance.toFixed(2)} UAH`
+          }
         />
       </span>
 
-      {!initialBalance && (
-        <BtnConfirmBalance input={input} displayStyle={displayStyle} />
-      )}
+      {!initialBalance && <BtnConfirmBalance balanceToUpdate={input} />}
       {!initialBalance && <BalanceModal />}
     </div>
   );

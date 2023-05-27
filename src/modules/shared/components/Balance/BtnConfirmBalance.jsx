@@ -1,29 +1,24 @@
-
 import { useDispatch } from 'react-redux';
-import { updateUserBalanceApi } from '../../../../services/kapustaApi';
 import s from './Balance.module.css';
+import { setNewBalance, getAuthUser } from 'redux/auth/authOperations';
 
-const BtnConfirmBalance = ({ input, displayStyle }) => {
+const BtnConfirmBalance = ({ balanceToUpdate }) => {
   const dispatch = useDispatch();
-
   const addBalance = () => {
-    const newBalance = Number(input);
-
+    const newBalance = Number(balanceToUpdate);
+    console.log(newBalance);
     if (newBalance > 0) {
-      dispatch(
-        updateUserBalanceApi.handleUpdateUserBalance({ newBalance: newBalance })
-      );
+      dispatch(setNewBalance({ newBalance: newBalance }));
+      setTimeout(() => {
+        dispatch(getAuthUser());
+      }, 200);
     } else {
       alert('The balance must be positive');
     }
   };
 
   return (
-    <button
-      type="button"
-      className={s.balance_submit}
-      onClick={addBalance}
-    >
+    <button type="button" className={s.balance_submit} onClick={addBalance}>
       Confirm
     </button>
   );
