@@ -12,6 +12,11 @@
   color: #F6F7FB;
 }
 
+.back {
+  display: flex;
+  
+}
+
 @media screen and (min-width: 768px) {
   .goBackLink {
     display: block;
@@ -23,6 +28,19 @@
     text-align: center;
     display: flex;
     align-items: center;
+    gap: 16px;
   }
 
+}
+@media screen and (min-width: 1280px) {
+  .goBackLink{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .back {
+    display: flex;
+    
+  }
 }

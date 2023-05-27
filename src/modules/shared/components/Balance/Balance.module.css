@@ -1,3 +1,7 @@
+.balance_form {
+  
+}
+
 .balance_title {
   font-family: Roboto, sans-serif;
   font-size: 12px;
@@ -6,8 +10,8 @@
   line-height: 1.17;
   color: #C7CCDC;
 
-  margin-bottom: 6px;
-  margin-top: 0;
+  margin-bottom: 8px;
+  margin-top: 104px;
 }
 .balance_submit {
   display: inline-block;
@@ -69,7 +73,7 @@
 @media screen and (min-width: 768px) {
   .balance_form {
     display: flex;
-
+   
     align-items: center;
     /* padding-left: 20px; */
   }
@@ -93,7 +97,8 @@
 
   .balance_title {
     margin-bottom: 0px;
-    margin-right: 21px;
+    margin-right: 20px;
+    margin-top: 0px;
   }
   .balance_value_span::after {
     position: absolute;
@@ -105,11 +110,6 @@
   }
 }
 
-@media screen and (max-width: 1279px) {
-  /* .balance_submit_none {
-    display: none;
-  } */
-}
 
 @media screen and (min-width: 1280px) {
   .balance_form {
@@ -117,6 +117,12 @@
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    /* margin-top: 40px; */
+    
+  }
+
+  .balance_title {
+    margin-top: 0px;
   }
 
   .balance_submit {

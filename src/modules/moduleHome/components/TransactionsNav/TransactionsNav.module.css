@@ -1,5 +1,5 @@
 .container {
- border-radius: none;
+border-radius: none;
 display: flex;
 justify-content: center;
 }
@@ -16,8 +16,7 @@ padding: 20px 0px;
 color: #F6F7FB;
 background: linear-gradient(340deg, #383847 14.1%, #2D2D38 89.51%);
 font-weight: 700;
-    font-size: 12px;
-    
+font-size: 12px;
 text-transform: uppercase;
 }
 
@@ -37,6 +36,16 @@ text-transform: uppercase;
     color: #F6F7FB;
     background: linear-gradient(355deg, #383847 14.1%, #2D2D38 89.51%);
 }
+.one:focus,
+.one:focus {
+    box-shadow: 0px 0px 6px #41A350;
+    color: #60C470;
+}
+.two:focus,
+.two:focus {
+    box-shadow: 0px 0px 6px #41A350;
+    color: #60C470;
+}
 
 @media screen and (min-width: 768px) {
      .container {
@@ -55,6 +64,14 @@ text-transform: uppercase;
         width: 138px;
         height: 40px;; 
     }
+    .one:active {
+        color: #60C470;
+        background: #383847;
+    }
+    .two:active {
+        color: #60C470;
+        background: #383847;
+    }
 }
 
 @media screen and (min-width: 1280px){
@@ -67,11 +84,22 @@ text-transform: uppercase;
        border-radius: 16px 16px 0px 0px; 
        width: 138px;
        height: 40px;
+       background: #2D2D38 ;
+       
     }
 
     .two {
         border-radius: 16px 16px 0px 0px;
         width: 138px;
-        height: 40px;; 
+        height: 40px;
+        background: #2D2D38 ;
+    }
+    .one:active {
+        color: #60C470;
+        background: #383847;
+    }
+    .two:active {
+        color: #60C470;
+        background: #383847;
     }
 }

@@ -6,10 +6,10 @@ import TransactionsNav from 'modules/moduleHome/components/TransactionsNav/Trans
 const HomeBar = () => {
   return (
     <section>
-      <Balance />
       <NavLink to="/reports">
         <ReportsLink />
       </NavLink>
+      <Balance />
       <TransactionsNav />
     </section>
   );
