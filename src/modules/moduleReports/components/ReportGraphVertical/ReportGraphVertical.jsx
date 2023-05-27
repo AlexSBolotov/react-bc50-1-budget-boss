@@ -68,7 +68,17 @@ const renderCustomBarLabel = ({ x, y, width, value }) => {
   );
 };
 
-export default function ReportGraphVertical() {
+export default function ReportGraphVertical({ dataExp }) {
+  const newObj = {};
+  // const DataGg = Object.entries(dataExp[2]).forEach((item, index) => ({
+  //   ...newObj,
+  //   name: item[0][index],
+  //   total: item[1][index],
+  // }));
+
+  console.log(dataExp);
+  console.log(newObj);
+  // console.log(DataGg);
   return (
     <ResponsiveContainer>
       <BarChart

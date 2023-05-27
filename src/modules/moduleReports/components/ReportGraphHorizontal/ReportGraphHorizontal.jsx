@@ -68,7 +68,9 @@ const data = [
 //   );
 // };
 
-export default function ReportGraphHorizontal() {
+export default function ReportGraphHorizontal({ dataExp }) {
+  console.log(dataExp);
+  console.log('H');
   return (
     <ResponsiveContainer>
       <BarChart
