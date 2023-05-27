@@ -8,25 +8,15 @@ import {
   selectIncomesCategories,
 } from 'redux/transaction/transactionSelectors';
 import {
-  // addTransactionExpense,
+  addTransactionExpense,
   addTransactionIncome,
 } from 'redux/transaction/transactionOperations';
 import { getAuthUser } from 'redux/auth/authOperations';
+import {
+  categoryTranslationEnToRu,
+  categoryTranslationRuToEn,
+} from './translateFunc';
 
-// const OPTIONS = [
-//   { value: 'products', label: 'Products' },
-//   { value: 'alcohol', label: 'Alcohol' },
-//   { value: 'entertainment', label: 'Entertaiment' },
-//   { value: 'health', label: 'Health' },
-//   { value: 'transport', label: 'Transport' },
-//   { value: 'housing', label: 'Housing' },
-//   { value: 'hobbies', label: 'Sports, hobbies' },
-//   { value: 'technique', label: 'Technique' },
-//   { value: 'communal', label: 'Communal, communication' },
-//   { value: 'education', label: 'Education' },
-//   { value: 'other', label: 'Other' }
-
-// ]
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
@@ -34,14 +24,16 @@ const TransactionForm = ({ selectedDate }) => {
   const currentTransactionType = useSelector(selectCurrentTransactionType);
   const expensesCategories = useSelector(selectExpensesCategories);
   const incomesCategories = useSelector(selectIncomesCategories);
-  console.log(currentTransactionType, expensesCategories, incomesCategories);
+
 
   const dispatch = useDispatch();
   const handleFormSubmit = e => {
     e.preventDefault();
     const amount = e.target.elements.amount.value;
     const description = e.target.elements.description.value;
-    const category = e.target.elements.categories.value;
+    const category = categoryTranslationEnToRu(
+      e.target.elements.categories.value
+    );
     const date = formatEventStart(selectedDate);
     const payload = {
       description,
@@ -49,14 +41,18 @@ const TransactionForm = ({ selectedDate }) => {
       date,
       category,
     };
-    console.log(payload);
-    // dispatch(addTransactionExpense(payload));
-    dispatch(addTransactionIncome(payload));
-    setTimeout(() => {
-      dispatch(getAuthUser());
-    }, 200);
-
-    // console.log(description, category, amount, date);
+    console.log('payload', payload);
+    if (currentTransactionType === 'expenses') {
+      dispatch(addTransactionExpense(payload));
+      setTimeout(() => {
+        dispatch(getAuthUser());
+      }, 200);
+    } else {
+      dispatch(addTransactionIncome(payload));
+      setTimeout(() => {
+        dispatch(getAuthUser());
+      }, 200);
+    }
   };
   return (
     <div>
@@ -68,20 +64,17 @@ const TransactionForm = ({ selectedDate }) => {
           className={s.input}
         />
         <select name="categories" className={s.select}>
-          {/* map me */}
-          <option value="З/П">Salary</option>
-          <option value="Доп. доход">Add. income</option>
-          <option value="Продукты">Products</option>
-          <option value="Алкоголь">Alcohol</option>
-          <option value="Развлечения">Entertainment</option>
-          <option value="Здоровье">Health</option>
-          <option value="Транспорт">Transport</option>
-          <option value="Всё для дома">Housing</option>
-          <option value="Спорт и хобби">Sports, hobbies</option>
-          <option value="Техника">Technique</option>
-          <option value="Коммуналка и связь">Communal, communication</option>
-          <option value="Образование">Education</option>
-          <option value="Прочее">Other</option>
+          {currentTransactionType === 'expenses'
+            ? expensesCategories.map(category => (
+                <option value={categoryTranslationRuToEn(category)}>
+                  {categoryTranslationRuToEn(category)}
+                </option>
+              ))
+            : incomesCategories.map(category => (
+                <option value={categoryTranslationRuToEn(category)}>
+                  {categoryTranslationRuToEn(category)}
+                </option>
+              ))}
         </select>
         <input
           type="number"
