@@ -6,6 +6,7 @@ import {
   logoutUserApi,
   token,
   getUserInfoApi,
+  updateUserBalanceApi,
   //   refreshTokenApi,
   // googleAuthApi,
 } from 'services/kapustaApi';
@@ -62,6 +63,16 @@ export const getAuthUser = createAsyncThunk(
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
+    }
+  }
+);
+export const setNewBalance = createAsyncThunk(
+  'auth/setNewBalance',
+  async (newBalance, { rejectWithValue }) => {
+    try {
+      await updateUserBalanceApi(newBalance);
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
