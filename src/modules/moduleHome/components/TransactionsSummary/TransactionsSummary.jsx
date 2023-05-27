@@ -5,9 +5,7 @@ import {
   selectExpensesStats,
   selectIncomesStats,
   selectCurrentTransactionType,
-  selectCurrentTransactionType,
 } from 'redux/transaction/transactionSelectors';
-import { useEffect, useState } from 'react';
 import { useEffect, useState } from 'react';
 
 const TransactionsSummary = () => {
