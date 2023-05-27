@@ -3,11 +3,10 @@ import ReportCategories from 'modules/moduleReports/components/ReportCategories/
 import ReportGraph from 'modules/moduleReports/components/ReportGraph/ReportGraph';
 import ReportTotal from 'modules/moduleReports/components/ReportTotal/ReportTotal';
 import { useSelector, useDispatch } from 'react-redux';
-import { useMemo, useState } from 'react';
-import {
-  selectPeriod,
-  // selectAllCategories,
-} from 'redux/transaction/transactionSelectors';
+import { useState } from 'react';
+import // selectPeriod,
+// selectAllCategories,
+'redux/transaction/transactionSelectors';
 // import { getTransactionPeriod } from 'redux/reports/reportsOperations';
 import {
   getTransactionByPeriod,
