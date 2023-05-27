@@ -16,6 +16,7 @@ const initialState = {
   error: null,
   isLoading: false,
   isAuth: false,
+  isRefreshing: false,
   userData: {
     email: null,
     balance: 0,
@@ -84,6 +85,7 @@ const authSlice = createSlice({
       })
       // ================ GET AUTHORIZED USER =====================
       .addCase(getAuthUser.pending, state => {
+        state.isRefreshing = true;
         state.isLoading = true;
       })
       .addCase(getAuthUser.fulfilled, (state, { payload }) => {
@@ -91,11 +93,13 @@ const authSlice = createSlice({
           ...state,
           isAuth: true,
           isLoading: false,
+          isRefreshing: false,
           error: null,
           userData: { ...payload },
         };
       })
       .addCase(getAuthUser.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
         state.isLoading = false;
         state.error = payload;
       });
