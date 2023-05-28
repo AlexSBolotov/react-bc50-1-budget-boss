@@ -6,14 +6,22 @@ import s from 'modules/moduleHome/components/HomeBar/HomeBar.module.scss';
 import { selectBalance } from 'redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
 
+
 const HomeBar = () => {
-  const initialBalance = useSelector(selectBalance); 
+  const initialBalance = useSelector(selectBalance);
+
   
   
   return (
-    <section >
-      <div className={s.bar}>
-        <NavLink to="/reports" style={{pointerEvents: initialBalance === 0 ? "none" : 'auto'}}>
+    <section>
+      <div
+        className={s.bar}
+        style={{ gap: initialBalance === 0 ? '251px' : '391px' }}
+      >
+        <NavLink
+          to="/reports"
+          style={{ pointerEvents: initialBalance === 0 ? 'none' : 'auto' }}
+        >
           <ReportsLink />
         </NavLink>
         <Balance />
