@@ -1,11 +1,49 @@
+.mobileForm {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+.form {
+  display: flex;
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+.btn_container {
+  display: flex;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin-top: 55px;
+    gap: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    gap: 16px;
+  }
+  @media screen and (min-width: 1200px) {
+    position: static;
+    transform: translateX(0);
+    padding-left: 32px;
+  }
+  // justify-content: center;
+  // margin-top: 32px;
+}
 .input {
-  width: 196.8px;
-  padding: 8px 20px;
+  width: 280px;
+  padding: 15px 15px;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid #474759;
   border-radius: 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   font-size: 16px;
   background-color: rgba(56, 56, 71, 1);
   font-family: 'Roboto';
@@ -14,21 +52,35 @@
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
+  @media screen and (min-width: 768px) {
+    width: 194px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    text-align: left;
+    border-top-right-radius: 0;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 290px;
+  }
+  &:focus,
+  &:hover {
+    outline: none;
+    border: 2px solid #474759;
+    box-shadow: 0px 6px 7px -2px #41a350;
+  }
 }
 // цвет один и тот же но не совпадает
-.input:focus {
-  outline: none;
-  border: 2px solid #474759;
-}
 
 .select {
-  // width: ;
-  padding: 8px 20px;
+  background: url('../../../shared/images/svg/Vector\ 15.svg') no-repeat;
+  background-position: right 10% bottom 48%;
+  background-size: 10px;
+  padding: 15px 20px;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid #474759;
   border-radius: 0;
-  border-bottom-right-radius: 10px;
-  font-size: 16px;
+  border-bottom-right-radius: 16px;
   background-color: rgba(56, 56, 71, 1);
   appearance: none;
   font-family: 'Roboto';
@@ -37,16 +89,31 @@
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
+  text-align: left;
+  width: 280px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 170px;
+    border-bottom-right-radius: 0;
+  }
+  &:focus,
+  &:hover {
+    outline: none;
+    border: 2px solid #474759;
+    box-shadow: 0px 6px 7px -2px #41a350;
+  }
 }
 
 .select:focus {
   outline: none;
-  border: 2px solid #474759;
+  max-width: 170px;
 }
 
-.select option {
+#select-option {
   box-sizing: border-box;
-  padding: 8px 20px !important;
+
+  // падинги для опций !!!!!!
+  padding: 9px 18px !important;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -56,45 +123,68 @@
   color: rgba(199, 204, 220, 0.5);
   background-color: rgba(56, 56, 71, 1);
   border: 0;
-  /* Styles for the options */
+  text-align: left;
 }
-  .select option:hover {
-    background-color: #474759;
-    color:rgba(246, 247, 251, 1);
-    /* Styles for the options on hover */
-  }
-.select option:focus {
-  background-color: #474759!important;
-  color: rgba(246, 247, 251, 1)!important;
+#select-option:hover {
+  background-color: #474759 !important;
+  color: rgba(246, 247, 251, 1);
+}
+#select-option:focus {
+  background-color: #474759 !important;
+  color: rgba(246, 247, 251, 1) !important;
   /* Styles for the options on hover */
 }
 
-.select option:checked {
-  background-color: #474759!important;
-  color: rgba(246, 247, 251, 1)!important;
-  /* Styles for the selected option */
+#select-option:checked {
+  background-color: #474759 !important;
+  color: rgba(246, 247, 251, 1) !important;
 }
 
 .input_calc {
-  padding: 12px;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin-top: 35px;
+  }
+
+  background: url('../../../shared/images/png/calculator1x.png') no-repeat;
+  background-position: right 15% bottom 50%;
+  background-size: 20px;
+  padding: 12px 20px;
+
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
-  color: #c7ccdc;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
-  background-image: ('../../../shared/images/svg/calendar.svg') no-repeat left;
+  color: #c7ccdc;
   border: 2px solid #474759;
   border-radius: 22px;
+  @media screen and (min-width: 768px) {
+    border-radius: 0 16px 16px 0;
+    width: 116px;
+    text-align: center;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 12px 37px;
+  }
+  &:hover,
+  &:focus {
+    outline: none;
+    box-shadow: 0px 6px 7px -2px #41a350;
+  }
 }
+
+.input_calc::-webkit-inner-spin-button,
+.input_calc::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .btn_input {
-    border: 2px solid transparent;
+  border: 2px solid transparent;
   padding: 12px 36px;
   border-radius: 16px;
   background: #42a652;
-  box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
@@ -102,13 +192,25 @@
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #F6F7FB;
+  color: #f6f7fb;
+  @media screen and (min-width: 768px) {
+    padding: 12px 37px;
+    text-align: center;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 16px 48px;
+  }
+  &:hover,
+  &:focus {
+    box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
+    background: #3d944c;
+  }
 }
 .btn_clear {
   border-radius: 16px;
   border: 2px solid #474759;
   padding: 12px 36px;
-  background-color: rgba(71, 71, 89, 1);
+  background-color: rgba(56, 56, 71, 1);
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
@@ -116,30 +218,17 @@
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #F6F7FB;
+  color: #f6f7fb;
+  @media screen and (min-width: 768px) {
+    padding: 12px 37px;
+    text-align: center;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 16px 48px;
+  }
+  &:hover,
+  &:focus {
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);
+    background-color: rgb(70, 70, 88);
+  }
 }
-//   .my-select::-ms-expand {
-//     display: none; /* Removes arrow icon on Internet Explorer/Edge */
-//   }
-
-// .react-select__control{
-//     background-color: rgba(56, 56, 71, 1);
-
-// }
-// .react-select__option{
-//     background-color: rgba(56, 56, 71, 1);
-// }
-// .react-select__option--is-selected,
-// .react-select__option--is-focused{
-//     background-color: #474759;
-// }
-// .react-select__single-value,
-// .react-select__placeholder{
-//     font-family: 'Roboto';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 12px;
-// line-height: 1.16;
-// letter-spacing: 0.02em;
-// color: rgba(199, 204, 220, 0.5);
-// }
