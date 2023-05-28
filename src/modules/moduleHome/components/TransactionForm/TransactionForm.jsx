@@ -17,6 +17,7 @@ import {
   categoryTranslationRuToEn,
 } from './translateFunc';
 
+
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
@@ -82,7 +83,8 @@ const TransactionForm = ({ selectedDate }) => {
           name="amount"
           placeholder="0.00"
           className={s.input_calc}
-        />
+        >
+        </input>
         <div className={s.btn_container}>
         <button type="submit" className={s.btn_input}>
           Input

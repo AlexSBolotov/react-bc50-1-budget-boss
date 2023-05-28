@@ -47,15 +47,21 @@
     
 
   }
+  &:focus,
+  &:hover {
+    outline: none;
+    border: 2px solid #474759;
+    box-shadow: 0px 6px 7px -2px #41A350;
+  }
 }
 // цвет один и тот же но не совпадает
-.input:focus {
-  // outline: none;
-  border: 2px solid #474759;
-}
+
 
 .select {
-  // width: ;
+  background: url("../../../shared/images/svg/Vector\ 15.svg") no-repeat;
+  background-position: right 10% bottom 48%;
+  background-size: 10px;
+  padding: 12px 20px;
   padding: 15px 20px;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid #474759;
@@ -75,6 +81,12 @@
   @media screen and (min-width: 768px) {
     max-width: 170px;
     border-bottom-right-radius: 0;
+  }
+  &:focus,
+  &:hover {
+    outline: none;
+    border: 2px solid #474759;
+    box-shadow: 0px 6px 7px -2px #41A350;
   }
 }
 
@@ -112,21 +124,21 @@
 #select-option:checked {
   background-color: #474759 !important;
   color: rgba(246, 247, 251, 1) !important;
-  /* Styles for the selected option */
 }
 
 .input_calc {
+  background: url("../../../shared/images/png/calculator1x.png") no-repeat;
+  background-position: right 15% bottom 50%;
+  background-size: 20px;
   padding: 12px 20px;
 
   font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.16;
-  color: #c7ccdc;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  background-image: ('../../../shared/images/svg/calendar.svg') no-repeat left;
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 1.16;
+letter-spacing: 0.02em;
+color: #C7CCDC;
   border: 2px solid #474759;
   border-radius: 22px;
   @media screen and (min-width: 768px) {
@@ -140,10 +152,18 @@
   &:hover,
   &:focus{
     outline:none;
+    box-shadow: 0px 6px 7px -2px #41A350;
     
     
   }
 }
+
+.input_calc::-webkit-inner-spin-button,
+.input_calc::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;}
+
+
 .btn_input {
   border: 2px solid transparent;
   padding: 12px 36px;
