@@ -1,14 +1,15 @@
 .modalOverlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #00000050;
+  background-color: #0000007e;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .modalWindow {
   position: absolute;
   top: 50%;
@@ -20,9 +21,10 @@
   align-items: flex-end;
   width: 298px;
   height: 175px;
-  background-color: #383847;
   border-radius: 16px;
-  box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.25));
+  background: #383847;
+  box-shadow: inset 0px 2px 14px rgba(132, 132, 132, 0.2);
 }
 .modalClose {
   position: absolute;
@@ -48,6 +50,7 @@
   text-align: center;
   color: #c7ccdc;
 }
+
 .modalBtnPosition {
   margin-top: 32px;
   display: flex;
@@ -56,15 +59,26 @@
 .modalBtnStyle {
   width: 125px;
   height: 44px;
-
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 2%;
   color: #c7ccdc;
   padding: 12px 25px;
   margin: 0 8px;
   border: 2px solid #474759;
   border-radius: 16px;
+  box-shadow: 1px 3px 5px 0px rgba(71, 71, 89, 0.587);
 }
-.modalBtnStyleColor {
+.modalBtnStyle:hover {
   background-color: #42a652;
   box-shadow: 1px 3px 5px 0px rgba(96, 196, 112, 0.35);
   border-style: none;
+  transition: 250ms cubic-bezier(0.32, 0, 0.67, 0);
+}
+
+@media screen and (min-width: 768px) {
+  .modalWindow {
+    width: 380px;
+  }
 }
