@@ -9,6 +9,7 @@ import { selectAllExpenses, selectAllIncomes } from 'redux/store';
 
 export default function ReportGraph({ data, flag }) {
   const isMobile = useMediaQuery({ maxWidth: 480 });
+
   const forRender = useSelector(flag ? selectAllExpenses : selectAllIncomes);
   console.log(forRender[0]);
   return (
