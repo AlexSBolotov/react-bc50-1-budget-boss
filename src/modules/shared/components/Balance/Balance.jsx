@@ -23,7 +23,6 @@ const Balance = () => {
   return (
     <div className={s.balance_form}>
       <h2 className={s.balance_title}>Balance:</h2>
-      <span className={s.balance_value_span}>
         <input
           className={s.balance_value}
           name="balance"
@@ -41,7 +40,6 @@ const Balance = () => {
             initialBalance === 0 ? `00.00 UAH` : `${balance.toFixed(2)} UAH`
           }
         />
-      </span>
 
       {!initialBalance && <BtnConfirmBalance balanceToUpdate={input} />}
       {!initialBalance && <BalanceModal />}
