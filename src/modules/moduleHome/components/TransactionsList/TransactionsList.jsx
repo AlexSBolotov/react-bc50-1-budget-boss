@@ -7,12 +7,12 @@ import {
 } from 'redux/transaction/transactionSelectors';
 import { format } from 'date-fns';
 import { deleteTransactionById } from 'redux/transaction/transactionSlice';
-import { getAuthUser } from 'redux/auth/authOperations';
 import { categoryTranslationRuToEn } from '../TransactionForm/translateFunc';
 import s from './TransactionsList.module.scss';
 import { ReactComponent as Bucket } from 'modules/shared/images/svg/trashcan.svg';
 import { useState } from 'react';
 import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
+//import { getAuthUser } from 'redux/auth/authOperations';
 
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
@@ -34,7 +34,7 @@ const TransactionsList = ({ selectedDate }) => {
     currentTransactionType === 'incomes'
       ? incomes.filter(transaction => transaction.date === normalizedDate)
       : expenses.filter(transaction => transaction.date === normalizedDate);
-   const toggleModal = id => {
+  const toggleModal = id => {
     setIdTrans(id);
     setModalIsOpen(p => !p);
   };
@@ -46,9 +46,9 @@ const TransactionsList = ({ selectedDate }) => {
   const handlerDeleteClick = () => {
     dispatch(deleteTransaction(idTrans));
     dispatch(deleteTransactionById(idTrans));
-    setTimeout(() => {
-      dispatch(getAuthUser());
-    }, 200);
+    // setTimeout(() => {
+    //   dispatch(getAuthUser());
+    // }, 200);
   };
 
   return (

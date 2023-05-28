@@ -6,9 +6,14 @@ import BtnConfirmBalance from './BtnConfirmBalance';
 import { selectBalance } from 'redux/auth/authSelectors';
 
 import s from './Balance.module.scss';
+import { selectNewBalance } from 'redux/transaction/transactionSelectors';
 
 const Balance = () => {
   const initialBalance = useSelector(selectBalance);
+  const newBalance = useSelector(selectNewBalance);
+  const balance = newBalance === 0 ? initialBalance : newBalance;
+  console.log(balance);
+
   const [input, setInput] = useState(`${initialBalance.toFixed(2)} UAH`); //!!! BUG:  The specified value "16160330.49 UAH" cannot be parsed, or is out of range.
 
   const handleChange = e => {
@@ -33,9 +38,7 @@ const Balance = () => {
             textAlign: initialBalance === 0 ? 'right' : 'center',
           }}
           placeholder={
-            initialBalance === 0
-              ? `00.00 UAH`
-              : `${initialBalance.toFixed(2)} UAH`
+            initialBalance === 0 ? `00.00 UAH` : `${balance.toFixed(2)} UAH`
           }
         />
       </span>
