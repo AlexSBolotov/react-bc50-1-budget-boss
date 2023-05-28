@@ -2,7 +2,7 @@
 
 export { default as products } from 'modules/shared/images/png/products_1x.png';
 export { default as other } from 'modules/shared/images/png/other_1x.png';
-export { default as transort } from 'modules/shared/images/png/taxi_1x.png';
+export { default as transport } from 'modules/shared/images/png/taxi_1x.png';
 export { default as alcohol } from 'modules/shared/images/png/glass_1x.png';
 export { default as entertaiment } from 'modules/shared/images/png/building_1x.png';
 export { default as health } from 'modules/shared/images/png/nurse_1x.png';

@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
+
 import HomeBar from 'modules/moduleHome/components/HomeBar/HomeBar';
 import TransactionContainer from 'modules/moduleHome/components/TransactionContainer/TransactionContainer';
 import TransactionForm from 'modules/moduleHome/components/TransactionForm/TransactionForm';
@@ -20,7 +22,13 @@ import {
   // selectIncomesCategories,
   selectCurrentTransactionType,
 } from 'redux/transaction/transactionSelectors';
+import s from './Home.module.scss';
+
+
 const Home = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  // const isTablet = useMediaQuery({ maxWidth: 1199 });
+  // const isDesktop = useMediaQuery({ maxWidth: 1279});
   const [selectedDate, setSelectedDate] = useState(new Date());
   const dispatch = useDispatch();
   // const expensesCategories = useSelector(selectExpensesCategories);
@@ -34,15 +42,32 @@ const Home = () => {
     dispatch(getTransactionExpense());
   }, [dispatch]);
   return (
-    <section>
+    <>
       <HomeBar />
-      <TransactionDate
+      <div className={s.container}>
+      {(!isMobile) ? <div className={s.tab_deskWrap}>
+        <div className={s.form_wrap}>
+        <TransactionDate
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
       <TransactionForm selectedDate={selectedDate} />
+        </div>
+      
       <TransactionContainer selectedDate={selectedDate} />
-    </section>
+      </div> 
+      : <div className={s.mobWrap}>
+        <TransactionDate
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
+      <button type='button' className={s.open_modal}>Add transaction</button>
+      <TransactionContainer selectedDate={selectedDate} />
+        </div>
+      }
+      
+    </div>
+    </>
   );
 };
 

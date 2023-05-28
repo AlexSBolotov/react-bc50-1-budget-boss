@@ -8,7 +8,7 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <input
       value={value}
-      className="icon-input"
+      className="input"
       onClick={onClick}
       onChange={onChange}
       ref={ref}
@@ -18,8 +18,9 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
     ></input>
   ));
   return (
-    <div className="wrapper-container">
+    <div className='container'>
       <DatePicker
+        className="datepicker"
         dateFormat="dd.MM.yyyy"
         selected={selectedDate}
         onChange={date => {
@@ -28,9 +29,11 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
         }}
         locale={enGB}
         maxDate={new Date()}
+        calendarClassName="calendar"
+      
         customInput={<ExampleCustomInput />}
       />
-    </div>
+      </div>
   );
 };
 export default TransactionDate;

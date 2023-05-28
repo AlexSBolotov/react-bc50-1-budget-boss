@@ -4,7 +4,6 @@
   // margin: 0 auto;
   background-color: #383847;
   padding-bottom: 60px;
-  
 }
 
 // @media screen and (min-width: 480px) {
@@ -18,13 +17,16 @@
 @media screen and (min-width: 768px) {
   .container {
     width: 100%;
+
     height: 100%;
+
     background-image: url(../../images/bg-tablet-1x.png),
       url(../../images/Ellipse-tablet.png);
 
     background-size: cover;
     padding-left: 32px;
     padding-right: 32px;
+    padding-bottom: 80px;
   }
 }
 @media screen and (min-width: 1280px) {
