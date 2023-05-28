@@ -1,8 +1,26 @@
+.mobileForm {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
 .form {
   display: flex;
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
 .btn_container {
   display: flex;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin-top: 55px;
+    gap: 20px;
+  }
   @media screen and (min-width: 768px) {
     top: 50%;
     left: 50%;
@@ -20,7 +38,7 @@
 }
 .input {
   width: 280px;
-  padding: 8px 20px;
+  padding: 15px 15px;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid #474759;
   border-radius: 0;
@@ -44,24 +62,20 @@
   }
   @media screen and (min-width: 1200px) {
     width: 290px;
-    
-
   }
   &:focus,
   &:hover {
     outline: none;
     border: 2px solid #474759;
-    box-shadow: 0px 6px 7px -2px #41A350;
+    box-shadow: 0px 6px 7px -2px #41a350;
   }
 }
 // цвет один и тот же но не совпадает
 
-
 .select {
-  background: url("../../../shared/images/svg/Vector\ 15.svg") no-repeat;
+  background: url('../../../shared/images/svg/Vector\ 15.svg') no-repeat;
   background-position: right 10% bottom 48%;
   background-size: 10px;
-  padding: 12px 20px;
   padding: 15px 20px;
   color: rgba(199, 204, 220, 0.5);
   border: 2px solid #474759;
@@ -76,7 +90,7 @@
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-align: left;
-  width:280px;
+  width: 280px;
 
   @media screen and (min-width: 768px) {
     max-width: 170px;
@@ -86,7 +100,7 @@
   &:hover {
     outline: none;
     border: 2px solid #474759;
-    box-shadow: 0px 6px 7px -2px #41A350;
+    box-shadow: 0px 6px 7px -2px #41a350;
   }
 }
 
@@ -97,7 +111,7 @@
 
 #select-option {
   box-sizing: border-box;
-  
+
   // падинги для опций !!!!!!
   padding: 9px 18px !important;
   font-family: 'Roboto';
@@ -112,7 +126,7 @@
   text-align: left;
 }
 #select-option:hover {
-  background-color: #474759!important;
+  background-color: #474759 !important;
   color: rgba(246, 247, 251, 1);
 }
 #select-option:focus {
@@ -127,18 +141,22 @@
 }
 
 .input_calc {
-  background: url("../../../shared/images/png/calculator1x.png") no-repeat;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin-top: 35px;
+  }
+
+  background: url('../../../shared/images/png/calculator1x.png') no-repeat;
   background-position: right 15% bottom 50%;
   background-size: 20px;
   padding: 12px 20px;
 
   font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 1.16;
-letter-spacing: 0.02em;
-color: #C7CCDC;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.02em;
+  color: #c7ccdc;
   border: 2px solid #474759;
   border-radius: 22px;
   @media screen and (min-width: 768px) {
@@ -146,23 +164,21 @@ color: #C7CCDC;
     width: 116px;
     text-align: center;
   }
-  @media screen and (min-width:1200px){
-    padding:12px 37px;
+  @media screen and (min-width: 1200px) {
+    padding: 12px 37px;
   }
   &:hover,
-  &:focus{
-    outline:none;
-    box-shadow: 0px 6px 7px -2px #41A350;
-    
-    
+  &:focus {
+    outline: none;
+    box-shadow: 0px 6px 7px -2px #41a350;
   }
 }
 
 .input_calc::-webkit-inner-spin-button,
 .input_calc::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;}
-
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .btn_input {
   border: 2px solid transparent;
@@ -178,18 +194,17 @@ color: #C7CCDC;
   text-transform: uppercase;
   color: #f6f7fb;
   @media screen and (min-width: 768px) {
-    padding:12px 37px;
+    padding: 12px 37px;
     text-align: center;
   }
-  @media screen and (min-width:1200px){
-    padding:16px 48px;
+  @media screen and (min-width: 1200px) {
+    padding: 16px 48px;
   }
   &:hover,
-  &:focus{
+  &:focus {
     box-shadow: 1px 3px 5px rgba(96, 196, 112, 0.35);
     background: #3d944c;
   }
-  
 }
 .btn_clear {
   border-radius: 16px;
@@ -205,16 +220,15 @@ color: #C7CCDC;
   text-transform: uppercase;
   color: #f6f7fb;
   @media screen and (min-width: 768px) {
-    padding:12px 37px;
+    padding: 12px 37px;
     text-align: center;
   }
-  @media screen and (min-width:1200px){
-    padding:16px 48px;
+  @media screen and (min-width: 1200px) {
+    padding: 16px 48px;
   }
   &:hover,
-  &:focus{
+  &:focus {
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);
     background-color: rgb(70, 70, 88);
   }
 }
-

@@ -9,6 +9,7 @@ import {
 } from 'redux/transaction/transactionSelectors';
 import { format } from 'date-fns';
 import { deleteTransactionById } from 'redux/transaction/transactionSlice';
+import { ReactComponent as Bucket } from 'modules/shared/images/svg/trashcan.svg';
 import { getAuthUser } from 'redux/auth/authOperations';
 
 const formatEventStart = date => {
@@ -56,11 +57,24 @@ const TransactionsListMobile = ({ selectedDate }) => {
                 </div>
               </div>
               <div className={s.ammountWrapper}>
-                <p className={s.transactionAmount}>
-                  {el.amount} {'UAH'}
+                <p
+                  className={s.transactionAmount}
+                  style={{
+                    color:
+                      currentTransactionType === 'incomes'
+                        ? '#60C470'
+                        : '#FE4566',
+                  }}
+                >
+                  {currentTransactionType === 'incomes'
+                    ? `${el.amount} UAH`
+                    : `- ${el.amount} UAH`}
                 </p>
-                <button onClick={() => handlerDeleteClick(el._id)}>
-                  Delete
+                <button
+                  onClick={() => handlerDeleteClick(el._id)}
+                  className={s.button}
+                >
+                  <Bucket className={s.icon} />
                 </button>
               </div>
             </li>
