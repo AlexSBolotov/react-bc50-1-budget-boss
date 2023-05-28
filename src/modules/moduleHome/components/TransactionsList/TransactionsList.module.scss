@@ -1,7 +1,7 @@
 .container {
   display: flex;
   justify-content: center;
-  width: 624px;
+  width: 620px;
   margin: 0 auto;
   border: 2px solid rgba(86, 86, 107, 0.5);
   border-top-left-radius: 20px;
@@ -116,22 +116,32 @@
 
 .header_text:first-of-type {
   padding-left: 14px;
-//   border-top-left-radius: 20px;
   text-align: left;
+  @media screen and (min-width:1200px){
+    padding-left: 22px;
+  }
+//   border-top-left-radius: 20px;
+  
 }
 
 .header_text:last-of-type {
+  width:53px;
   padding-right: 14px;
+  @media screen and (min-width:1200px){
+    width:94px;
+    padding:11px 14px 11px 11px;
+  }
 //   border-top-right-radius: 20px;
 }
 .body {
   height: 358px;
   overflow-y: auto;
+  background:#383847;
 
 }
 .body_line {
-  background-color: rgba(71, 71, 89, 1);
-  border-bottom: 2px solid rgba(86, 86, 107, 0.5);
+  background:#383847;
+  border-bottom: 2px solid #474759;
 }
 .body_item {
   font-family: 'Roboto';
@@ -160,9 +170,18 @@
 .body_item:first-of-type {
   text-align: left;
   padding:11px 11px 11px 14px;
+  @media screen and (min-width:1200px){
+    padding:11px 11px 11px 22px;
+  }
 }
 .body_item:last-of-type {
+  width:53px;
     text-align: center;
+    padding:11px 11px 11px 12px;
+  @media screen and (min-width:1200px){
+    width:94px;
+    padding:11px 14px 11px 11px;
+  }
 }
 
 .body_item_red {
@@ -183,6 +202,8 @@
   border-color: transparent;
   width: 30px;
   height: 30px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.15);
+  border:0;
   border-radius: 4px;
   background-color: rgba(86, 86, 107, 0.1);
   &:hover {
