@@ -13,9 +13,6 @@ const TransactionsSummary = () => {
   const incomesStats = useSelector(selectIncomesStats);
   const currentTransactionType = useSelector(selectCurrentTransactionType);
 
-  console.log(expensesStats);
-  console.log(incomesStats);
-
   const [incomes, setIncomes] = useState(incomesStats);
 
   const [expenses, setExpenses] = useState(expensesStats);
@@ -27,8 +24,6 @@ const TransactionsSummary = () => {
   useEffect(() => {
     setExpenses(expensesStats);
   }, [expensesStats]);
-
-  console.log(incomesStats);
 
   let summaryData = [];
 

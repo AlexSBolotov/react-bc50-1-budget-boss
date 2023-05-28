@@ -16,6 +16,7 @@ import { useLogCheck } from 'hooks/uselogCheck';
 
 const Report = () => {
   const [objforGrph, setObjforGrph] = useState([]);
+  const [flag3, setFlag3] = useState(true);
   useLogCheck();
   const dispatch = useDispatch();
   // const data = useSelector(selectPeriod);
@@ -26,15 +27,22 @@ const Report = () => {
     state => state.transactions.reports.incomes.total
   );
 
-  const handleDataChooser = data => dispatch(getTransactionByPeriod(data));
-  const handleSelected = data => setObjforGrph(data);
+  const handleDataChooser = data => {
+    dispatch(getTransactionByPeriod(data));
+  };
+  const flag1 = v => setFlag3(!flag3);
 
+  const handleSelected = data => setObjforGrph(data);
   return (
     <section>
       <ReportBar onClick={handleDataChooser} />
       <ReportTotal data={{ totalExpenses, totalIncomes }} />
-      <ReportCategories onclick={handleSelected} />
-      <ReportGraph data={objforGrph} />
+      <ReportCategories onclick={handleSelected} flag={flag1} />
+      <ReportGraph
+        data={objforGrph}
+        dataFirstRender={(totalExpenses, totalIncomes)}
+        flag={flag3}
+      />
     </section>
   );
 };

@@ -21,7 +21,7 @@ export const categoriesAdapter = createEntityAdapter({
     id.name_en = translate(id.name_ru);
     return id.id;
   },
-  sortComparer: (a, b) => {
+  sortComparer: (b, a) => {
     return a.total - b.total;
   },
 });
