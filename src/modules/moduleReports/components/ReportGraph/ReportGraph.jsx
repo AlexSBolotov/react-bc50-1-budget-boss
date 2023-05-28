@@ -7,9 +7,6 @@ import { useMediaQuery } from 'react-responsive';
 
 export default function ReportGraph({ data }) {
   const isMobile = useMediaQuery({ maxWidth: 480 });
-  console.log(isMobile);
-  // console.log(data);
-
   return (
     <div className={s.graph}>
       {isMobile ? (

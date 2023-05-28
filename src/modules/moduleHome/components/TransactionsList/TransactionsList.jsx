@@ -61,7 +61,7 @@ const TransactionsList = ({ selectedDate }) => {
                   <td className={s.body_item_second}>{trans.description}</td>
                   <td className={s.body_item}>{categoryTranslationRuToEn(trans.category)}</td>
                   <td style={{color:(currentTransactionType==='incomes'?"#60C470":'#FE4566')}}
-                  className={s.body_item_red}>{`${trans.amount} UAH`}</td>
+                  className={s.body_item_red}>{currentTransactionType==='incomes'?`${trans.amount} UAH`: `- ${trans.amount} UAH`}</td>
                   <td className={s.body_item}>
                     <button
                       type="button"
