@@ -34,8 +34,7 @@ const TransactionsList = ({ selectedDate }) => {
     currentTransactionType === 'incomes'
       ? incomes.filter(transaction => transaction.date === normalizedDate)
       : expenses.filter(transaction => transaction.date === normalizedDate);
-  let flag = true;
-  const toggleModal = id => {
+   const toggleModal = id => {
     setIdTrans(id);
     setModalIsOpen(p => !p);
   };
