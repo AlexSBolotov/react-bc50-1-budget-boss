@@ -6,22 +6,40 @@
   line-height: 1.17;
   color: #C7CCDC;
   margin-bottom: 8px;
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    margin-bottom: 11px;
+  }
 }
 .balance_submit {
   display: inline-block;
   color: #C7CCDC;
   font-weight: 400;
   font-size: 12px;
+  line-height: 1.16;
   text-align: center;
   text-transform: uppercase;
   margin-left: 0px;
   border-radius: 0px 22px 22px 0px;
   border: 2px solid #80848F;
   background-color: inherit;
-  width: 140px;
-  height: 44px;
+  /* width: 140px;
+  height: 44px; */
   letter-spacing: 0.02em;
   cursor: pointer;
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    text-align: left;
+    padding-left: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: auto;
+    width: 142px;
+    &:active,
+    &:focus {
+      background-color: #42A652;
+      border-color: transparent;
+      color: #F6F7FB;
+    }
+  }
 }
 
 .balance_value {
@@ -29,19 +47,35 @@
   font-weight: bold;
   font-size: 12px;
   line-height: 1.17;
-  text-align: end;
   text-transform: uppercase;
-
   padding-right: 16px;
-  width: 140px;
-  height: 44px;
   border-radius: 22px 22px 22px 22px;
   border: 2px solid #80848F;
   background-color: inherit;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    border-radius: 22px 0px 0px 22px;
+    border-right: none;
+    padding-left: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: auto;
+    width: 142px;
+    &:active,
+    &:focus {
+      outline: none;
+    }
+    
+  }
 }
 
 .balance_value_none {
   border-radius: 16px;
+}
+
+.balance_form {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    position: relative;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -65,10 +99,7 @@
     text-align: center;
     padding-right: 0px;
   }
-  .balance_value::-webkit-inner-spin-button {
-    display: none;
-  }
-
+ 
   .balance_title {
     margin-bottom: 0px;
     margin-right: 20px;

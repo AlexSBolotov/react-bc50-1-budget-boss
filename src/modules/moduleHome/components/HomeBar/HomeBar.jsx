@@ -2,12 +2,18 @@ import Balance from 'modules/shared/components/Balance/Balance';
 import ReportsLink from 'modules/moduleHome/components/ReportsLink/ReportsLink';
 import { NavLink } from 'react-router-dom';
 import TransactionsNav from 'modules/moduleHome/components/TransactionsNav/TransactionsNav';
-import s from 'modules/moduleHome/components/HomeBar/HomeBar.module.css';
+import s from 'modules/moduleHome/components/HomeBar/HomeBar.module.scss';
+import { selectBalance } from 'redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+
 const HomeBar = () => {
+  const initialBalance = useSelector(selectBalance); 
+  
+  
   return (
     <section >
       <div className={s.bar}>
-        <NavLink to="/reports">
+        <NavLink to="/reports" style={{pointerEvents: initialBalance === 0 ? "none" : 'auto'}}>
           <ReportsLink />
         </NavLink>
         <Balance />
