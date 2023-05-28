@@ -1,0 +1,8 @@
+
+
+.loaderStyled { 
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    margin-left: 50px;
+};
