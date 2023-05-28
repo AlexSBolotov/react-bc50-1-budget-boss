@@ -16,7 +16,7 @@ import {
   categoryTranslationEnToRu,
   categoryTranslationRuToEn,
 } from './translateFunc';
-
+import { nanoid } from '@reduxjs/toolkit';
 
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
@@ -26,11 +26,11 @@ const TransactionForm = ({ selectedDate }) => {
   const expensesCategories = useSelector(selectExpensesCategories);
   const incomesCategories = useSelector(selectIncomesCategories);
 
-
   const dispatch = useDispatch();
   const handleFormSubmit = e => {
     e.preventDefault();
     const amount = e.target.elements.amount.value;
+    console.log(amount);
     const description = e.target.elements.description.value;
     const category = categoryTranslationEnToRu(
       e.target.elements.categories.value
@@ -56,9 +56,8 @@ const TransactionForm = ({ selectedDate }) => {
     }
   };
   return (
-    <div>
-      <form onSubmit={e => handleFormSubmit(e)}
-      className={s.form}>
+    <div className={s.mobileForm}>
+      <form onSubmit={e => handleFormSubmit(e)} className={s.form}>
         <input
           type="text"
           name="description"
@@ -68,12 +67,20 @@ const TransactionForm = ({ selectedDate }) => {
         <select name="categories" className={s.select}>
           {currentTransactionType === 'expenses'
             ? expensesCategories.map(category => (
-                <option value={categoryTranslationRuToEn(category)} id='select-option'>
+                <option
+                  key={nanoid()}
+                  value={categoryTranslationRuToEn(category)}
+                  id="select-option"
+                >
                   {categoryTranslationRuToEn(category)}
                 </option>
               ))
             : incomesCategories.map(category => (
-                <option value={categoryTranslationRuToEn(category)} id='select-option'>
+                <option
+                  key={nanoid()}
+                  value={categoryTranslationRuToEn(category)}
+                  id="select-option"
+                >
                   {categoryTranslationRuToEn(category)}
                 </option>
               ))}
@@ -83,15 +90,14 @@ const TransactionForm = ({ selectedDate }) => {
           name="amount"
           placeholder="0.00"
           className={s.input_calc}
-        >
-        </input>
+        ></input>
         <div className={s.btn_container}>
-        <button type="submit" className={s.btn_input}>
-          Input
-        </button>
-        <button type="reset" className={s.btn_clear}>
-          Clear
-        </button>
+          <button type="submit" className={s.btn_input}>
+            Input
+          </button>
+          <button type="reset" className={s.btn_clear}>
+            Clear
+          </button>
         </div>
       </form>
     </div>

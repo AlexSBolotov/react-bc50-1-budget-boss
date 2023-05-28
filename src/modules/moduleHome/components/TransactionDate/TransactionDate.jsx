@@ -18,7 +18,7 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
     ></input>
   ));
   return (
-    <div className='container'>
+    <div className="container">
       <DatePicker
         className="datepicker"
         dateFormat="dd.MM.yyyy"
@@ -30,10 +30,9 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
         locale={enGB}
         maxDate={new Date()}
         calendarClassName="calendar"
-      
         customInput={<ExampleCustomInput />}
       />
-      </div>
+    </div>
   );
 };
 export default TransactionDate;

@@ -23,9 +23,10 @@ import {
   selectCurrentTransactionType,
 } from 'redux/transaction/transactionSelectors';
 import s from './Home.module.scss';
-
+import MobileTransactionModal from 'modules/moduleHome/components/MobileTransactionModal/MobileTransactionModal';
 
 const Home = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
   // const isTablet = useMediaQuery({ maxWidth: 1199 });
   // const isDesktop = useMediaQuery({ maxWidth: 1279});
@@ -41,32 +42,57 @@ const Home = () => {
     dispatch(getTransactionIncome());
     dispatch(getTransactionExpense());
   }, [dispatch]);
+
+  //  const handleOpen = () => {
+  //    dispatch(logoutUser());
+  //  };
+
+  const toggleModal = () => {
+    setModalIsOpen(p => !p);
+  };
+
   return (
     <>
       <HomeBar />
       <div className={s.container}>
-      {(!isMobile) ? <div className={s.tab_deskWrap}>
-        <div className={s.form_wrap}>
-        <TransactionDate
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-      />
-      <TransactionForm selectedDate={selectedDate} />
-        </div>
-      
-      <TransactionContainer selectedDate={selectedDate} />
-      </div> 
-      : <div className={s.mobWrap}>
-        <TransactionDate
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-      />
-      <button type='button' className={s.open_modal}>Add transaction</button>
-      <TransactionContainer selectedDate={selectedDate} />
-        </div>
-      }
-      
-    </div>
+        {!isMobile ? (
+          <div className={s.tab_deskWrap}>
+            <div className={s.form_wrap}>
+              <TransactionDate
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+              />
+              <TransactionForm selectedDate={selectedDate} />
+            </div>
+
+            <TransactionContainer selectedDate={selectedDate} />
+          </div>
+        ) : (
+          <>
+            <div className={s.mobWrap}>
+              <TransactionDate
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+              />
+              <button
+                type="button"
+                className={s.open_modal}
+                onClick={toggleModal}
+              >
+                Add transaction
+              </button>
+              <TransactionContainer selectedDate={selectedDate} />
+            </div>
+            {modalIsOpen && (
+              <MobileTransactionModal
+                selectedDate={selectedDate}
+                closeModal={toggleModal}
+                onClose={toggleModal}
+              />
+            )}
+          </>
+        )}
+      </div>
     </>
   );
 };
