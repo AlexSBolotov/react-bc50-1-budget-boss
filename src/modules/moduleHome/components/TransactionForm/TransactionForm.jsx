@@ -11,7 +11,6 @@ import {
   addTransactionExpense,
   addTransactionIncome,
 } from 'redux/transaction/transactionOperations';
-import { getAuthUser } from 'redux/auth/authOperations';
 import {
   categoryTranslationEnToRu,
   categoryTranslationRuToEn,
@@ -45,14 +44,14 @@ const TransactionForm = ({ selectedDate }) => {
     console.log('payload', payload);
     if (currentTransactionType === 'expenses') {
       dispatch(addTransactionExpense(payload));
-      setTimeout(() => {
-        dispatch(getAuthUser());
-      }, 200);
+      // setTimeout(() => {
+      //   dispatch(getAuthUser());
+      // }, 200);
     } else {
       dispatch(addTransactionIncome(payload));
-      setTimeout(() => {
-        dispatch(getAuthUser());
-      }, 200);
+      // setTimeout(() => {
+      //   dispatch(getAuthUser());
+      // }, 200);
     }
   };
   return (
