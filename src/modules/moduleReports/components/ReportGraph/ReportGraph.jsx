@@ -1,18 +1,29 @@
 // import ReportGraphHorixontal from '../ReportGraphHorizontal/ReportGraphHorizontal';
+import { useSelector } from 'react-redux';
 import ReportGraphHorizontal from '../ReportGraphHorizontal/ReportGraphHorizontal';
 import ReportGraphVertical from '../ReportGraphVertical/ReportGraphVertical';
 import s from './ReportGraph.module.css';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { selectAllExpenses, selectAllIncomes } from 'redux/store';
 
-export default function ReportGraph({ data }) {
+export default function ReportGraph({ data, flag }) {
   const isMobile = useMediaQuery({ maxWidth: 480 });
+
+  const forRender = useSelector(flag ? selectAllExpenses : selectAllIncomes);
+  console.log(forRender[0]);
   return (
     <div className={s.graph}>
       {isMobile ? (
-        <ReportGraphHorizontal notSortedData={data} />
+        <ReportGraphHorizontal
+          notSortedData={data}
+          dataFirstRender={forRender}
+        />
       ) : (
-        <ReportGraphVertical notSortedData={data} />
+        <ReportGraphVertical
+          notSortedData={data}
+          dataFirstRender={forRender[0]}
+        />
       )}
     </div>
   );

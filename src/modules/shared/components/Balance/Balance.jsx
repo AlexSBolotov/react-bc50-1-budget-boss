@@ -9,7 +9,7 @@ import s from './Balance.module.css';
 
 const Balance = () => {
   const initialBalance = useSelector(selectBalance);
-  const [input, setInput] = useState(`${initialBalance.toFixed(2)} UAH`);
+  const [input, setInput] = useState(`${initialBalance.toFixed(2)} UAH`); //!!! BUG:  The specified value "16160330.49 UAH" cannot be parsed, or is out of range.
 
   const handleChange = e => {
     setInput(e.target.value);
