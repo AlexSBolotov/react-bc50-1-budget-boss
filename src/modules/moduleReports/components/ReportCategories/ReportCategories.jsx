@@ -5,9 +5,9 @@ import * as images from 'modules/moduleReports';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { selectAllExpenses, selectAllIncomes } from 'redux/store';
 import { nanoid } from '@reduxjs/toolkit';
-import { useEffect, useRef, useState, useLayoutEffect, createRef } from 'react';
+import { useEffect, useState, useLayoutEffect } from 'react';
 
-const ReportCategories = ({ onclick, data }) => {
+const ReportCategories = ({ onclick, data, flag: flag1 }) => {
   const format = value => {
     const form = new Intl.NumberFormat('ru-RU', {
       style: 'decimal',
@@ -23,23 +23,14 @@ const ReportCategories = ({ onclick, data }) => {
     // form.substring(0, 1) + ' ' + form.substring(1);
     return form;
   };
-  const active = useRef();
 
   const [flag, setFlag] = useState(true);
   useLayoutEffect(() => {
     return () => {};
   }, []);
 
-  const active3 = createRef(() => 1);
-  console.log(active3);
   const expenses = useSelector(selectAllExpenses);
-  useEffect(() => {
-    const active2 = document.querySelector('.item');
-    console.log(active2);
-    setTimeout(() => {
-      console.log(active);
-    }, 0);
-  }, []);
+  useEffect(() => {}, []);
   const incomes = useSelector(selectAllIncomes);
   function renderChoise(params) {
     return params.map(item => (
@@ -62,6 +53,7 @@ const ReportCategories = ({ onclick, data }) => {
 
   function handleChoise() {
     setFlag(!flag);
+    flag1(false);
   }
 
   return (

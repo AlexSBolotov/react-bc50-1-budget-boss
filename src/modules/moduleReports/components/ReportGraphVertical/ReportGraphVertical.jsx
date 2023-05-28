@@ -1,5 +1,5 @@
 // import s from './ReportGraphVertical.module.css';
-import React from 'react';
+
 import {
   BarChart,
   Bar,
@@ -23,9 +23,17 @@ const renderCustomBarLabel = ({ x, y, width, value }) => {
   );
 };
 
-export default function ReportGraphVertical({ notSortedData }) {
-  const category = notSortedData.name_ru;
-  const notFilteredData = notSortedData[category];
+export default function ReportGraphVertical({
+  notSortedData,
+  dataFirstRender,
+}) {
+  let category = notSortedData.name_ru || dataFirstRender?.name_ru;
+  console.log(dataFirstRender);
+  let test;
+  if (category) test = dataFirstRender[category];
+  const notFilteredData = test ? test : notSortedData[category];
+  console.log(notFilteredData);
+
   let dataArr = [];
   notFilteredData &&
     (dataArr = Object.entries(notFilteredData).slice(
