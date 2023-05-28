@@ -41,6 +41,7 @@ const ModalConsern = ({ title, closeModal, onSubmit }) => {
             <p className={s.modalTitle}>{title}</p>
             <div className={s.modalBtnPosition}>
               <button
+                type="button"
                 className={`${s.modalBtnStyle} ${s.modalBtnStyleColor}`}
                 onClick={handleClick}
               >
