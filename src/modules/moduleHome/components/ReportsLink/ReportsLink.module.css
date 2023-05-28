@@ -8,7 +8,7 @@
   font-size: 12px;
   letter-spacing: 0.04em;
   gap: 15px;
-  margin-top: 50px;
+  padding-top: 50px;
   margin-bottom: 30px;
   
 }
@@ -17,7 +17,7 @@
   .reports {
     display: flex;
     justify-content: flex-end;
-    margin-top: 0px;
+    padding-top: 0px;
     margin-bottom: 0px;
   }
   
@@ -27,7 +27,7 @@
 .reports {
     display: flex;
     justify-content: flex-end;
-    margin-top: 0px;
+    padding-top: 0px;
     margin-bottom: 0px;
   }
 }
