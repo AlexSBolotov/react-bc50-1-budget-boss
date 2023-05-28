@@ -198,6 +198,10 @@ export const AuthButton = styled.button`
   width: 114px;
   height: 44px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
@@ -205,6 +209,9 @@ export const AuthButton = styled.button`
   line-height: 1.14;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+
+  margin: 0;
+  padding: 0;
 
   border: none;
   border-radius: 16px;

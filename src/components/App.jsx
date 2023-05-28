@@ -10,6 +10,7 @@ import {
 } from 'redux/auth/authSelectors';
 import Layout from 'modules/moduleLayout/components/Layout/Layout';
 import Header from 'modules/moduleLayout/components/Header/Header';
+import s from './App.module.scss';
 
 const Report = lazy(() => import('pages/Report/Report'));
 const Home = lazy(() => import('pages/Home/Home'));
@@ -30,7 +31,7 @@ export const App = () => {
 
   return (
     !isRefreshUser && (
-      <div>
+      <div className={s.body}>
         <Header />
         <Routes>
           <Route path="/" element={<Layout />}>
