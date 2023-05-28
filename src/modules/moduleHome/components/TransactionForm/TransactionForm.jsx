@@ -56,7 +56,8 @@ const TransactionForm = ({ selectedDate }) => {
   };
   return (
     <div>
-      <form onSubmit={e => handleFormSubmit(e)}>
+      <form onSubmit={e => handleFormSubmit(e)}
+      className={s.form}>
         <input
           type="text"
           name="description"
@@ -82,12 +83,14 @@ const TransactionForm = ({ selectedDate }) => {
           placeholder="0.00"
           className={s.input_calc}
         />
+        <div className={s.btn_container}>
         <button type="submit" className={s.btn_input}>
           Input
         </button>
         <button type="reset" className={s.btn_clear}>
           Clear
         </button>
+        </div>
       </form>
     </div>
   );
