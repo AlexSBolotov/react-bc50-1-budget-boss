@@ -1,3 +1,14 @@
+.titleReports {
+  display: flex;
+  max-width: 1034px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 30px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
 .categories {
   max-width: 100%;
   text-align: center;
@@ -71,11 +82,12 @@
 
 @media screen and (min-width: 1440px) {
   .titleReports {
+    display: flex;
     max-width: 1034px;
 
     border-radius: 30px;
     margin-bottom: 40px;
-    display: flex;
+
     justify-content: center;
     h2 {
       padding: 0;
