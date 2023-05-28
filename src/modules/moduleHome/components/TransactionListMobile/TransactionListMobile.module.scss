@@ -2,7 +2,9 @@
   display: flex;
   // margin: auto;
   // padding: 0 20px;
+  width: 100%;
   max-width: 282px;
+  margin: 0 auto;
 }
 
 .mobileList {
@@ -32,7 +34,6 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.04em;
-  // text-transform: uppercase;
   color: var(--text-biege);
 }
 
@@ -55,7 +56,7 @@
 .ammountWrapper {
   display: flex;
   gap: 8px;
-  align-items: baseline;
+  align-items: center;
 }
 
 .transactionAmount {
