@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import s from './Balance.module.css';
+import s from './Balance.module.scss';
 import { setNewBalance, getAuthUser } from 'redux/auth/authOperations';
 
 const BtnConfirmBalance = ({ balanceToUpdate }) => {

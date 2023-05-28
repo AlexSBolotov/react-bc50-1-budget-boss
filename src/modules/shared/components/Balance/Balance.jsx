@@ -5,7 +5,7 @@ import BalanceModal from '../BalanceModal/BalanceModal';
 import BtnConfirmBalance from './BtnConfirmBalance';
 import { selectBalance } from 'redux/auth/authSelectors';
 
-import s from './Balance.module.css';
+import s from './Balance.module.scss';
 
 const Balance = () => {
   const initialBalance = useSelector(selectBalance);
@@ -27,6 +27,11 @@ const Balance = () => {
           value={input}
           onChange={handleChange}
           disabled={initialBalance === 0 ? false : true}
+          style={{
+            borderRadius: initialBalance === 0 ? '22px 0px 0px 22px' : '22px',
+            borderRight: initialBalance === 0 ? 'none' : '2px solid #80848F',
+            textAlign: initialBalance === 0 ? 'right' : 'center',
+          }}
           placeholder={
             initialBalance === 0
               ? `00.00 UAH`

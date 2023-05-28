@@ -1,6 +1,5 @@
 .modalDiv {
   width: 260px;
-  /* left: auto; */
   background: linear-gradient(118.06deg, #58BB67 3.05%, #368342 125.62%);
   border-radius: 30px;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
@@ -9,7 +8,10 @@
   top: 120%;
   position: absolute;
   z-index: 2;
-  /* display: none; */
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    position: absolute;
+    top: 112%;
+  }
 }
 
 @media screen and (min-width: 768px) {

@@ -1,4 +1,4 @@
-import s from './BalanceModal.module.css';
+import s from './BalanceModal.module.scss';
 
 const BalanceModal = () => {
   return (

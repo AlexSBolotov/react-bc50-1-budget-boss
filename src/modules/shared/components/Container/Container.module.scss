@@ -1,4 +1,8 @@
 .container {
+ @media screen and (min-width: 320px) and (max-width: 767px) {
+    position: relative;
+    // Егор поставил себе позицию релативную. ЭТО ВАЖНО!!!
+  }
   width: 100%;
   margin: 0 auto;
   padding-left: 20px;
