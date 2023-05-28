@@ -11,12 +11,16 @@ import { format } from 'date-fns';
 import { deleteTransactionById } from 'redux/transaction/transactionSlice';
 import { ReactComponent as Bucket } from 'modules/shared/images/svg/trashcan.svg';
 import { getAuthUser } from 'redux/auth/authOperations';
+import { useState } from 'react';
+import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
 
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
 
 const TransactionsListMobile = ({ selectedDate }) => {
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [idTrans, setIdTrans] = useState(null);
   //   console.log(selectedDate);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
@@ -32,10 +36,15 @@ const TransactionsListMobile = ({ selectedDate }) => {
       ? incomes.filter(transaction => transaction.date === normalizedDate)
       : expenses.filter(transaction => transaction.date === normalizedDate);
   // console.log(isMobile);
+	
+	const toggleModal = id => {
+    setIdTrans(id);
+    setModalIsOpen(p => !p);
+  };
 
-  const handlerDeleteClick = id => {
-    dispatch(deleteTransaction(id));
-    dispatch(deleteTransactionById(id));
+  const handlerDeleteClick = () => {
+    dispatch(deleteTransaction(idTrans));
+    dispatch(deleteTransactionById(idTrans));
     setTimeout(() => {
       dispatch(getAuthUser());
     }, 200);
@@ -43,7 +52,8 @@ const TransactionsListMobile = ({ selectedDate }) => {
   // console.log(currentTransactionType);
   // console.log(filteredTransactions);
 
-  return (
+	return (
+	  <>
     <div className={s.mobileContainer}>
       {isMobile && (
         <ul className={s.mobileList}>
@@ -71,7 +81,7 @@ const TransactionsListMobile = ({ selectedDate }) => {
                     : `- ${el.amount} UAH`}
                 </p>
                 <button
-                  onClick={() => handlerDeleteClick(el._id)}
+                  onClick={() => toggleModal(el._id)}
                   className={s.button}
                 >
                   <Bucket className={s.icon} />
@@ -81,7 +91,15 @@ const TransactionsListMobile = ({ selectedDate }) => {
           ))}
         </ul>
       )}
-    </div>
+	  </div>
+	  {modalIsOpen && (
+        <ModalConsern
+          closeModal={toggleModal}
+          onSubmit={handlerDeleteClick}
+          title="Are you sure?"
+        />
+      )}
+    </>
   );
 };
 

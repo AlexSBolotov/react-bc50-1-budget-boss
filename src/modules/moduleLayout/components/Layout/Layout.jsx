@@ -5,17 +5,20 @@ import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from 'redux/auth/authSelectors';
 import Container from 'modules/shared/components/Container/Container';
+import MainContainer from '../MainContainer/MainContainer';
 
 const Layout = () => {
   const isLoading = useSelector(selectIsLoading);
   return (
     <>
-      <Container>
-        {isLoading && <Loader />}
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-      </Container>
+      <MainContainer>
+        <Container>
+          {isLoading && <Loader />}
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </Container>
+      </MainContainer>
     </>
   );
 };
