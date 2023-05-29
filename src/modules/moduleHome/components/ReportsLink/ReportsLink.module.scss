@@ -1,16 +1,12 @@
 .reports {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   text-decoration: none;
   color: rgba(199, 204, 220, 0.5);
   font-weight: 400;
   font-size: 12px;
   letter-spacing: 0.04em;
-  gap: 15px;
-  padding-top: 50px;
-  margin-bottom: 30px;
-  
+  gap: 20px;
 }
 
 @media screen and (min-width: 768px) {
@@ -20,11 +16,10 @@
     padding-top: 0px;
     margin-bottom: 0px;
   }
-  
 }
 
 @media screen and (min-width: 1280px) {
-.reports {
+  .reports {
     display: flex;
     justify-content: flex-end;
     padding-top: 0px;

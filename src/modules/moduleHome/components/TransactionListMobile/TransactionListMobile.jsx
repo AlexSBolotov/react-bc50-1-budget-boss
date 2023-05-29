@@ -10,13 +10,16 @@ import {
 import { format } from 'date-fns';
 import { deleteTransactionById } from 'redux/transaction/transactionSlice';
 import { ReactComponent as Bucket } from 'modules/shared/images/svg/trashcan.svg';
-import { getAuthUser } from 'redux/auth/authOperations';
+import { useState } from 'react';
+import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
 
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
 
 const TransactionsListMobile = ({ selectedDate }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [idTrans, setIdTrans] = useState(null);
   //   console.log(selectedDate);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
@@ -33,55 +36,69 @@ const TransactionsListMobile = ({ selectedDate }) => {
       : expenses.filter(transaction => transaction.date === normalizedDate);
   // console.log(isMobile);
 
-  const handlerDeleteClick = id => {
-    dispatch(deleteTransaction(id));
-    dispatch(deleteTransactionById(id));
-    setTimeout(() => {
-      dispatch(getAuthUser());
-    }, 200);
+  const toggleModal = id => {
+    setIdTrans(id);
+    setModalIsOpen(p => !p);
+  };
+
+  const handlerDeleteClick = () => {
+    dispatch(deleteTransaction(idTrans));
+    dispatch(deleteTransactionById(idTrans));
+    // setTimeout(() => {
+    //   dispatch(getAuthUser());
+    // }, 200);
   };
   // console.log(currentTransactionType);
   // console.log(filteredTransactions);
 
   return (
-    <div className={s.mobileContainer}>
-      {isMobile && (
-        <ul className={s.mobileList}>
-          {filteredTransactions.map(el => (
-            <li className={s.mobileItem} key={el._id}>
-              <div className={s.categoryContainer}>
-                <p className={s.categoryDescription}>{el.description}</p>
-                <div className={s.categoryWrapper}>
-                  <span className={s.transactionDate}>{el.date}</span>
-                  <span>{el.category}</span>
+    <>
+      <div className={s.mobileContainer}>
+        {isMobile && (
+          <ul className={s.mobileList}>
+            {filteredTransactions.map(el => (
+              <li className={s.mobileItem} key={el._id}>
+                <div className={s.categoryContainer}>
+                  <p className={s.categoryDescription}>{el.description}</p>
+                  <div className={s.categoryWrapper}>
+                    <span className={s.transactionDate}>{el.date}</span>
+                    <span>{el.category}</span>
+                  </div>
                 </div>
-              </div>
-              <div className={s.ammountWrapper}>
-                <p
-                  className={s.transactionAmount}
-                  style={{
-                    color:
-                      currentTransactionType === 'incomes'
-                        ? '#60C470'
-                        : '#FE4566',
-                  }}
-                >
-                  {currentTransactionType === 'incomes'
-                    ? `${el.amount} UAH`
-                    : `- ${el.amount} UAH`}
-                </p>
-                <button
-                  onClick={() => handlerDeleteClick(el._id)}
-                  className={s.button}
-                >
-                  <Bucket className={s.icon} />
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
+                <div className={s.ammountWrapper}>
+                  <p
+                    className={s.transactionAmount}
+                    style={{
+                      color:
+                        currentTransactionType === 'incomes'
+                          ? '#60C470'
+                          : '#FE4566',
+                    }}
+                  >
+                    {currentTransactionType === 'incomes'
+                      ? `${el.amount} UAH`
+                      : `- ${el.amount} UAH`}
+                  </p>
+                  <button
+                    onClick={() => toggleModal(el._id)}
+                    className={s.button}
+                  >
+                    <Bucket className={s.icon} />
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      {modalIsOpen && (
+        <ModalConsern
+          closeModal={toggleModal}
+          onSubmit={handlerDeleteClick}
+          title="Are you sure?"
+        />
       )}
-    </div>
+    </>
   );
 };
 

@@ -1,0 +1,19 @@
+.tab_deskContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+
+  @media screen and (min-width: 1200px) {
+    flex-direction: row;
+    gap: 77px;
+    justify-content: start;
+    align-items: flex-start;
+  }
+}
+
+.sectionContainer {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    width: 100%;
+  }
+}

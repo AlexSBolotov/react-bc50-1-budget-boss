@@ -1,0 +1,109 @@
+.balance_title {
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.17;
+  color: #C7CCDC;
+  
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    margin-bottom: 11px;
+  }
+}
+.balance_submit {
+  display: inline-block;
+  color: #C7CCDC;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  text-align: center;
+  text-transform: uppercase;
+  margin-left: 0px;
+  border-radius: 0px 22px 22px 0px;
+  border: 2px solid #80848F;
+  background-color: inherit;
+  /* width: 140px;
+  height: 44px; */
+  letter-spacing: 0.02em;
+  cursor: pointer;
+   &:active,
+   &:focus {
+      background-color: #42A652;
+      border-color: transparent;
+      color: #F6F7FB;
+    }
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    text-align: left;
+    padding-left: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: auto;
+    width: 140px;
+   
+  }
+  @media screen and (min-width: 768px){
+    text-align: center;
+    max-width: 125px;
+    padding: 14px 32px;
+    border-radius: 16px;
+    margin-left: 15px;
+  }
+}
+
+.balance_value {
+  color: #F6F7FB;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  padding-right: 16px;
+  &:active,
+  &:focus {
+    outline: none;
+    color: #F6F7FB !important;
+    }
+  border: 2px solid #80848F;
+  background-color: inherit;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    border-radius: 22px 0px 0px 22px;
+    border-right: none;
+    padding-left: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: auto;
+    width: 140px;
+  }
+  @media screen and (min-width: 768px){
+    text-align: center;
+    max-width: 125px;
+    padding: 14px 32px;
+    border-radius: 16px !important;
+    border-right: 2px solid #80848F !important;
+    margin-left: 21px;
+  }
+  @media screen and (min-width: 1200px){
+    text-align: center !important;
+  }
+
+}
+    .balance_value::-webkit-inner-spin-button,
+    .balance_value::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.balance_form {
+    position: relative;
+  @media screen and (min-width: 768px){
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (min-width: 1200px){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
+}
+
