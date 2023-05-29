@@ -9,10 +9,16 @@
   text-align: center;
   letter-spacing: 0.02em;
   color: #F6F7FB;
+  text-transform: uppercase;
 }
 
 .back {
   display: flex;
+  width: 13px;
+  height: 9px;
+  @media screen and (min-width: 320px) and (max-width: 767px){
+    margin-right: 6px;
+  }
   
 }
 
@@ -20,7 +26,7 @@
   .goBackLink {
     display: block;
     text-decoration: none;
-    color: #F6F7FB;
+    color: #C7CCDC;
     font-weight: 400;
     font-size: 12px;
     letter-spacing: 0.04em;
@@ -29,6 +35,9 @@
     align-items: center;
     gap: 16px;
   }
+  .back {
+    color: #F6F7FB;
+  }
 
 }
 @media screen and (min-width: 1280px) {
@@ -36,10 +45,12 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    color: #C7CCDC;
   }
 
   .back {
     display: flex;
+    color: #F6F7FB;
     
   }
 }
