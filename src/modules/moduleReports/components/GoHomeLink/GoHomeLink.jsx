@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router';
-import f from './GoHomeLink.module.css';
+import f from './GoHomeLink.module.scss';
 import svgBack from '../../../shared/images/svg/backLeftArrow.svg'
 
 const GoHomeLink = () => {

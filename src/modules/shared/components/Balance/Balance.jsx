@@ -34,7 +34,8 @@ const Balance = () => {
           style={{
             borderRadius: initialBalance === 0 ? '22px 0px 0px 22px' : '22px',
             borderRight: initialBalance === 0 ? 'none' : '2px solid #80848F',
-            textAlign: initialBalance === 0 ? 'right' : 'center',
+            // textAlign: initialBalance === 0 ? 'right' : 'center',
+            boxSizing: initialBalance === 0 ? 'border-box' : 'content-box,'
           }}
           placeholder={
             initialBalance === 0 ? `00.00 UAH` : `${balance.toFixed(2)} UAH`
