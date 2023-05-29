@@ -18,6 +18,21 @@ const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
 
+const format1 = value => {
+  const form = new Intl.NumberFormat('ru-RU', {
+    style: 'decimal',
+    currency: 'UAH',
+    // currencyDisplay: 'name',
+    signDisplay: 'exceptZero',
+    minimumFractionDigits: 2,
+    useGrouping: 'min2',
+  })
+    .format(value)
+    .replace(',', '.');
+
+  return form.substring(0, 1) + ' ' + form.substring(1);
+};
+
 const TransactionsListMobile = ({ selectedDate }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [idTrans, setIdTrans] = useState(null);
@@ -77,8 +92,8 @@ const TransactionsListMobile = ({ selectedDate }) => {
                     }}
                   >
                     {currentTransactionType === 'incomes'
-                      ? `${el.amount} UAH`
-                      : `- ${el.amount} UAH`}
+                      ? `${format1(el.amount)} UAH`
+                      : `- ${format1(el.amount)} UAH`}
                   </p>
                   <button
                     onClick={() => toggleModal(el._id)}
