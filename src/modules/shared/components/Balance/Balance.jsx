@@ -29,8 +29,7 @@ const Balance = () => {
   ); //!!! BUG:  The specified value "16160330.49 UAH" cannot be parsed, or is out of range.
 
   const handleChange = e => {
-    const test = format(e.target.value);
-    setInput(test);
+    setInput(e.target.value);
   };
 
   return (
