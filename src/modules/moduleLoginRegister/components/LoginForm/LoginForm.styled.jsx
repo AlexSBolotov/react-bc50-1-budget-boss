@@ -151,7 +151,15 @@ export const AuthInput = styled.input`
   border: none;
   border-radius: 16px;
 
+  outline: none;
+
   background: var(--color--text);
+
+  &:focus,
+  &:hover {
+    /* border: 2px solid #474759; */
+    box-shadow: 0px 5px 7px -2px #41a350;
+  }
 `;
 
 export const ErrorStar = styled.span`
@@ -224,7 +232,7 @@ export const AuthButton = styled.button`
   &:hover,
   :focus {
     background-color: #42a652;
-	box-shadow: 3px 3px 5px rgba(96, 196, 112, 0.35);
+	box-shadow: 3px 4px 5px rgba(79, 190, 98, 0.452);
     color: var(--primary-white);
     transition: 300ms;
   }
