@@ -5,15 +5,15 @@ import * as images from 'modules/moduleReports';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { selectAllExpenses, selectAllIncomes } from 'redux/store';
 import { nanoid } from '@reduxjs/toolkit';
-import { useEffect, useState, useLayoutEffect } from 'react';
+import { useRef, useState } from 'react';
 
-const ReportCategories = ({ onclick, data, flag: flag1 }) => {
+const ReportCategories = ({ onclick, data, flag: _flag }) => {
+  const [active2, setActive2] = useState(0);
+  const activeRef = useRef();
   const format = value => {
     const form = new Intl.NumberFormat('ru-RU', {
       style: 'decimal',
-      // currency: 'UAH',
-      // currencyDisplay: 'name',
-      // signDisplay: 'exceptZero',
+
       minimumFractionDigits: 2,
       useGrouping: 'min2',
       unitDisplay: 'short',
@@ -25,18 +25,23 @@ const ReportCategories = ({ onclick, data, flag: flag1 }) => {
   };
 
   const [flag, setFlag] = useState(true);
-  useLayoutEffect(() => {
-    return () => {};
-  }, []);
 
   const expenses = useSelector(selectAllExpenses);
-  useEffect(() => {}, []);
   const incomes = useSelector(selectAllIncomes);
+  console.log((activeRef.id = 1));
+  console.log(activeRef);
   function renderChoise(params) {
-    return params.map(item => (
-      <li key={nanoid()} className={s.item} onClick={() => onclick(item)}>
+    return params.map((item, index) => (
+      <li key={nanoid()} className={s.item}>
         <p>{format(item.total)}</p>
-        <div>
+        <div
+          ref={activeRef}
+          className={active2 === index ? s.active : ''}
+          onClick={e => {
+            onclick(item, activeRef, e);
+            setActive2(index);
+          }}
+        >
           <img
             src={
               item.name_en
@@ -53,7 +58,10 @@ const ReportCategories = ({ onclick, data, flag: flag1 }) => {
 
   function handleChoise() {
     setFlag(!flag);
-    flag1(false);
+    onclick([]);
+    _flag(flag);
+    setActive2(0);
+    console.log(active2);
   }
 
   return (

@@ -30,14 +30,18 @@ const Report = () => {
   const handleDataChooser = data => {
     dispatch(getTransactionByPeriod(data));
   };
-  const flag1 = v => setFlag3(!flag3);
 
-  const handleSelected = data => setObjforGrph(data);
+  const flag = v => setFlag3(!v);
+  // document.classList.remove()
+  const handleSelected = data => {
+    setObjforGrph(data);
+  };
+
   return (
     <section>
       <ReportBar onClick={handleDataChooser} />
       <ReportTotal data={{ totalExpenses, totalIncomes }} />
-      <ReportCategories onclick={handleSelected} flag={flag1} />
+      <ReportCategories onclick={handleSelected} flag={flag} />
       <ReportGraph
         data={objforGrph}
         dataFirstRender={(totalExpenses, totalIncomes)}

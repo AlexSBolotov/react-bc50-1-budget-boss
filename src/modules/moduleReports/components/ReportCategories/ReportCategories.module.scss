@@ -17,7 +17,7 @@
   margin-left: auto;
   text-align: center;
 
-  padding: 24px 20px 20px;
+  // padding: 24px 20px 20px;
 }
 
 .items {
@@ -29,7 +29,21 @@
   gap: 43px;
 
   .item {
-    width: 112px;
+    .active {
+      width: 64px;
+      height: 64px;
+      left: 0px;
+      top: 0px;
+
+      background: rgba(86, 86, 107, 0.2);
+      /* button */
+
+      border: 1px solid #42a652;
+      /* green */
+
+      box-shadow: 0px 0px 6px #41a350;
+    }
+
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -77,6 +91,7 @@
 @media screen and (min-width: 768px) {
   .titleReports {
     max-width: 704px;
+    border-radius: 30px;
   }
   .categories {
     max-width: 1034px;
@@ -96,12 +111,11 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1280px) {
   .titleReports {
     display: flex;
     max-width: 1034px;
 
-    border-radius: 30px;
     margin-bottom: 40px;
 
     justify-content: center;
