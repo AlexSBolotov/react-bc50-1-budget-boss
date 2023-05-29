@@ -29,6 +29,20 @@
   gap: 43px;
 
   .item {
+    .active {
+      width: 64px;
+      height: 64px;
+      left: 0px;
+      top: 0px;
+
+      background: rgba(86, 86, 107, 0.2);
+      /* button */
+
+      border: 1px solid #42a652;
+      /* green */
+
+      box-shadow: 0px 0px 6px #41a350;
+    }
     width: 112px;
     display: flex;
     flex-direction: column;

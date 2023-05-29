@@ -9,17 +9,31 @@ import {
   CartesianGrid,
 } from 'recharts';
 
+const format = value => {
+  const form = new Intl.NumberFormat('ru-RU', {
+    style: 'decimal',
+
+    minimumFractionDigits: 2,
+    useGrouping: 'min2',
+    unitDisplay: 'short',
+  })
+    .format(value)
+    .replace(',', '.');
+  // form.substring(0, 1) + ' ' + form.substring(1);
+  return form;
+};
+
 const renderCustomBarLabel = ({ x, y, width, value }) => {
   return (
     <text
       x={x + width / 2}
-      y={y}
+      y={y / 1}
       fontSize="12"
       fontFamily="Roboto"
       fill="#C7CCDC"
       textAnchor="middle"
       dy={-6}
-    >{`${value} UAH`}</text>
+    >{`${format(value)} UAH`}</text>
   );
 };
 
@@ -28,7 +42,7 @@ export default function ReportGraphVertical({
   dataFirstRender,
 }) {
   let category = notSortedData.name_ru || dataFirstRender?.name_ru;
-  console.log(dataFirstRender);
+
   let test;
   if (category) test = dataFirstRender[category];
   const notFilteredData = test ? test : notSortedData[category];
@@ -41,10 +55,12 @@ export default function ReportGraphVertical({
       Object.entries(notFilteredData).length
     ));
   let dataToRender = [];
+
   dataToRender = dataArr.map(el => ({ name: el[0], value: el[1] }));
   const sortedDataToRender = [...dataToRender].sort(
     (prevItem, nextItem) => nextItem.value - prevItem.value
   );
+  console.log(dataToRender);
 
   return (
     <ResponsiveContainer>
@@ -81,3 +97,12 @@ export default function ReportGraphVertical({
     </ResponsiveContainer>
   );
 }
+
+const test1 = new Date();
+const test2 = test1.toString();
+console.dir(test1);
+console.dir(test2);
+const test3 = Date.parse(test2);
+
+console.dir(test3);
+console.dir(new Date(test3));
