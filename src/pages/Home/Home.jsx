@@ -1,12 +1,9 @@
 import { useMediaQuery } from 'react-responsive';
-
 import HomeBar from 'modules/moduleHome/components/HomeBar/HomeBar';
 import TransactionContainer from 'modules/moduleHome/components/TransactionContainer/TransactionContainer';
 import TransactionForm from 'modules/moduleHome/components/TransactionForm/TransactionForm';
-// import s from 'pages/Home/Home.module.scss';
 import TransactionDate from 'modules/moduleHome/components/TransactionDate/TransactionDate';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import {
   getTransactionExpenseCategories,
   getTransactionIncomeCategories,
@@ -15,27 +12,20 @@ import {
   getTransactionIncome,
   getTransactionExpense,
 } from 'redux/transaction/transactionOperations';
-// import { getTransactionExpenseCategories } from 'redux/reports/reportsOperations';
 import { useDispatch } from 'react-redux';
-import {
-  // selectExpensesCategories,
-  // selectIncomesCategories,
-  selectCurrentTransactionType,
-} from 'redux/transaction/transactionSelectors';
 import s from './Home.module.scss';
 import MobileTransactionModal from 'modules/moduleHome/components/MobileTransactionModal/MobileTransactionModal';
 
 const Home = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  // const isTablet = useMediaQuery({ maxWidth: 1199 });
-  // const isDesktop = useMediaQuery({ maxWidth: 1279});
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const currentDate = new Date();
+  const storagedDate = sessionStorage.getItem('date') || currentDate;
+  const parsedStorageDate = new Date(storagedDate);
+  const dateToSet = parsedStorageDate ? parsedStorageDate : currentDate;
+  const [selectedDate, setSelectedDate] = useState(dateToSet);
   const dispatch = useDispatch();
-  // const expensesCategories = useSelector(selectExpensesCategories);
-  // const incomesCategories = useSelector(selectIncomesCategories);
-  const currentTransactionType = useSelector(selectCurrentTransactionType);
-  console.log(currentTransactionType);
+
   useEffect(() => {
     dispatch(getTransactionExpenseCategories());
     dispatch(getTransactionIncomeCategories());
@@ -43,10 +33,10 @@ const Home = () => {
     dispatch(getTransactionExpense());
   }, [dispatch]);
 
-  //  const handleOpen = () => {
-  //    dispatch(logoutUser());
-  //  };
-
+  const handlerDate = date => {
+    sessionStorage.setItem('date', JSON.stringify(date.toString()));
+    setSelectedDate(date);
+  };
   const toggleModal = () => {
     setModalIsOpen(p => !p);
   };
@@ -60,7 +50,7 @@ const Home = () => {
             <div className={s.form_wrap}>
               <TransactionDate
                 selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                setSelectedDate={date => handlerDate(date)}
               />
               <TransactionForm selectedDate={selectedDate} />
             </div>
@@ -72,7 +62,7 @@ const Home = () => {
             <div className={s.mobWrap}>
               <TransactionDate
                 selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                setSelectedDate={date => handlerDate(date)}
               />
               <button
                 type="button"
