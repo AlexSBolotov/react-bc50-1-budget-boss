@@ -105,10 +105,6 @@ export const getAllCategories = createAsyncThunk(
         getTransactionIncomeApi,
         getTransactionExpenseApi,
       ]);
-      // const incomes = await getTransactionIncomeApi;
-      // const expenses = await getTransactionExpenseApi();
-      // return { incomes, expenses };
-
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

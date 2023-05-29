@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const AuthContainer = styled.div`
-  width: 320px;
+  max-width: 320px;
 
   position: relative;
 
@@ -9,17 +9,17 @@ export const AuthContainer = styled.div`
   justify-content: center;
 
   margin: 0 auto;
-  padding: 68px 20px 40px 20px;
+  padding: 12px;
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    width: 768px;
+    max-width: 768px;
 
     flex-direction: column;
     align-items: center;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 1280px;
+    max-width: 1280px;
 
     flex-direction: row;
     align-items: center;
