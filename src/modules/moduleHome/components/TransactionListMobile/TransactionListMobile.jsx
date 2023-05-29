@@ -12,6 +12,7 @@ import { deleteTransactionById } from 'redux/transaction/transactionSlice';
 import { ReactComponent as Bucket } from 'modules/shared/images/svg/trashcan.svg';
 import { useState } from 'react';
 import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
+import { categoryTranslationRuToEn } from '../TransactionForm/translateFunc';
 
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
@@ -22,7 +23,7 @@ const format1 = value => {
     style: 'decimal',
     currency: 'UAH',
     // currencyDisplay: 'name',
-    signDisplay: 'exceptZero',
+    // signDisplay: 'exceptZero',
     minimumFractionDigits: 2,
     useGrouping: 'min2',
   })
@@ -77,7 +78,7 @@ const TransactionsListMobile = ({ selectedDate }) => {
                   <p className={s.categoryDescription}>{el.description}</p>
                   <div className={s.categoryWrapper}>
                     <span className={s.transactionDate}>{el.date}</span>
-                    <span>{el.category}</span>
+                    <span>{categoryTranslationRuToEn(el.category)}</span>
                   </div>
                 </div>
                 <div className={s.ammountWrapper}>
