@@ -74,7 +74,8 @@ export default function ReportGraphVertical({
         // barSize={38}
         margin={{
           top: 65,
-
+          // left: 77,
+          // right: 77,
           bottom: 43,
         }}
       >
@@ -114,7 +115,7 @@ export default function ReportGraphVertical({
           allowDecimals={false}
           tick={false}
           hide
-          padding={{ left: 150, right: 150 }}
+          // padding={{ left: 77, right: 77 }}
         />
 
         <Bar
@@ -153,12 +154,3 @@ export default function ReportGraphVertical({
     </ResponsiveContainer>
   );
 }
-
-const test1 = new Date();
-const test2 = test1.toString();
-console.dir(test1);
-console.dir(test2);
-const test3 = Date.parse(test2);
-
-console.dir(test3);
-console.dir(new Date(test3));
