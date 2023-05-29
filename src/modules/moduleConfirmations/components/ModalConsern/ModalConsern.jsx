@@ -8,7 +8,8 @@ const ModalConsern = ({ title, closeModal, onSubmit }) => {
   const modalRoot = document.querySelector('#modal-root');
 
   const handleClick = () => {
-    onSubmit();
+	  onSubmit();
+	  closeModal();
   };
 
   const handleCancel = () => {
