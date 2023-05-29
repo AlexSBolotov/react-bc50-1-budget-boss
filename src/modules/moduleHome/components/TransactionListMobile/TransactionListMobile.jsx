@@ -23,7 +23,7 @@ const format1 = value => {
     style: 'decimal',
     currency: 'UAH',
     // currencyDisplay: 'name',
-    signDisplay: 'exceptZero',
+    // signDisplay: 'exceptZero',
     minimumFractionDigits: 2,
     useGrouping: 'min2',
   })
