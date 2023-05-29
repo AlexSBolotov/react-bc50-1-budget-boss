@@ -153,12 +153,3 @@ export default function ReportGraphVertical({
     </ResponsiveContainer>
   );
 }
-
-const test1 = new Date();
-const test2 = test1.toString();
-console.dir(test1);
-console.dir(test2);
-const test3 = Date.parse(test2);
-
-console.dir(test3);
-console.dir(new Date(test3));
