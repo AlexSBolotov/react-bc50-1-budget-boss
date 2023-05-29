@@ -61,10 +61,10 @@ export default function ReportGraphHorizontal({
   const sortedDataToRender = [...dataToRender].sort(
     (prevItem, nextItem) => nextItem.value - prevItem.value
   );
-  console.log(sortedDataToRender);
+
   return (
     <div>
-      <ResponsiveContainer width="100%" height={493}>
+      <ResponsiveContainer width="100%" height={493} key={nanoid()}>
         <BarChart
           width={100}
           height={100}
@@ -76,6 +76,7 @@ export default function ReportGraphHorizontal({
             bottom: 5,
           }}
           layout="vertical"
+          key={nanoid()}
         >
           <defs>
             <linearGradient
@@ -86,15 +87,36 @@ export default function ReportGraphHorizontal({
               y2="1"
               gradientTransform="rotate(-90)"
               fillRule="nonzero"
+              key={nanoid()}
             >
               <stop offset="0%" stopColor="#383C46" stopOpacity={1} />
               <stop offset="100%" stopColor="#60C470" stopOpacity={1} />
             </linearGradient>
           </defs>
+          <defs>
+            <linearGradient
+              id="colorUv2"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+              gradientTransform="rotate(-90)"
+              fillRule="nonzero"
+              key={nanoid()}
+            >
+              <stop offset="0%" stopColor="#373745" stopOpacity={1} />
+              <stop offset="100%" stopColor="#5B5B6D" stopOpacity={1} />
+            </linearGradient>
+          </defs>
           <XAxis type="number" hide />
           <YAxis dataKey="name" type="category" hide />
 
-          <Bar fill="url(#colorUv)" dataKey="value" barSize={15}>
+          <Bar
+            fill="url(#colorUv2)"
+            dataKey="value"
+            barSize={15}
+            key={nanoid()}
+          >
             <LabelList
               dataKey="name"
               position="insideTopLeft"
@@ -103,33 +125,23 @@ export default function ReportGraphHorizontal({
               fontFamily="Roboto"
               fill="#C7CCDC"
               dx={-5}
+              key={nanoid()}
             />
-            <LabelList content={renderCustomBarLabel} dataKey="value" />
+            <LabelList
+              content={renderCustomBarLabel}
+              dataKey="value"
+              key={nanoid()}
+            />
 
             {sortedDataToRender.map(({ value, name }, index) => (
-              <>
-                <Cell radius={[0, 10, 10, 0]} key={nanoid()} dy={-20} />
-              </>
+              <Cell
+                radius={[0, 10, 10, 0]}
+                key={index}
+                dy={-20}
+                fill={index % 3 === 0 ? 'url(#colorUv)' : 'url(#colorUv2)'}
+              />
             ))}
           </Bar>
-
-          {/* <Bar dataKey="value" fill="url(#colorUv)" radius={[0, 10, 10, 0]}>
-            <LabelList
-              // content={renderCustomBarLabel}
-              dataKey="name"
-              position="top"
-              alignmentBaseline="text-after-edge"
-              fill="#C7CCDC"
-              fontFamily="Roboto"
-            />
-            <LabelList
-              // content={renderCustomBarLabel}
-              dataKey="value"
-              position="right"
-              fill="#C7CCDC"
-              fontFamily="Roboto"
-            />
-          </Bar> */}
         </BarChart>
       </ResponsiveContainer>
     </div>
