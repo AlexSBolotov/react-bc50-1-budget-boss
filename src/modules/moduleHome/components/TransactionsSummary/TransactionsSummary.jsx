@@ -8,6 +8,21 @@ import {
 } from 'redux/transaction/transactionSelectors';
 import { useEffect, useState } from 'react';
 
+const format1 = value => {
+  const form = new Intl.NumberFormat('ru-RU', {
+    style: 'decimal',
+    currency: 'UAH',
+    // currencyDisplay: 'name',
+    // signDisplay: 'exceptZero',
+    minimumFractionDigits: 2,
+    useGrouping: 'min2',
+  })
+    .format(value)
+    .replace(',', '.');
+  // form.substring(0, 1) + ' ' + form.substring(1);
+  return form;
+};
+
 const TransactionsSummary = () => {
   const expensesStats = useSelector(selectExpensesStats);
   const incomesStats = useSelector(selectIncomesStats);
@@ -54,12 +69,13 @@ const TransactionsSummary = () => {
             if (el[1] === 'N/A') {
               el[1] = 0;
             }
+
             return (
               <tr key={`${el[0]}${el[1]}`} className={s.summaryLine}>
                 <td className={s.summaryTableCell}>
                   {monthTranslation(el[0])}
                 </td>
-                <td className={s.summaryTableCell}>{el[1]}</td>
+                <td className={s.summaryTableCell}>{format1(el[1])}</td>
               </tr>
             );
           })}
