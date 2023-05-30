@@ -53,7 +53,6 @@ const TransactionsSummary = () => {
         .slice(0, new Date().getMonth() + 1)
         .reverse() ?? [];
   }
-
   return (
     <div className={s.summaryWrapper}>
       <table className={s.summaryTable}>

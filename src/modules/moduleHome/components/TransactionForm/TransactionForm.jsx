@@ -7,6 +7,7 @@ import {
   selectExpensesCategories,
   selectIncomesCategories,
 } from 'redux/transaction/transactionSelectors';
+import { addToTransactionsStats } from 'redux/transaction/transactionSlice';
 import {
   addTransactionExpense,
   addTransactionIncome,
@@ -29,29 +30,43 @@ const TransactionForm = ({ selectedDate }) => {
   const handleFormSubmit = e => {
     e.preventDefault();
     const amount = e.target.elements.amount.value;
-    console.log(amount);
     const description = e.target.elements.description.value;
     const category = categoryTranslationEnToRu(
       e.target.elements.categories.value
     );
     const date = formatEventStart(selectedDate);
+    const monthIndex = date.slice(5, 7);
+
+    const monthsArray = [
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь',
+    ];
+    const month = monthsArray[Number(monthIndex) - 1];
+    const statsPayload = {
+      month,
+      amount: Number(amount),
+    };
     const payload = {
       description,
       amount: Number(amount),
       date,
       category,
     };
-    console.log('payload', payload);
+    dispatch(addToTransactionsStats(statsPayload));
     if (currentTransactionType === 'expenses') {
       dispatch(addTransactionExpense(payload));
-      // setTimeout(() => {
-      //   dispatch(getAuthUser());
-      // }, 200);
     } else {
       dispatch(addTransactionIncome(payload));
-      // setTimeout(() => {
-      //   dispatch(getAuthUser());
-      // }, 200);
     }
   };
   return (

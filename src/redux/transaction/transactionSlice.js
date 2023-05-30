@@ -56,13 +56,40 @@ const transactionSlice = createSlice({
     },
     deleteTransactionById: {
       reducer(state, { payload }) {
-        console.log(state.currentTransactionType);
-
         const transactionType = state.currentTransactionType;
-        console.log(state[transactionType]);
         state[transactionType] = state[transactionType].filter(
           transaction => transaction._id !== payload
         );
+      },
+    },
+    addTransactionById: {
+      reducer(state, { payload }) {
+        const transactionType = state.currentTransactionType;
+        state[transactionType] = state[transactionType].push(payload);
+      },
+    },
+    addToTransactionsStats: {
+      reducer(state, { payload }) {
+        const transactionType = state.currentTransactionType;
+        if (transactionType === 'expenses') {
+          state.expensesStats[payload.month] =
+            state.expensesStats[payload.month] - payload.amount;
+        } else {
+          state.incomesStats[payload.month] =
+            state.incomesStats[payload.month] + payload.amount;
+        }
+      },
+    },
+    deleteFromTransactionsStats: {
+      reducer(state, { payload }) {
+        const transactionType = state.currentTransactionType;
+        if (transactionType === 'expenses') {
+          state.expensesStats[payload.month] =
+            state.expensesStats[payload.month] + payload.amount;
+        } else {
+          state.incomesStats[payload.month] =
+            state.incomesStats[payload.month] - payload.amount;
+        }
       },
     },
   },
@@ -187,6 +214,10 @@ const transactionSlice = createSlice({
       });
   },
 });
-export const { changeTransactionType, deleteTransactionById } =
-  transactionSlice.actions;
+export const {
+  changeTransactionType,
+  deleteTransactionById,
+  addToTransactionsStats,
+  deleteFromTransactionsStats,
+} = transactionSlice.actions;
 export default transactionSlice.reducer;

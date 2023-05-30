@@ -6,13 +6,15 @@ import {
   selectIncomes,
 } from 'redux/transaction/transactionSelectors';
 import { format } from 'date-fns';
-import { deleteTransactionById } from 'redux/transaction/transactionSlice';
+import {
+  deleteTransactionById,
+  deleteFromTransactionsStats,
+} from 'redux/transaction/transactionSlice';
 import { categoryTranslationRuToEn } from '../TransactionForm/translateFunc';
 import s from './TransactionsList.module.scss';
 import { ReactComponent as Bucket } from 'modules/shared/images/svg/trashcan.svg';
 import { useState } from 'react';
 import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
-//import { getAuthUser } from 'redux/auth/authOperations';
 
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
@@ -22,8 +24,6 @@ const format1 = value => {
   const form = new Intl.NumberFormat('ru-RU', {
     style: 'decimal',
     currency: 'UAH',
-    // currencyDisplay: 'name',
-    // signDisplay: 'exceptZero',
     minimumFractionDigits: 2,
     useGrouping: 'min2',
   })
@@ -36,6 +36,7 @@ const format1 = value => {
 const TransactionsList = ({ selectedDate }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [idTrans, setIdTrans] = useState(null);
+  const [amount, setAmount] = useState(null);
 
   const currentTransactionType = useSelector(selectCurrentTransactionType);
   const incomes = useSelector(selectIncomes);
@@ -49,21 +50,37 @@ const TransactionsList = ({ selectedDate }) => {
     currentTransactionType === 'incomes'
       ? incomes.filter(transaction => transaction.date === normalizedDate)
       : expenses.filter(transaction => transaction.date === normalizedDate);
-  const toggleModal = id => {
+  const toggleModal = (id, amount) => {
+    setAmount(amount);
     setIdTrans(id);
     setModalIsOpen(p => !p);
   };
 
-  // const handleClickDelete = () => {
-  //   setIdTrans(trans._id);
-  // };
+  const monthIndex = normalizedDate.slice(5, 7);
+  const monthsArray = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ];
+  const month = monthsArray[Number(monthIndex) - 1];
+  const statsPayload = {
+    month,
+    amount: Number(amount),
+  };
 
   const handlerDeleteClick = () => {
+    dispatch(deleteFromTransactionsStats(statsPayload));
     dispatch(deleteTransaction(idTrans));
     dispatch(deleteTransactionById(idTrans));
-    // setTimeout(() => {
-    //   dispatch(getAuthUser());
-    // }, 200);
   };
 
   return (
@@ -103,7 +120,7 @@ const TransactionsList = ({ selectedDate }) => {
                 <td className={s.body_item}>
                   <button
                     type="button"
-                    onClick={() => toggleModal(trans._id)}
+                    onClick={() => toggleModal(trans._id, trans.amount)}
                     className={s.button}
                   >
                     <Bucket className={s.icon} />
@@ -196,6 +213,3 @@ const TransactionsList = ({ selectedDate }) => {
 };
 
 export default TransactionsList;
-
-// {() => handlerDeleteClick(trans._id)}
-// handlerDeleteClick(idTrans)
