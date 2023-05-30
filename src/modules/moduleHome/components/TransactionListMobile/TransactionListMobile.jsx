@@ -8,7 +8,10 @@ import {
   selectIncomes,
 } from 'redux/transaction/transactionSelectors';
 import { format } from 'date-fns';
-import { deleteTransactionById } from 'redux/transaction/transactionSlice';
+import {
+  deleteTransactionById,
+  deleteFromTransactionsStats,
+} from 'redux/transaction/transactionSlice';
 import { ReactComponent as Bucket } from 'modules/shared/images/svg/trashcan.svg';
 import { useState } from 'react';
 import ModalConsern from 'modules/moduleConfirmations/components/ModalConsern/ModalConsern';
@@ -36,7 +39,7 @@ const format1 = value => {
 const TransactionsListMobile = ({ selectedDate }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [idTrans, setIdTrans] = useState(null);
-  //   console.log(selectedDate);
+  const [amount, setAmount] = useState(null);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const currentTransactionType = useSelector(selectCurrentTransactionType);
@@ -50,22 +53,40 @@ const TransactionsListMobile = ({ selectedDate }) => {
     currentTransactionType === 'incomes'
       ? incomes.filter(transaction => transaction.date === normalizedDate)
       : expenses.filter(transaction => transaction.date === normalizedDate);
-  // console.log(isMobile);
 
-  const toggleModal = id => {
+  const toggleModal = (id, amount) => {
+    setAmount(amount);
     setIdTrans(id);
     setModalIsOpen(p => !p);
   };
 
+  const monthIndex = normalizedDate.slice(5, 7);
+  const monthsArray = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ];
+  const month = monthsArray[Number(monthIndex) - 1];
+  
+  const statsPayload = {
+    month,
+    amount: Number(amount),
+  };
+
   const handlerDeleteClick = () => {
+    dispatch(deleteFromTransactionsStats(statsPayload));
     dispatch(deleteTransaction(idTrans));
     dispatch(deleteTransactionById(idTrans));
-    // setTimeout(() => {
-    //   dispatch(getAuthUser());
-    // }, 200);
   };
-  // console.log(currentTransactionType);
-  // console.log(filteredTransactions);
 
   return (
     <>
@@ -96,7 +117,7 @@ const TransactionsListMobile = ({ selectedDate }) => {
                       : `- ${format1(el.amount)} UAH`}
                   </p>
                   <button
-                    onClick={() => toggleModal(el._id)}
+                    onClick={() => toggleModal(el._id, el.amount)}
                     className={s.button}
                   >
                     <Bucket className={s.icon} />
