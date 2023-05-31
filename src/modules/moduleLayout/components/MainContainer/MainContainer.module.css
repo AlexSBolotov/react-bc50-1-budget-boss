@@ -1,12 +1,14 @@
 .container {
   width: 100vw;
   min-height: 100vh;
-
+  background-image: url(../../images/Ellipse-mob.png);
+  background-repeat: no-repeat;
   margin: 0 auto;
   
   background-color: #383847;
    @media screen and (min-width: 320px) and (max-width: 767px) {
     position: relative;
+    
 
   }
 }

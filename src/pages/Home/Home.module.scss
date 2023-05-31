@@ -4,6 +4,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    
   }
 
   @media screen and (min-width: 768px) {
@@ -28,8 +29,8 @@
   gap: 30px;
   align-items: center;
   display: flex;
-  background: #383847;
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+  // background: #383847;
+  // box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
   justify-content: center;
   padding: 32px 20px;
 }
