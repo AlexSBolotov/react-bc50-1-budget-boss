@@ -14,15 +14,16 @@ const TransactionsNav = () => {
             currentTransactionType === 'expenses'
               ? '0px 0px 6px #41A350'
               : 'none',
-          backgroundColor:
-            currentTransactionType === 'expenses' ? '#383847' : '#2D2D38',
+          background:
+            currentTransactionType !== 'expenses'
+              ? 'linear-gradient(278.28deg, #2D2D38 -5.39%, #383847 94.01%)'
+              : '#383847',
           color: currentTransactionType === 'expenses' ? '#60C470' : '#F6F7FB',
           borderColor:
             currentTransactionType === 'expenses' ? '#60C470' : 'transparent',
         }}
         onClick={() => dispatch(changeTransactionType('expenses'))}
         type="button"
-        // to="/expenses"
         className={styles.one}
       >
         Expenses
@@ -33,15 +34,16 @@ const TransactionsNav = () => {
             currentTransactionType === 'incomes'
               ? '0px 0px 6px #41A350'
               : 'none',
-          backgroundColor:
-            currentTransactionType === 'incomes' ? '#383847' : '#2D2D38',
+          background:
+            currentTransactionType !== 'incomes'
+              ? 'linear-gradient(245.22deg, #383847 14.1%, #2D2D38 89.51%)'
+              : '#383847',
           color: currentTransactionType === 'incomes' ? '#60C470' : '#F6F7FB',
           borderColor:
             currentTransactionType === 'incomes' ? '#60C470' : 'transparent',
         }}
         onClick={() => dispatch(changeTransactionType('incomes'))}
         type="button"
-        // to="/income"
         className={styles.two}
       >
         Income
