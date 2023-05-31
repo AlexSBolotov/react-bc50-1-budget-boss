@@ -10,6 +10,7 @@ import {
   //   refreshTokenApi,
   // googleAuthApi,
 } from 'services/kapustaApi';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
@@ -18,6 +19,7 @@ export const registerUser = createAsyncThunk(
       await registerUserApi(userForm);
       const { data } = await loginUserApi(userForm);
       token.set(data.accessToken);
+      Loading.remove();
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data.message);
@@ -31,6 +33,7 @@ export const loginUser = createAsyncThunk(
     try {
       const { data } = await loginUserApi(userForm);
       token.set(data.accessToken);
+      Loading.remove();
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data.message);
@@ -43,6 +46,7 @@ export const logoutUser = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       await logoutUserApi();
+      Loading.remove();
       token.unset();
     } catch (error) {
       setTimeout(() => {
@@ -60,6 +64,7 @@ export const getAuthUser = createAsyncThunk(
     token.set(userToken);
     try {
       const { data } = await getUserInfoApi();
+      Loading.remove();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -71,6 +76,7 @@ export const setNewBalance = createAsyncThunk(
   async (newBalance, { rejectWithValue }) => {
     try {
       await updateUserBalanceApi(newBalance);
+      Loading.remove();
     } catch (error) {
       return rejectWithValue(error.response.data.message);
     }
