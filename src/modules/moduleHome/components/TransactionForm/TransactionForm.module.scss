@@ -61,7 +61,7 @@
     border-top-right-radius: 0;
   }
   @media screen and (min-width: 1200px) {
-    width: 290px;
+    width: 288px;
   }
   &:focus,
   &:hover {
@@ -90,11 +90,12 @@
   line-height: 1.16;
   letter-spacing: 0.02em;
   text-align: left;
-  // width: 280px;
-  min-width: 280px;
+  width: 280px;
+
+
 
   @media screen and (min-width: 768px) {
-    max-width: 170px;
+    width: 170px;
     border-bottom-right-radius: 0;
   }
   &:focus,
@@ -162,7 +163,7 @@
   border-radius: 22px;
   @media screen and (min-width: 768px) {
     border-radius: 0 16px 16px 0;
-    width: 116px;
+    width: 120px;
     text-align: center;
   }
   @media screen and (min-width: 1200px) {
