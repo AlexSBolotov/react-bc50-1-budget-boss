@@ -1,4 +1,5 @@
 // import Select from 'react-select';
+import { useRef } from 'react';
 import { format } from 'date-fns';
 import s from './TransactionForm.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +26,7 @@ const TransactionForm = ({ selectedDate }) => {
   const currentTransactionType = useSelector(selectCurrentTransactionType);
   const expensesCategories = useSelector(selectExpensesCategories);
   const incomesCategories = useSelector(selectIncomesCategories);
+  const formRef = useRef(null);
 
   const dispatch = useDispatch();
   const handleFormSubmit = e => {
@@ -36,6 +38,7 @@ const TransactionForm = ({ selectedDate }) => {
     );
     const date = formatEventStart(selectedDate);
     const monthIndex = date.slice(5, 7);
+   
 
     const monthsArray = [
       'Январь',
@@ -68,17 +71,19 @@ const TransactionForm = ({ selectedDate }) => {
     } else {
       dispatch(addTransactionIncome(payload));
     }
+  formRef.current.reset();
   };
   return (
     <div className={s.mobileForm}>
-      <form onSubmit={e => handleFormSubmit(e)} className={s.form}>
+      <form ref={formRef} onSubmit={e => handleFormSubmit(e)} className={s.form}>
         <input
           type="text"
           name="description"
           placeholder="Product description"
           className={s.input}
+          required
         />
-        <select name="categories" className={s.select}>
+        <select name="categories" className={s.select} required>
           {currentTransactionType === 'expenses'
             ? expensesCategories.map(category => (
                 <option
@@ -104,6 +109,7 @@ const TransactionForm = ({ selectedDate }) => {
           name="amount"
           placeholder="0.00"
           className={s.input_calc}
+          required
         ></input>
         <div className={s.btn_container}>
           <button type="submit" className={s.btn_input}>
