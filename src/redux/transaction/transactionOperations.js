@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { errorHandler } from 'redux/error/errorHandler';
 import {
   getTransactionExpenseApi,
@@ -27,6 +28,7 @@ export const addTransactionIncome = createAsyncThunk(
   async (transactionForm, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await addTransactionIncomeApi(transactionForm);
+      Loading.remove();
       return data;
     } catch (error) {
       dispatch(
@@ -42,6 +44,7 @@ export const getTransactionExpense = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const data = await getTransactionExpenseApi();
+      Loading.remove();
       return data;
     } catch (error) {
       dispatch(errorHandler({ error, cb: getTransactionExpense }));
@@ -55,6 +58,7 @@ export const addTransactionExpense = createAsyncThunk(
   async (transactionForm, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await addTransactionExpenseApi(transactionForm);
+      Loading.remove();
       return data;
     } catch (error) {
       dispatch(
@@ -73,6 +77,7 @@ export const deleteTransaction = createAsyncThunk(
   async (transactionId, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await deleteTransactionApi(transactionId);
+      Loading.remove();
       return data;
     } catch (error) {
       dispatch(
@@ -88,7 +93,7 @@ export const getTransactionByPeriod = createAsyncThunk(
   async (param, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await getTransactionPeriodDataApi(param);
-
+      Loading.remove();
       return data;
     } catch (error) {
       dispatch(errorHandler({ error, cb: () => deleteTransaction(param) }));
@@ -105,6 +110,7 @@ export const getAllCategories = createAsyncThunk(
         getTransactionIncomeApi,
         getTransactionExpenseApi,
       ]);
+      Loading.remove();
       return data;
     } catch (error) {
       return rejectWithValue(error.message);

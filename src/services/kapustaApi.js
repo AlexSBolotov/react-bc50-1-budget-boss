@@ -1,9 +1,15 @@
 import axios from 'axios';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const baseUrl = 'https://kapusta-backend.goit.global';
 
 axios.defaults.baseURL = baseUrl;
-
+axios.defaults.onUploadProgress = progressEvent => {
+  Loading.arrows();
+};
+axios.defaults.onDownloadProgress = progressEvent => {
+  Loading.arrows();
+};
 export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;

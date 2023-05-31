@@ -12,6 +12,7 @@
     "date-and-time": "^3.0.0",
     "date-fns": "^2.30.0",
     "formik": "^2.2.9",
+    "notiflix": "^3.2.6",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-datepicker": "^4.11.0",
