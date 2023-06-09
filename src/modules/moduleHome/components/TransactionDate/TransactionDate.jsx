@@ -25,7 +25,6 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
         selected={selectedDate}
         onChange={date => {
           setSelectedDate(date);
-          // console.log(selectedDate);
         }}
         locale={enGB}
         maxDate={new Date()}
@@ -36,5 +35,4 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
   );
 };
 export default TransactionDate;
-// допилить логику перезагрузки страницы. Если выбираем дату на дейт пикере а потом обновляем страницу - дата ставится на сегодня.
-// МЕМОИЗАЦИЯ
+
