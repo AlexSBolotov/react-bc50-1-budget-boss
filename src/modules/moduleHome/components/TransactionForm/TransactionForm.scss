@@ -72,29 +72,23 @@
 }
 // цвет один и тот же но не совпадает
 
-.select {
-  background: url('../../../shared/images/svg/Vector\ 15.svg') no-repeat;
-  background-position: right 10% bottom 48%;
-  background-size: 10px;
-  padding: 15px 20px;
-  color: rgba(199, 204, 220, 0.5);
+.select-container {
+  
+  .select__control{
+    height:100%;
+    // padding: 15px 15px;
+  cursor: pointer;
+  
   border: 2px solid #474759;
   border-radius: 0;
   border-bottom-right-radius: 16px;
   background-color: rgba(56, 56, 71, 1);
-  appearance: none;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.16;
-  letter-spacing: 0.02em;
-  text-align: left;
+  
   // width: 280px;
-  min-width: 280px;
+  // min-width: 280px;
 
   @media screen and (min-width: 768px) {
-    max-width: 170px;
+    width:170px;
     border-bottom-right-radius: 0;
   }
   &:focus,
@@ -103,43 +97,87 @@
     border: 2px solid #474759;
     box-shadow: 0px 6px 7px -2px #41a350;
   }
-}
-
-.select:focus {
-  outline: none;
-  max-width: 170px;
-}
-
-#select-option {
-  box-sizing: border-box;
-
-  // падинги для опций !!!!!!
-  padding: 9px 18px !important;
+  }
+  .select__single-value{
+    appearance: none;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.02em;
-  color: rgba(199, 204, 220, 0.5);
-  background-color: rgba(56, 56, 71, 1);
-  border: 0;
   text-align: left;
-}
-#select-option:hover {
-  background-color: #474759 !important;
-  color: rgba(246, 247, 251, 1);
-}
-#select-option:focus {
-  background-color: #474759 !important;
-  color: rgba(246, 247, 251, 1) !important;
-  /* Styles for the options on hover */
+    color: rgba(199, 204, 220, 0.5);
+  }
+  .select__indicator{
+    svg{ fill:rgba(199, 204, 220, 0.5);}
+  
+  }
+  .select__indicator-separator{
+    display:none;
+  }
+  .select__menu{
+    background-color: rgba(56, 56, 71, 1);
+  }
+  .select__option{
+    cursor: pointer;
+    padding: 9px 18px;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 1.16;
+      letter-spacing: 0.02em;
+      color: rgba(199, 204, 220, 0.5);
+      background-color: rgba(56, 56, 71, 1);
+      border: 0;
+      text-align: left;
+      &:hover {
+        background-color: #474759;
+          color: rgba(246, 247, 251, 1);
+      }
+      &--is-selected{
+        background-color: #474759;
+          color: rgba(246, 247, 251, 1);
+      }
+  }
 }
 
-#select-option:checked {
-  background-color: #474759 !important;
-  color: rgba(246, 247, 251, 1) !important;
-}
+// .select:focus {
+//   outline: none;
+//   max-width: 170px;
+// }
+
+// #select-option {
+//   box-sizing: border-box;
+
+//   // падинги для опций !!!!!!
+//   padding: 9px 18px !important;
+//   font-family: 'Roboto';
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 12px;
+//   line-height: 1.16;
+//   letter-spacing: 0.02em;
+//   color: rgba(199, 204, 220, 0.5);
+//   background-color: rgba(56, 56, 71, 1);
+//   border: 0;
+//   text-align: left;
+// }
+// #select-option:hover {
+//   background-color: #474759 !important;
+//   color: rgba(246, 247, 251, 1);
+// }
+// #select-option:focus {
+//   background-color: #474759 !important;
+//   color: rgba(246, 247, 251, 1) !important;
+//   /* Styles for the options on hover */
+// }
+
+// #select-option:checked {
+//   background-color: #474759 !important;
+//   color: rgba(246, 247, 251, 1) !important;
+// }
 
 .input_calc {
   @media screen and (min-width: 320px) and (max-width: 767px) {

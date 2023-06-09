@@ -1,7 +1,7 @@
 import Select from 'react-select';
 import { useRef, useState } from 'react';
 import { format } from 'date-fns';
-import s from './TransactionForm.module.scss';
+import './TransactionForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCurrentTransactionType
@@ -76,16 +76,20 @@ const TransactionForm = ({ selectedDate }) => {
   setSelectedOption(null);
   };
   return (
-    <div className={s.mobileForm}>
-      <form ref={formRef} onSubmit={e => handleFormSubmit(e)} className={s.form}>
+    <div className='mobileForm'>
+      <form ref={formRef} onSubmit={e => handleFormSubmit(e)} className='form'>
         <input
           type="text"
           name="description"
           placeholder="Product description"
-          className={s.input}
+          className='input'
           required
         />
         <Select
+         menuShouldBlockScroll={true}
+         menuShouldScrollIntoView={false}
+        className='select-container'
+        classNamePrefix='select'
         required
         options={currentTransactionType === 'expenses' ? expenses : incomes}
         placeholder="Product category"
@@ -93,20 +97,21 @@ const TransactionForm = ({ selectedDate }) => {
         onChange={(option) => setSelectedOption(option)}
         // styles={objectStyle}
         name="category"
+       
       
       />
         <input
           type="number"
           name="amount"
           placeholder="0.00"
-          className={s.input_calc}
+          className='input_calc'
           required
         ></input>
-        <div className={s.btn_container}>
-          <button type="submit" className={s.btn_input}>
+        <div className='btn_container'>
+          <button type="submit" className='btn_input'>
             Input
           </button>
-          <button type="reset" className={s.btn_clear}>
+          <button type="reset" className='btn_clear'>
             Clear
           </button>
         </div>

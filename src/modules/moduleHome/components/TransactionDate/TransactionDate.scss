@@ -31,7 +31,7 @@
   
 }
 
-.input{
+.input_date{
   width:104px;
     background: url("../../../shared/images/svg/calendar.svg") no-repeat;
     background-position: left 5% bottom 50%;
@@ -52,7 +52,7 @@
   overflow: hidden;
   cursor:pointer;
 }
-.input:focus{
+.input_date:focus{
   outline: none;
   border:none;
   border-radius:4px;

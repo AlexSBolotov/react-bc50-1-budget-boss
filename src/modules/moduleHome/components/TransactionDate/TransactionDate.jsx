@@ -8,7 +8,7 @@ const TransactionDate = ({ selectedDate, setSelectedDate }) => {
   const ExampleCustomInput = forwardRef(({ value, onClick, onChange }, ref) => (
     <input
       value={value}
-      className="input"
+      className="input_date"
       onClick={onClick}
       onChange={onChange}
       ref={ref}
