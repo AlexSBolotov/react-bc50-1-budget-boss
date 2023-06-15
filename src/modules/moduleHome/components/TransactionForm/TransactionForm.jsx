@@ -1,12 +1,10 @@
-// import Select from 'react-select';
-import { useRef } from 'react';
+import Select from 'react-select';
+import { useRef, useState } from 'react';
 import { format } from 'date-fns';
-import s from './TransactionForm.module.scss';
+import './TransactionForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectCurrentTransactionType,
-  selectExpensesCategories,
-  selectIncomesCategories,
+  selectCurrentTransactionType
 } from 'redux/transaction/transactionSelectors';
 import { addToTransactionsStats } from 'redux/transaction/transactionSlice';
 import {
@@ -14,28 +12,31 @@ import {
   addTransactionIncome,
 } from 'redux/transaction/transactionOperations';
 import {
-  categoryTranslationEnToRu,
-  categoryTranslationRuToEn,
+  categoryTranslationEnToRu
 } from './translateFunc';
-import { nanoid } from '@reduxjs/toolkit';
+import {expenses, incomes} from './categories';
 
 const formatEventStart = date => {
   return format(Date.parse(date), 'yyyy-MM-dd');
 };
+
+
+
 const TransactionForm = ({ selectedDate }) => {
+  const [selectedOption, setSelectedOption] = useState(null);
   const currentTransactionType = useSelector(selectCurrentTransactionType);
-  const expensesCategories = useSelector(selectExpensesCategories);
-  const incomesCategories = useSelector(selectIncomesCategories);
   const formRef = useRef(null);
+  
 
   const dispatch = useDispatch();
+
   const handleFormSubmit = e => {
     e.preventDefault();
     const amount = e.target.elements.amount.value;
     const description = e.target.elements.description.value;
     const category = categoryTranslationEnToRu(
-      e.target.elements.categories.value
-    );
+        e.target.elements.category.value.toString()
+      );
     const date = formatEventStart(selectedDate);
     const monthIndex = date.slice(5, 7);
    
@@ -72,50 +73,45 @@ const TransactionForm = ({ selectedDate }) => {
       dispatch(addTransactionIncome(payload));
     }
   formRef.current.reset();
+  setSelectedOption(null);
   };
   return (
-    <div className={s.mobileForm}>
-      <form ref={formRef} onSubmit={e => handleFormSubmit(e)} className={s.form}>
+    <div className='mobileForm'>
+      <form ref={formRef} onSubmit={e => handleFormSubmit(e)} className='form'>
         <input
           type="text"
           name="description"
           placeholder="Product description"
-          className={s.input}
+          className='input'
           required
         />
-        <select name="categories" className={s.select} required>
-          {currentTransactionType === 'expenses'
-            ? expensesCategories.map(category => (
-                <option
-                  key={nanoid()}
-                  value={categoryTranslationRuToEn(category)}
-                  id="select-option"
-                >
-                  {categoryTranslationRuToEn(category)}
-                </option>
-              ))
-            : incomesCategories.map(category => (
-                <option
-                  key={nanoid()}
-                  value={categoryTranslationRuToEn(category)}
-                  id="select-option"
-                >
-                  {categoryTranslationRuToEn(category)}
-                </option>
-              ))}
-        </select>
+        <Select
+         menuShouldBlockScroll={true}
+         menuShouldScrollIntoView={false}
+        className='select-container'
+        classNamePrefix='select'
+        required
+        options={currentTransactionType === 'expenses' ? expenses : incomes}
+        placeholder="Product category"
+        value={selectedOption}
+        onChange={(option) => setSelectedOption(option)}
+        // styles={objectStyle}
+        name="category"
+       
+      
+      />
         <input
           type="number"
           name="amount"
           placeholder="0.00"
-          className={s.input_calc}
+          className='input_calc'
           required
         ></input>
-        <div className={s.btn_container}>
-          <button type="submit" className={s.btn_input}>
+        <div className='btn_container'>
+          <button type="submit" className='btn_input'>
             Input
           </button>
-          <button type="reset" className={s.btn_clear}>
+          <button type="reset" className='btn_clear'>
             Clear
           </button>
         </div>
@@ -125,3 +121,4 @@ const TransactionForm = ({ selectedDate }) => {
 };
 
 export default TransactionForm;
+
